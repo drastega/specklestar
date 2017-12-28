@@ -3,8 +3,9 @@ This programs are intended for reduction of speckle data from telescopes using R
 Input data now is a set of 512x512 (x2 bytes) speckle images of binary and multiple stars.
 
 speckle_vis.R - for reduction of speckle data using algorithm described in paper
-"Differential photometry of speckle-interferometric binary and multiple stars"
-Pluzhnik E.A., Astronomy and Astrophysics, v.431, p.587-596 (2005)
+["Differential photometry of speckle-interferometric binary and multiple stars"
+Pluzhnik E.A., Astronomy and Astrophysics, v.431, p.587-596 (2005)](http://adsabs.harvard.edu/abs/2005A%26A...431..587P)
+
 
 speckle_gen.R - for generation of model speckle data
 
