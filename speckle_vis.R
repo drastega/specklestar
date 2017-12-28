@@ -38,7 +38,7 @@ print(Sys.time() - t0) # runtime calculation
 ### Visualization of secondary peak in ACF
 ## imager & rgl
 plot(as.cimg(ACF_short^0.1))
-print('Point position of secondary maximum on the plot ...')
+print('Point position of upper secondary maximum on the plot ...')
 max_pos <- locator(1) # Get position of secondary maximum from cursor
 wind_width <- 5 # Set width of window with local max
 ACF_short_magn <- ACF_short[(max_pos$x - wind_width):(max_pos$x + wind_width),
