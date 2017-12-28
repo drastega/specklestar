@@ -8,5 +8,6 @@ Pluzhnik E.A., Astronomy and Astrophysics, v.431, p.587-596 (2005)
 
 speckle_gen.R - for generation of model speckle data
 
+middle_d_f.R - for calulation middle dark or flat field images.
 
 All programs are still under development.
