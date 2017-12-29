@@ -8,7 +8,6 @@ library(rgl)
 Sys.setenv(TZ="Europe/Moscow")
 t0 <- Sys.time() # start time
 
-#data_file <- '/Users/leda/home/Reduction/mavr/cyg_ob2_12_800.dat'
 data_file <- file.choose()
 N_frames <- file.info(data_file)$size/(512 * 512 * 2)
 data <- ff(filename = data_file, readonly = TRUE, dim = c(512, 512, N_frames), vmode = 'ushort')
@@ -93,10 +92,32 @@ for (R in seq(R_start, R_end, dr)) {
 
 plot(C, type = 'l', ylim = c(-1000, 1000))
 
+### Nonlinear fitting
+#R <- 40; dr <- 1
+r_phi <- cbind(r, phi) %>% as.tibble()
+C_nln <- NULL; rho_tmp <- NULL; theta_tmp <- NULL
+R_start <- 25 # First annulus (in pix)
+R_end <- 60 # Last annulus (in pix)
+dr <- 1 # Step (in pix)
+for (R in seq(R_start, R_end, dr)) {
+  r1 <- R; r2 <- r1 + dr
+  annulus_PS <- PS_short_polar %>% filter(r < r2 & r > r1)
+  annulus_fit_func <- fit_func %>% filter(r < r2 & r > r1)
+  linear_fit <- lm(annulus_PS$z ~ annulus_fit_func$z)
+  y <- annulus_PS$z # avoid this!!!!!
+  r_phi_n <- r_phi %>% filter(r < r2 & r > r1 & phi < pi / 2 & phi > -pi / 2)
+  r_n <- r_phi_n$r
+  phi_n <- r_phi_n$phi
+  nonlinear_fit <- nls(y ~ alpha + beta * cos( 2 * pi * r_n * (rho_n / 512) * cos( (90 * pi / 180) - (phi_n - theta_n))),
+          start=list(alpha = linear_fit$coefficients[1], beta = linear_fit$coefficients[2], rho_n = rho, theta_n = theta))
+  C_nln <- c(C_nln, coef(nonlinear_fit)[1] / coef(nonlinear_fit)[2])
+  rho_tmp <- c(rho_tmp, coef(nonlinear_fit)[3])
+  theta_tmp <- c(theta_tmp, coef(nonlinear_fit)[4])
+}
 
+#coef(nonlinear_fit)
 #fit_func <- alpha + beta * cos( 2 * pi * r * (rho / 512) * cos( (90 * pi / 180) - (phi - theta)))
-
-
+plot()
 
 ### Useful functions, approaches, etc.
 circle <- function(r_plot, color, half = FALSE){
