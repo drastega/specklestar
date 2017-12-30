@@ -104,20 +104,24 @@ for (R in seq(R_start, R_end, dr)) {
   annulus_PS <- PS_short_polar %>% filter(r < r2 & r > r1)
   annulus_fit_func <- fit_func %>% filter(r < r2 & r > r1)
   linear_fit <- lm(annulus_PS$z ~ annulus_fit_func$z)
-  y <- annulus_PS$z # avoid this!!!!!
+  annulus_PS_z <- annulus_PS$z # avoid this!!!!!
   r_phi_n <- r_phi %>% filter(r < r2 & r > r1 & phi < pi / 2 & phi > -pi / 2)
   r_n <- r_phi_n$r
   phi_n <- r_phi_n$phi
-  nonlinear_fit <- nls(y ~ alpha + beta * cos( 2 * pi * r_n * (rho_n / 512) * cos( (90 * pi / 180) - (phi_n - theta_n))),
-          start=list(alpha = linear_fit$coefficients[1], beta = linear_fit$coefficients[2], rho_n = rho, theta_n = theta))
+  try(nonlinear_fit <- nls(annulus_PS_z ~ alpha + beta * cos( 2 * pi * r_n * (rho_n / 512) * cos( (90 * pi / 180) -
+      (phi_n - theta_n))), start=list(alpha = linear_fit$coefficients[1], beta = linear_fit$coefficients[2],
+      rho_n = rho, theta_n = theta)), silent = TRUE)
   C_nln <- c(C_nln, coef(nonlinear_fit)[1] / coef(nonlinear_fit)[2])
   rho_tmp <- c(rho_tmp, coef(nonlinear_fit)[3])
   theta_tmp <- c(theta_tmp, coef(nonlinear_fit)[4])
 }
 
+
 #coef(nonlinear_fit)
 #fit_func <- alpha + beta * cos( 2 * pi * r * (rho / 512) * cos( (90 * pi / 180) - (phi - theta)))
-plot()
+plot(coef(nonlinear_fit)[1] + coef(nonlinear_fit)[2] * cos( 2 * pi * r_n * (coef(nonlinear_fit)[3] / 512) * cos( (90 * pi / 180) -
+  (phi_n - coef(nonlinear_fit)[4]))), type = 'l', col = 'blue')
+
 
 ### Useful functions, approaches, etc.
 circle <- function(r_plot, color, half = FALSE){
@@ -136,14 +140,23 @@ annulus_PS_model_plot <- function(R, dr = 1){
   contrast <- alpha / beta
   print(c(contrast, alpha, beta))
   par(mfrow = c(2,2))
-  plot(annulus_PS$z, type = 'l', col = 'blue')
+  plot(annulus_PS$z, type = 'l', col = 'red')
   plot(annulus_fit_func$z, type = 'l', col = 'blue')
   plot(as.cimg(PS_short^0.1))
 #  circle(R, 'green', 1)
   points(x = annulus_PS$r * cos(annulus_PS$phi) + x0, y = annulus_PS$r * sin(annulus_PS$phi) + y0,
          pch = 46, col = 'green')
   text(400, 100, paste('R=', as.character(R), ', dr=', as.character(dr), sep = ''), col = 'white')
-  plot(resid(linear_fit), type = 'l', col = 'red')
+  annulus_PS_z <- annulus_PS$z # avoid this!!!!!
+  r_phi_n <- r_phi %>% filter(r < r2 & r > r1 & phi < pi / 2 & phi > -pi / 2)
+  r_n <- r_phi_n$r
+  phi_n <- r_phi_n$phi
+  nonlinear_fit <- nls(annulus_PS_z ~ alpha + beta * cos( 2 * pi * r_n * (rho_n / 512) * cos( (90 * pi / 180) - (phi_n - theta_n))),
+                       start=list(alpha = linear_fit$coefficients[1], beta = linear_fit$coefficients[2], rho_n = rho, theta_n = theta))
+  plot(annulus_PS$z, col = 'red', type = 'l')
+  lines(coef(nonlinear_fit)[1] + coef(nonlinear_fit)[2] * cos( 2 * pi * r_n * (coef(nonlinear_fit)[3] / 512) * cos( (90 * pi / 180) -
+    (phi_n - coef(nonlinear_fit)[4]))), col = 'blue')
+#    plot(resid(linear_fit), type = 'l', col = 'red')
   par(mfrow = c(1,1))
 }
 
