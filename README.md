@@ -1,5 +1,9 @@
-# speckle
-This programs are intended for reduction of speckle data from telescopes using R language.
+# Speckle
+
+Overview
+--------
+
+This programs are intended for reduction of speckle data obtained from optical telescopes using R language.
 Input data now is a set of 512x512 (x2 bytes) speckle images of binary and multiple stars.
 
 speckle_vis.R - for reduction of speckle data using algorithm described in paper
