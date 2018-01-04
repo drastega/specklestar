@@ -15,4 +15,5 @@ speckle_gen.R - for generation of model speckle data
 
 middle_d_f.R - for calculation of middle dark or flat field images.
 
-All programs are still far from finish.
+Almost all programs are still far from finish.
+By now the only (and slowly) working program is speckle_gen.R
