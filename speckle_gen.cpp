@@ -5,10 +5,10 @@ using namespace Rcpp;
 NumericVector speckle_gen(double seeing, double speckle_sigma, double m1, double m2, double rho_x, double rho_y, double wind) {
   int N_speckle = 300;
   int n_x = 512;
-  int n_y = 512;
+  int n_y = n_x;
   
-  double stellar_center_x = R::rnorm(257, wind);
-  double stellar_center_y = R::rnorm(257, wind);
+  double stellar_center_x = R::rnorm(n_x / 2, wind);
+  double stellar_center_y = R::rnorm(n_y / 2, wind);
   double x0;
   double y0;
   NumericVector speckle_field(262144);
@@ -27,6 +27,5 @@ NumericVector speckle_gen(double seeing, double speckle_sigma, double m1, double
       speckle_field[c] = speckle_field[c] + gaussian_2d[c];
     }
   }
-
     return speckle_field;
 }
