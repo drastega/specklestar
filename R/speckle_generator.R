@@ -9,7 +9,7 @@ library(animation)
 t0 <- Sys.time() # start time
 # N_speckle, n_x and n_y are defined in speckle_gen.cpp
 # N_speckle = 300 # Number of speckles from single star
-# n_x <- 512; n_y <- n_x # Number of pixels in x and y
+n_x <- 512; n_y <- n_x # Number of pixels in x and y
 
 # Weather conditions + optics:
 seeing <- 30 # in relative units
@@ -21,8 +21,8 @@ m1 <- 1000 # Relative magnitude of primary component
 m2 <- 700 # Relative magnitude of secondary component
 rho_x <- 30; rho_y <-30 # Projections of separation vector Rho
 
-sourceCpp('speckle_gen.cpp')
-speckle_field <- speckle_gen(seeing = seeing, speckle_sigma = speckle_sigma,
+sourceCpp('src/speckle_generator.cpp')
+speckle_field <- speckle_generator(seeing = seeing, speckle_sigma = speckle_sigma,
   m1 = m1, m2 = m2, rho_x = rho_x, rho_y = rho_y, wind = wind_speed) %>% matrix(n_x, n_y)
 
 sigma_noise <- 50; mean_noise <- 400
@@ -38,7 +38,7 @@ plot(as.cimg(speckle_frame), axes = FALSE)
 
 saveGIF({
   for (i in 1:10){
-    speckle_field <- speckle_gen(seeing = seeing, speckle_sigma = speckle_sigma,
+    speckle_field <- speckle_generator(seeing = seeing, speckle_sigma = speckle_sigma,
       m1 = m1, m2 = m2, rho_x = rho_x, rho_y = rho_y, wind = wind_speed) %>% matrix(n_x, n_y)
     speckle_frame <- speckle_field + noise
     plot(as.cimg(speckle_frame), axes = FALSE)
