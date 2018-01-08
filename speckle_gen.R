@@ -43,7 +43,7 @@ saveGIF({
     speckle_frame <- speckle_field + noise
     plot(as.cimg(speckle_frame), axes = FALSE)
   }
-})
+}, interval = 1)
 
 PS_model <- abs(fftw2d(speckle_frame))^2 %>% fftshift(dimension = -1)
 #plot(as.cimg(PS_model^0.01), axes = FALSE)
