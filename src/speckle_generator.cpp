@@ -2,7 +2,7 @@
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-NumericVector speckle_gen(double seeing, double speckle_sigma, double m1, double m2, double rho_x, double rho_y, double wind) {
+NumericVector speckle_generator(double seeing, double speckle_sigma, double m1, double m2, double rho_x, double rho_y, double wind) {
   int N_speckle = 300;
   int n_x = 512;
   int n_y = n_x;
