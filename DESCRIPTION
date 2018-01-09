@@ -6,6 +6,14 @@ Description: A set of functions for obtaining positional parameters and
     systems from series of speckle images.
 Authors@R: person("Denis", "Rastegaev", email = "leda82@gmail.com", role = c("aut", "cre"))
 Depends: R (>= 3.4.2)
-License: GPL ?
+Imports:
+    imager,
+    tidyverse,
+    tools,
+    Rcpp
+Suggests:
+    rgl
+License: GPL-2
 Encoding: UTF-8
 LazyData: true
+LinkingTo: Rcpp

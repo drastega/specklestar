@@ -21,7 +21,7 @@ m1 <- 1000 # Relative magnitude of primary component
 m2 <- 700 # Relative magnitude of secondary component
 rho_x <- 30; rho_y <-30 # Projections of separation vector Rho
 
-sourceCpp('src/speckle_generator.cpp')
+#sourceCpp('src/speckle_generator.cpp')
 speckle_field <- speckle_generator(seeing = seeing, speckle_sigma = speckle_sigma,
   m1 = m1, m2 = m2, rho_x = rho_x, rho_y = rho_y, wind = wind_speed) %>% matrix(n_x, n_y)
 

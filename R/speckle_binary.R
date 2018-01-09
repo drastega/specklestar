@@ -5,10 +5,12 @@ library(mrbsizeR) # for fftshift
 library(imager) # for visualization (eg. as.cimg())
 library(rgl)
 
+speckle_binary <- function(data_file) {
+#data_file <- file.choose()
+
 Sys.setenv(TZ="Europe/Moscow")
 t0 <- Sys.time() # start time
 
-data_file <- file.choose()
 N_frames <- file.info(data_file)$size/(512 * 512 * 2)
 data <- ff(filename = data_file, readonly = TRUE, dim = c(512, 512, N_frames), vmode = 'ushort')
 
@@ -17,7 +19,7 @@ PS_line <- 0
 PS_short <- 0
 frame <- matrix(0, 1024, 1024)
 for (i in seq(N_frames-1)) {
-#for (i in seq(100)) {  
+#for (i in seq(100)) {
 #  mean_data <- data[, , i] - mean(data[, , i])
   mean_data <- data[, , i + 1] - data[, , i]
   frame[1:512, 1:512] <- mean_data
@@ -122,6 +124,7 @@ for (R in seq(R_start, R_end, dr)) {
 plot(coef(nonlinear_fit)[1] + coef(nonlinear_fit)[2] * cos( 2 * pi * r_n * (coef(nonlinear_fit)[3] / 512) * cos( (90 * pi / 180) -
   (phi_n - coef(nonlinear_fit)[4]))), type = 'l', col = 'blue')
 
+} # end of speckle_binary
 
 ### Useful functions, approaches, etc.
 circle <- function(r_plot, color, half = FALSE){
