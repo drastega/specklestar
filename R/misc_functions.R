@@ -1,7 +1,4 @@
-#' @useDynLib specklestar
-#' @importFrom Rcpp sourceCpp
-NULL
-
+#' @export
 # SPE to dat conversion (i.e. removing 4100 byte SPE header)
 spe2dat <- function() {
   input_file <- file.choose() # choose .SPE file
