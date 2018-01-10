@@ -11,6 +11,7 @@ spe2dat <- function() {
   print(output_file)
 }
 
+#' @export
 # Take N frames from series of speckle images 512x512x2(bytes)
 n_frames <- function(n, start = 1) {
   input_file <- file.choose() # choose .dat file
