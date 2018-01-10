@@ -5,6 +5,17 @@
 
 using namespace Rcpp;
 
+// timesTwo
+NumericVector timesTwo(NumericVector x);
+RcppExport SEXP _specklestar_timesTwo(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(timesTwo(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 // ps
 NumericVector ps(String filename);
 RcppExport SEXP _specklestar_ps(SEXP filenameSEXP) {
@@ -35,6 +46,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_specklestar_timesTwo", (DL_FUNC) &_specklestar_timesTwo, 1},
     {"_specklestar_ps", (DL_FUNC) &_specklestar_ps, 1},
     {"_specklestar_speckle_generator", (DL_FUNC) &_specklestar_speckle_generator, 7},
     {NULL, NULL, 0}

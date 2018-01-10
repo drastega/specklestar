@@ -8,7 +8,7 @@ library(rgl)
 speckle_binary <- function(data_file) {
 #data_file <- file.choose()
 
-t0 <- Sys.time() # start time
+#t0 <- Sys.time() # start time
 
 N_frames <- file.info(data_file)$size/(512 * 512 * 2)
 data <- ff(filename = data_file, readonly = TRUE, dim = c(512, 512, N_frames), vmode = 'ushort')
@@ -33,7 +33,7 @@ PS_short <- fftshift(PS_short, dimension = -1) / (N_frames - 1)
 ACF <- fftw2d(PS, inverse = TRUE, HermConj = 0) %>% abs() %>% fftshift(dimension = -1)
 ACF_short <- fftw2d(PS_short, inverse = TRUE, HermConj = 0) %>% abs() %>% fftshift(dimension = -1)
 
-print(Sys.time() - t0) # runtime calculation
+#print(Sys.time() - t0) # runtime calculation
 
 ### Visualization of secondary peak in ACF
 ## imager & rgl

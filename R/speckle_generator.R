@@ -6,7 +6,7 @@ library(mrbsizeR) # for fftshift
 library(Rcpp)
 library(animation)
 
-t0 <- Sys.time() # start time
+speckle_gen <- function() {
 # N_speckle, n_x and n_y are defined in speckle_gen.cpp
 # N_speckle = 300 # Number of speckles from single star
 n_x <- 512; n_y <- n_x # Number of pixels in x and y
@@ -32,8 +32,6 @@ noise <- rnorm(n_x * n_y, mean = mean_noise, sd = sigma_noise) %>% matrix(n_x, n
 
 speckle_frame <- speckle_field + noise
 
-print(Sys.time() - t0)
-
 # Visualization
 par(mar = c(0, 0, 0, 0))
 plot(as.cimg(speckle_frame), axes = FALSE)
@@ -51,3 +49,4 @@ plot(as.cimg(speckle_frame), axes = FALSE)
 #plot(as.cimg(PS_model^0.01), axes = FALSE)
 
 par(mar = c(5.1, 4.1, 4.1, 2.1)) # standard margin parameters
+}
