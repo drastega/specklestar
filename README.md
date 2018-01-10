@@ -15,7 +15,3 @@ Pluzhnik E.A., Astronomy and Astrophysics, v.431, p.587-596 (2005)](https://www.
 
 - n_frames() - function for SPE to dat conversion (i.e. removing 4100 byte SPE header)
 - spe2dat(N) - take N frames from series of speckle images 512x512x2(bytes)
-
-[comment]: <> speckle_generator.R - for generation of model speckle data
-
-[comment]: <> middle_frame.R - for calculation of middle dark or flat field images.
