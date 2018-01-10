@@ -11,6 +11,10 @@ For reduction of speckle data of binary and multiple stars we use algorithm desc
 ["Differential photometry of speckle-interferometric binary and multiple stars"
 Pluzhnik E.A., Astronomy and Astrophysics, v.431, p.587-596 (2005)](https://www.aanda.org/articles/aa/pdf/2005/08/aa1158.pdf).
 
+## Installation
+install.packages("devtools")
+devtools::install_github("drastega/specklestar")
+
 ## Functions
 
 - n_frames(N) - take N frames from series of 512x512x2(bytes) speckle images

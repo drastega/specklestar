@@ -8,7 +8,6 @@ library(rgl)
 speckle_binary <- function(data_file) {
 #data_file <- file.choose()
 
-Sys.setenv(TZ="Europe/Moscow")
 t0 <- Sys.time() # start time
 
 N_frames <- file.info(data_file)$size/(512 * 512 * 2)
