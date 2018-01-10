@@ -13,6 +13,7 @@ Pluzhnik E.A., Astronomy and Astrophysics, v.431, p.587-596 (2005)](https://www.
 
 ## Installation
 install.packages("devtools")
+
 devtools::install_github("drastega/specklestar")
 
 ## Functions
