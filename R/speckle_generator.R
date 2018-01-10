@@ -22,8 +22,10 @@ m2 <- 700 # Relative magnitude of secondary component
 rho_x <- 30; rho_y <-30 # Projections of separation vector Rho
 
 #sourceCpp('src/speckle_generator.cpp')
-speckle_field <- speckle_generator(seeing = seeing, speckle_sigma = speckle_sigma,
-  m1 = m1, m2 = m2, rho_x = rho_x, rho_y = rho_y, wind = wind_speed) %>% matrix(n_x, n_y)
+#speckle_field <- speckle_generator(seeing = seeing, speckle_sigma = speckle_sigma,
+#  m1 = m1, m2 = m2, rho_x = rho_x, rho_y = rho_y, wind = wind_speed) %>% matrix(n_x, n_y)
+
+speckle_field <- matrix(1, 512, 512 )
 
 sigma_noise <- 50; mean_noise <- 400
 noise <- rnorm(n_x * n_y, mean = mean_noise, sd = sigma_noise) %>% matrix(n_x, n_y)
@@ -36,16 +38,16 @@ print(Sys.time() - t0)
 par(mar = c(0, 0, 0, 0))
 plot(as.cimg(speckle_frame), axes = FALSE)
 
-saveGIF({
-  for (i in 1:10){
-    speckle_field <- speckle_generator(seeing = seeing, speckle_sigma = speckle_sigma,
-      m1 = m1, m2 = m2, rho_x = rho_x, rho_y = rho_y, wind = wind_speed) %>% matrix(n_x, n_y)
-    speckle_frame <- speckle_field + noise
-    plot(as.cimg(speckle_frame), axes = FALSE)
-  }
-}, movie.name = "speckles.gif", interval = 1)
+#saveGIF({
+#  for (i in 1:10){
+#    speckle_field <- speckle_generator(seeing = seeing, speckle_sigma = speckle_sigma,
+#      m1 = m1, m2 = m2, rho_x = rho_x, rho_y = rho_y, wind = wind_speed) %>% matrix(n_x, n_y)
+#    speckle_frame <- speckle_field + noise
+#    plot(as.cimg(speckle_frame), axes = FALSE)
+#  }
+#}, movie.name = "speckles.gif", interval = 1)
 
-PS_model <- abs(fftw2d(speckle_frame))^2 %>% fftshift(dimension = -1)
+#PS_model <- abs(fftw2d(speckle_frame))^2 %>% fftshift(dimension = -1)
 #plot(as.cimg(PS_model^0.01), axes = FALSE)
 
 par(mar = c(5.1, 4.1, 4.1, 2.1)) # standard margin parameters
