@@ -9,5 +9,3 @@
 #' @docType package
 #' @name specklestar
 NULL
-
-## NULL

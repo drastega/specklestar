@@ -1,6 +1,20 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+//' Speckle Generator
+//'
+//' Generate model 512 x 512 x 2 (bytes) speckle images
+//'
+//' @param seeing A number.
+//' @param speckle_sigma A number.
+//' @param m1 A number.
+//' @param m2 A number.
+//' @param rho_x A number.
+//' @param rho_y A number.
+//' @param wind A number.
+//' @return The array of model speckle image.
+//' @examples
+//' speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000, m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
 //' @export
 // [[Rcpp::export]]
 NumericVector speckle_generator(double seeing, double speckle_sigma, double m1, double m2, double rho_x, double rho_y, double wind) {
