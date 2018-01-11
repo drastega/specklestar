@@ -10,6 +10,7 @@ ps <- function(filename) {
     .Call('_specklestar_ps', PACKAGE = 'specklestar', filename)
 }
 
+#' @export
 speckle_generator <- function(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind) {
     .Call('_specklestar_speckle_generator', PACKAGE = 'specklestar', seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind)
 }

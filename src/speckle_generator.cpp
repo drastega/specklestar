@@ -1,18 +1,19 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
+//' @export
 // [[Rcpp::export]]
 NumericVector speckle_generator(double seeing, double speckle_sigma, double m1, double m2, double rho_x, double rho_y, double wind) {
   int N_speckle = 300;
   int n_x = 512;
   int n_y = n_x;
-  
+
   double stellar_center_x = R::rnorm(n_x / 2, wind);
   double stellar_center_y = R::rnorm(n_y / 2, wind);
 
   NumericVector speckle_field(262144);
   NumericVector gaussian_2d(262144);
-  
+
   for (int i = 0; i < N_speckle; i++) {
     double x0 = R::rnorm(stellar_center_x, seeing) - rho_x / 2;
     double y0 = R::rnorm(stellar_center_y, seeing) - rho_y / 2;

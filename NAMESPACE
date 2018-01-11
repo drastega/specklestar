@@ -2,4 +2,7 @@
 
 export(n_frames)
 export(spe2dat)
+export(speckle_generator)
 export(timesTwo)
+importFrom(Rcpp,sourceCpp)
+useDynLib(specklestar)
