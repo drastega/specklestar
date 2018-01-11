@@ -22,11 +22,24 @@ speckle_generator(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind)
 \item{wind}{A number.}
 }
 \value{
-The array of model speckle image.
+The vector of model speckle image.
 }
 \description{
-Generate model 512 x 512 x 2 (bytes) speckle images
+Generate model 512 x 512 x 2 (bytes) speckle image of binary star
 }
+\section{Details}{
+
+Details here.
+Details here.
+}
+
 \examples{
-speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000, m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
+# Generate speckle image of binary star with
+# 7 parameters
+speckle_vector <- speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000, m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
+speckle_matrix <- matrix(speckle_vector, nrow = 512, ncol = 512)
+
+# Plot result
+library(imager)
+plot(as.cimg(speckle_matrix))
 }

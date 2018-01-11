@@ -11,7 +11,9 @@ using namespace Rcpp;
 //' @param filename A string.
 //' @return The array of middle speckle image.
 //' @examples
-//' middle_frame(filename)
+//' library(imager)
+//' mf <- middle_frame(filename)
+//' plot(as.cimg(mf))
 //' @export
 // [[Rcpp::export]]
 NumericVector middle_frame(String filename) {
@@ -22,17 +24,18 @@ NumericVector middle_frame(String filename) {
   int N_frame = file_length / IMAGE_SIZE;
 
   char data[IMAGE_SIZE];
-  //char *pData = new char[IMAGE_SIZE];
-  file.seekg(0, std::ios::beg);
-  file.read(data, IMAGE_SIZE);
-  file.close();
   unsigned short *piData = (unsigned short *)data;
-  //double dData[512*512];
   NumericVector dData(512*512);
+  NumericVector meanData(512*512);
 
-  for(int i = 0; i < IMAGE_SIZE / sizeof(unsigned short); i++) {
+  file.seekg(0, std::ios::beg);
+  for(int f = 0; f < N_frame; f++) {
+    file.read(data, IMAGE_SIZE);
+    for(int i = 0; i < IMAGE_SIZE / sizeof(unsigned short); i++) {
     dData[i] = (double)piData[i];
-    //    std::cout << i << ": " << dData[i] << " ";
+    }
+
   }
+  file.close();
   return dData;
 }

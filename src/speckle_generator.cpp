@@ -3,7 +3,7 @@ using namespace Rcpp;
 
 //' Speckle Generator
 //'
-//' Generate model 512 x 512 x 2 (bytes) speckle images
+//' Generate model 512 x 512 x 2 (bytes) speckle image of binary star
 //'
 //' @param seeing A number.
 //' @param speckle_sigma A number.
@@ -12,9 +12,19 @@ using namespace Rcpp;
 //' @param rho_x A number.
 //' @param rho_y A number.
 //' @param wind A number.
-//' @return The array of model speckle image.
+//' @section Details:
+//' Details here.
+//' Details here.
+//' @return The vector of model speckle image.
 //' @examples
-//' speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000, m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
+//' # Generate speckle image of binary star with
+//' # 7 parameters
+//' speckle_vector <- speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000, m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
+//' speckle_matrix <- matrix(speckle_vector, nrow = 512, ncol = 512)
+//'
+//' # Plot result
+//' library(imager)
+//' plot(as.cimg(speckle_matrix))
 //' @export
 // [[Rcpp::export]]
 NumericVector speckle_generator(double seeing, double speckle_sigma, double m1, double m2, double rho_x, double rho_y, double wind) {

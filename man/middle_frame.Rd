@@ -16,5 +16,7 @@ The array of middle speckle image.
 Average frame of series of speckle images
 }
 \examples{
-middle_frame(filename)
+library(imager)
+mf <- middle_frame(filename)
+plot(as.cimg(mf))
 }

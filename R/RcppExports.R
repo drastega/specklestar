@@ -8,7 +8,9 @@
 #' @param filename A string.
 #' @return The array of middle speckle image.
 #' @examples
-#' middle_frame(filename)
+#' library(imager)
+#' mf <- middle_frame(filename)
+#' plot(as.cimg(mf))
 #' @export
 middle_frame <- function(filename) {
     .Call('_specklestar_middle_frame', PACKAGE = 'specklestar', filename)
@@ -20,7 +22,7 @@ ps <- function(filename) {
 
 #' Speckle Generator
 #'
-#' Generate model 512 x 512 x 2 (bytes) speckle images
+#' Generate model 512 x 512 x 2 (bytes) speckle image of binary star
 #'
 #' @param seeing A number.
 #' @param speckle_sigma A number.
@@ -29,9 +31,19 @@ ps <- function(filename) {
 #' @param rho_x A number.
 #' @param rho_y A number.
 #' @param wind A number.
-#' @return The array of model speckle image.
+#' @section Details:
+#' Details here.
+#' Details here.
+#' @return The vector of model speckle image.
 #' @examples
-#' speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000, m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
+#' # Generate speckle image of binary star with
+#' # 7 parameters
+#' speckle_vector <- speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000, m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
+#' speckle_matrix <- matrix(speckle_vector, nrow = 512, ncol = 512)
+#'
+#' # Plot result
+#' library(imager)
+#' plot(as.cimg(speckle_matrix))
 #' @export
 speckle_generator <- function(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind) {
     .Call('_specklestar_speckle_generator', PACKAGE = 'specklestar', seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind)
