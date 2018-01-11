@@ -1,5 +1,5 @@
 
-middle_frame <- function(data_file = file.choose()) {
+middle_frame_R <- function(data_file = file.choose()) {
 N_frames <- file.info(data_file)$size/(512 * 512 * 2)
 data <- ff::ff(filename = data_file, readonly = TRUE, dim = c(512, 512, N_frames), vmode = 'ushort')
 
