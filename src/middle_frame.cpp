@@ -9,14 +9,17 @@ using namespace Rcpp;
 //' Average frame of series of speckle images
 //'
 //' @param filename A string.
-//' @return The array of middle speckle image.
+//' @return The vector of middle speckle image.
 //' @examples
+//' mf <- middle_frame(file.choose())
+//' mf <- matrix(mf, 512, 512)
+//'
+//' # Plot
 //' library(imager)
-//' mf <- middle_frame(filename)
 //' plot(as.cimg(mf))
 //' @export
 // [[Rcpp::export]]
-NumericVector middle_frame(String filename) {
+NumericMatrix middle_frame(String filename) {
   std::ifstream file(filename, std::ios::binary);
 
   file.seekg(0, std::ios::end);
@@ -26,7 +29,8 @@ NumericVector middle_frame(String filename) {
   char data[IMAGE_SIZE];
   unsigned short *piData = (unsigned short *)data;
   NumericVector dData(512*512);
-  NumericVector meanData(512*512);
+  //NumericVector meanData(512*512);
+  NumericMatrix meanData(512, 512);
 
   file.seekg(0, std::ios::beg);
   for(int f = 0; f < N_frame; f++) {

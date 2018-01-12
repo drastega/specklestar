@@ -6,10 +6,13 @@
 #' Average frame of series of speckle images
 #'
 #' @param filename A string.
-#' @return The array of middle speckle image.
+#' @return The vector of middle speckle image.
 #' @examples
+#' mf <- middle_frame(file.choose())
+#' mf <- matrix(mf, 512, 512)
+#'
+#' # Plot
 #' library(imager)
-#' mf <- middle_frame(filename)
 #' plot(as.cimg(mf))
 #' @export
 middle_frame <- function(filename) {
