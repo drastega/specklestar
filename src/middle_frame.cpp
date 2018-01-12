@@ -32,10 +32,10 @@ NumericVector middle_frame(String filename) {
   for(int f = 0; f < N_frame; f++) {
     file.read(data, IMAGE_SIZE);
     for(int i = 0; i < IMAGE_SIZE / sizeof(unsigned short); i++) {
-    dData[i] = (double)piData[i];
+      dData[i] = (double)piData[i];
+      meanData[i] += dData[i];
     }
-
   }
   file.close();
-  return dData;
+  return meanData;
 }
