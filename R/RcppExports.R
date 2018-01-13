@@ -18,6 +18,19 @@ middle_frame <- function(filename) {
     .Call('_specklestar_middle_frame', PACKAGE = 'specklestar', filename)
 }
 
+#' Power Spectrum calculation
+#'
+#' Power Spectrum of the series of speckle images
+#'
+#' @param filename A string.
+#' @return The 512 x 512 double vector of Power Spectrum.
+#' @examples
+#' pow_spec <- ps(file.choose())
+#'
+#' # Plot
+#' library(imager)
+#' plot(as.cimg(pow_spec^0.01))
+#' @export
 ps <- function(filename) {
     .Call('_specklestar_ps', PACKAGE = 'specklestar', filename)
 }

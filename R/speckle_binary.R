@@ -1,6 +1,6 @@
 library(tidyverse)
 library(mrbsizeR) # for fftshift
-library(imager) # for visualization (eg. as.cimg())
+#library(imager) # for visualization (eg. as.cimg())
 
 speckle_binary <- function(data_file) {
 #data_file <- file.choose()
@@ -21,7 +21,7 @@ ACF_short <- ACF
 ### Visualization of secondary peak in ACF
 ## imager & rgl
 par(mar = c(0, 0, 0, 0))
-plot(as.cimg(ACF_short^0.1), axes = FALSE)
+plot(imager::as.cimg(ACF_short^0.1), axes = FALSE)
 print('Point position of upper secondary maximum on the plot ...')
 max_pos <- locator(1) # Get position of secondary maximum from cursor
 wind_width <- 5 # Set width of window with local max
@@ -50,11 +50,11 @@ xy <- reshape2::melt(xy_matrix) %>% select(x = Var1, y = Var2) %>% as.matrix
 r <- sqrt((xy[ , 'x'] - x0) ^ 2 + (xy[ , 'y'] - y0) ^ 2)
 phi <- atan2((xy[ , 'y'] - y0), (xy[ , 'x'] - x0)) # use atan2(y, x) not atan(y / x)
 gradient <- 2 * pi * r * (rho / 512) * cos( (90 * pi / 180) - (phi - theta))
-#plot(as.cimg(cos(matrix(gradient, 512, 512, byrow = T))))
+#plot(imager::as.cimg(cos(matrix(gradient, 512, 512, byrow = T))))
 #points(x0, y0, col = 'red') ; points(max_indx, col = 'green')
 
 ## PS annular zones
-plot(as.cimg(PS_short^0.1))
+plot(imager::as.cimg(PS_short^0.1))
 par(mar = c(5.1, 4.1, 4.1, 2.1)) # set standard margin parameters
 
 PS_short_polar <- cbind(r, phi, z = reshape2::melt(PS_short)$value) %>% as.tibble() %>%
@@ -129,7 +129,7 @@ annulus_PS_model_plot <- function(R, dr = 1){
   par(mfrow = c(2,2))
   plot(annulus_PS$z, type = 'l', col = 'red')
   plot(annulus_fit_func$z, type = 'l', col = 'blue')
-  plot(as.cimg(PS_short^0.1))
+  plot(imager::as.cimg(PS_short^0.1))
 #  circle(R, 'green', 1)
   points(x = annulus_PS$r * cos(annulus_PS$phi) + x0, y = annulus_PS$r * sin(annulus_PS$phi) + y0,
          pch = 46, col = 'green')

@@ -2,6 +2,7 @@
 
 export(middle_frame)
 export(n_frames)
+export(ps)
 export(spe2dat)
 export(speckle_generator)
 importFrom(Rcpp,sourceCpp)
