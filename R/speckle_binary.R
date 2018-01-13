@@ -1,8 +1,17 @@
 library(tidyverse)
-library(mrbsizeR) # for fftshift
-library(fftw)
 #library(imager) # for visualization (eg. as.cimg())
 
+#' Calculation rho, theta and dm for binary star
+#'
+#' Obtaining positional parameters and magnitude
+#' differenece between components of binary star
+#' from the series of speckle images
+#'
+#' @param filename A string.
+#' @return double vector of rho, theta and dm.
+#' @examples
+#' parameters <- speckle_binary(file.choose())
+#' @export
 speckle_binary <- function(data_file) {
 #data_file <- file.choose()
 #t0 <- Sys.time() # start time
@@ -12,8 +21,8 @@ N_frames <- file.info(data_file)$size/(512 * 512 * 2)
 ### Power Spectrum calculation
 PS_line <- ps(data_file)
 PS <- matrix(PS_line, 257, 512)
-PS <- fftshift(PS, dimension = -1) / (N_frames - 1)
-ACF <- fftw2d(PS, inverse = TRUE, HermConj = 0) %>% abs() %>% fftshift(dimension = -1)
+PS <- mrbsizeR::fftshift(PS, dimension = -1) / (N_frames - 1)
+ACF <- fftwtools::fftw2d(PS, inverse = TRUE, HermConj = 0) %>% abs() %>% mrbsizeR::fftshift(dimension = -1)
 PS_short <- PS
 ACF_short <- ACF
 
