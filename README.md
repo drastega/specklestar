@@ -12,11 +12,17 @@ For reduction of speckle images of binary and multiple stars we use algorithm de
 Pluzhnik E.A., Astronomy and Astrophysics, v.431, p.587-596 (2005)](https://www.aanda.org/articles/aa/pdf/2005/08/aa1158.pdf).
 
 ## Installation
-install.packages("devtools")
+install.packages("fftw")
+install.packages("fftwtools")
 
+install.packages("devtools")
 devtools::install_github("drastega/specklestar")
 
 ## Functions
 
 - n_frames(N) - take N frames from series of 512x512x2(bytes) speckle images
-- spe2dat() - function for SPE to dat conversion (i.e. removing 4100 bytes SPE header)
+- spe2dat(filename) - SPE to dat conversion (i.e. removing 4100 bytes SPE header)
+- middle_frame(filename) - calculate average image in the series of speckle images
+- ps(filename) - calculate power spectrum
+- speckle_generator()- generate speckle pattern of binary star
+- speckle_binary(filename) - Calculation rho, theta and dm for binary star

@@ -1,5 +1,4 @@
 library(tidyverse)
-#library(imager) # for visualization (eg. as.cimg())
 
 #' Calculation rho, theta and dm for binary star
 #'
