@@ -2,7 +2,7 @@
 % Please edit documentation in R/misc_functions.R
 \name{n_frames}
 \alias{n_frames}
-\title{TTT}
+\title{N frames from file}
 \usage{
 n_frames(n, start = 1)
 }

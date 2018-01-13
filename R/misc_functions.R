@@ -2,17 +2,24 @@
 #' @importFrom Rcpp sourceCpp
 NULL
 
+#' SPE to dat converter
+#'
+#' Convert SPE to dat
+#'
+#' @param SPE_file A string.
+#' @return Save converted dat file on the disk in the same folder.
+#' @examples
+#' spe2dat(file.choose())
 #' @export
 # SPE to dat conversion (i.e. removing 4100 byte SPE header)
-spe2dat <- function() {
-  input_file <- file.choose() # choose .SPE file
-  output_file <- tools::file_path_sans_ext(input_file)
-  output_file <- paste(output_file, 'dat', sep = '.')
-  system(sprintf("dd if=%s of=%s bs=4100 skip=1", input_file, output_file))
-  print(output_file)
+spe2dat <- function(SPE_file) {
+  dat_file <- tools::file_path_sans_ext(SPE_file)
+  dat_file <- paste(dat_file, 'dat', sep = '.')
+  system(sprintf("dd if=%s of=%s bs=4100 skip=1", SPE_file, dat_file))
+  print(dat_file)
 }
 
-#' TTT
+#' N frames from file
 #'
 #' Take N frames from series of speckle images 512x512x2(bytes)
 #'
