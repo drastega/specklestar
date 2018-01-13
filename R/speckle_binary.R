@@ -1,5 +1,6 @@
 library(tidyverse)
 library(mrbsizeR) # for fftshift
+library(fftw)
 #library(imager) # for visualization (eg. as.cimg())
 
 speckle_binary <- function(data_file) {
