@@ -10,14 +10,13 @@ middle_frame(filename)
 \item{filename}{A string.}
 }
 \value{
-The vector of middle speckle image.
+The 512 x 512 matrix of middle speckle image.
 }
 \description{
-Average frame of series of speckle images
+Average image in the series of speckle images
 }
 \examples{
 mf <- middle_frame(file.choose())
-mf <- matrix(mf, 512, 512)
 
 # Plot
 library(imager)

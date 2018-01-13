@@ -1,43 +1,27 @@
 library(tidyverse)
-library(ff) # ff classes for big data
-library(fftwtools) # for fftw
 library(mrbsizeR) # for fftshift
 library(imager) # for visualization (eg. as.cimg())
-library(rgl)
 
 speckle_binary <- function(data_file) {
 #data_file <- file.choose()
-
 #t0 <- Sys.time() # start time
 
 N_frames <- file.info(data_file)$size/(512 * 512 * 2)
-data <- ff(filename = data_file, readonly = TRUE, dim = c(512, 512, N_frames), vmode = 'ushort')
 
-### Power Spectrum calculation (try rewrite next for loop using map)
-PS_line <- 0
-PS_short <- 0
-frame <- matrix(0, 1024, 1024)
-for (i in seq(N_frames-1)) {
-#for (i in seq(100)) {
-#  mean_data <- data[, , i] - mean(data[, , i])
-  mean_data <- data[, , i + 1] - data[, , i]
-  frame[1:512, 1:512] <- mean_data
-  PS_line <- PS_line + abs(fftw(frame))^2
-  PS_short <- PS_short + abs(fftw2d(mean_data))^2
-}
-PS <- matrix(PS_line, 1024, 1024, byrow = TRUE)
+### Power Spectrum calculation
+PS_line <- ps(data_file)
+PS <- matrix(PS_line, 257, 512)
 PS <- fftshift(PS, dimension = -1) / (N_frames - 1)
-
-PS_short <- fftshift(PS_short, dimension = -1) / (N_frames - 1)
-
 ACF <- fftw2d(PS, inverse = TRUE, HermConj = 0) %>% abs() %>% fftshift(dimension = -1)
-ACF_short <- fftw2d(PS_short, inverse = TRUE, HermConj = 0) %>% abs() %>% fftshift(dimension = -1)
+PS_short <- PS
+ACF_short <- ACF
 
 #print(Sys.time() - t0) # runtime calculation
 
 ### Visualization of secondary peak in ACF
 ## imager & rgl
-plot(as.cimg(ACF_short^0.1))
+par(mar = c(0, 0, 0, 0))
+plot(as.cimg(ACF_short^0.1), axes = FALSE)
 print('Point position of upper secondary maximum on the plot ...')
 max_pos <- locator(1) # Get position of secondary maximum from cursor
 wind_width <- 5 # Set width of window with local max
@@ -71,6 +55,7 @@ gradient <- 2 * pi * r * (rho / 512) * cos( (90 * pi / 180) - (phi - theta))
 
 ## PS annular zones
 plot(as.cimg(PS_short^0.1))
+par(mar = c(5.1, 4.1, 4.1, 2.1)) # set standard margin parameters
 
 PS_short_polar <- cbind(r, phi, z = reshape2::melt(PS_short)$value) %>% as.tibble() %>%
   filter(phi < pi / 2 & phi > -pi / 2) # Filter for using only right half of annulus

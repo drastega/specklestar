@@ -3,13 +3,12 @@
 
 #' Middle frame
 #'
-#' Average frame of series of speckle images
+#' Average image in the series of speckle images
 #'
 #' @param filename A string.
-#' @return The vector of middle speckle image.
+#' @return The 512 x 512 matrix of middle speckle image.
 #' @examples
 #' mf <- middle_frame(file.choose())
-#' mf <- matrix(mf, 512, 512)
 #'
 #' # Plot
 #' library(imager)
