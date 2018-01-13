@@ -10,7 +10,8 @@ Imports:
     imager,
     tidyverse,
     tools,
-    Rcpp
+    Rcpp,
+    fftw
 Suggests:
     rgl,
     knitr,
