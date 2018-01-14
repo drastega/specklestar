@@ -9,9 +9,9 @@ library(tidyverse)
 #' @param filename A string.
 #' @return double vector of rho, theta and dm.
 #' @examples
-#' parameters <- speckle_binary(file.choose())
+#' parameters <- speckle_binary()
 #' @export
-speckle_binary <- function(data_file) {
+speckle_binary <- function(data_file = file.choose()) {
 #data_file <- file.choose()
 #t0 <- Sys.time() # start time
 

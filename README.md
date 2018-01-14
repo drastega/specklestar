@@ -16,7 +16,7 @@ install.packages(c("fftw", "fftwtools"))
 
 install.packages("devtools")
 
-devtools::install_github("drastega/specklestar")
+devtools::install_github("drastega/specklestar", build_vignettes = TRUE)
 
 ## Functions
 

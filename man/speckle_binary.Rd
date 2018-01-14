@@ -4,7 +4,7 @@
 \alias{speckle_binary}
 \title{Calculation rho, theta and dm for binary star}
 \usage{
-speckle_binary(data_file)
+speckle_binary(data_file = file.choose())
 }
 \arguments{
 \item{filename}{A string.}
@@ -18,5 +18,5 @@ differenece between components of binary star
 from the series of speckle images
 }
 \examples{
-parameters <- speckle_binary(file.choose())
+parameters <- speckle_binary()
 }
