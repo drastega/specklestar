@@ -4,7 +4,7 @@
 \alias{speckle_binary}
 \title{Calculation rho, theta and dm for binary star}
 \usage{
-speckle_binary(data_file = file.choose())
+speckle_binary(object = file.choose(), dark = NULL, flat = NULL)
 }
 \arguments{
 \item{filename}{A string.}

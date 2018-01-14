@@ -13,7 +13,7 @@ middle_frame(filename)
 The 512 x 512 matrix of middle speckle image.
 }
 \description{
-Average image in the series of speckle images
+Average image of the series of speckle images
 }
 \examples{
 mf <- middle_frame(file.choose())

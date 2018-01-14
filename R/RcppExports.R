@@ -3,7 +3,7 @@
 
 #' Middle frame
 #'
-#' Average image in the series of speckle images
+#' Average image of the series of speckle images
 #'
 #' @param filename A string.
 #' @return The 512 x 512 matrix of middle speckle image.
@@ -62,5 +62,21 @@ ps <- function(filename) {
 #' @export
 speckle_generator <- function(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind) {
     .Call('_specklestar_speckle_generator', PACKAGE = 'specklestar', seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind)
+}
+
+#' Statistics of speckles
+#'
+#' Calculate statistics of speckles in the series of speckle images and filter "bad" frames
+#'
+#' @param filename A string.
+#' @return The double vector of speckle statistics.
+#' @examples
+#' spec_stat <- speckle_stat(file.choose())
+#'
+#' # Plot
+#' plot(speckle_stat)
+#' @export
+speckle_stat <- function(filename) {
+    .Call('_specklestar_speckle_stat', PACKAGE = 'specklestar', filename)
 }
 

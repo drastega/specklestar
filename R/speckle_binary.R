@@ -11,7 +11,7 @@ library(tidyverse)
 #' @examples
 #' parameters <- speckle_binary()
 #' @export
-speckle_binary <- function(data_file = file.choose()) {
+speckle_binary <- function(object = file.choose(), dark = NULL, flat = NULL) {
 #data_file <- file.choose()
 #t0 <- Sys.time() # start time
 

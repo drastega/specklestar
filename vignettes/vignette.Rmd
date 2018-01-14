@@ -18,17 +18,45 @@ knitr::opts_chunk$set(
 
 ## Workflow for reduction of speckle interferometric binary stars
 
-### Shortest way
+### Short way
 To obtain positional paramaters and magnitude difference between components of binary star just type
 
 ```{r eval = FALSE}
-speckle_binary()
+obj_filename <- file.choose() # Choose file with binary star
+dark_filename <- file.choose() # Choose file with dark frames
+flat_filename <- file.choose() # Choose file with flat fields
+rho_theta_dm <- speckle_binary(object = obj_filename, dark = dark_filename, flat = flat_filename)
+print(rho_theta_dm)
 ```
 
 ### Long way
+Calculate statistics for object file
 ```{r eval = FALSE}
-mid_dark <- middle_frame()
+obj_filename <- file.choose() # Choose file with binary star
+obj_stat <- speckle_stat(obj_filename)
 ```
+
+Calculate statistics for dark file
+```{r eval = FALSE}
+dark_filename <- file.choose() # Choose file with dark frames
+dark_stat <- speckle_stat(dark_filename)
+```
+
+Calculate average dark frame
+```{r eval = FALSE}
+mid_dark <- middle_frame(filename = dark_filename, stat = dark_stat)
+```
+
+Calculate average flat field frame with average dark subtraction
+```{r eval = FALSE}
+mid_flat <- middle_frame(filename = file.choose() , dark = mid_dark) # Choose file with flat fields
+```
+
+Calculate power spectrum
+```{r eval = FALSE}
+ps <- ps(obj_filename, dark = mid_dark, flat = mid_flat, diff = 1)
+```
+
 
 ![Power spectrum](Power_spectrum.png)
 

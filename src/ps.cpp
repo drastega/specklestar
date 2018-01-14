@@ -42,7 +42,7 @@ NumericVector ps(String filename) {
     fftw_plan p = fftw_plan_dft_r2c_2d(512, 512, dData.data(), out, FFTW_ESTIMATE);
     fftw_execute(p); /* repeat as needed */
     fftw_destroy_plan(p);
-    for (int i = 0; i < 512 * 257; i++) outData[i] += sqrt(out[i][0] * out[i][0] + out[i][1] * out[i][1]);
+    for (int i = 0; i < 512 * 257; i++) outData[i] += out[i][0] * out[i][0] + out[i][1] * out[i][1];
   }
   fftw_free(out);
   file.close();
