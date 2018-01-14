@@ -23,8 +23,8 @@ To obtain positional paramaters and magnitude difference between components of b
 
 ```{r eval = FALSE}
 obj_filename <- file.choose() # Choose file with binary star
-dark_filename <- file.choose() # Choose file with dark frames
-flat_filename <- file.choose() # Choose file with flat fields
+dark_filename <- file.choose() # Choose dark file
+flat_filename <- file.choose() # Choose flat field file
 rho_theta_dm <- speckle_binary(object = obj_filename, dark = dark_filename, flat = flat_filename)
 print(rho_theta_dm)
 ```
@@ -52,11 +52,40 @@ Calculate average flat field frame with average dark subtraction
 mid_flat <- middle_frame(filename = file.choose() , dark = mid_dark) # Choose file with flat fields
 ```
 
-Calculate power spectrum
+Calculate power spectrum with subtraction of neighboring frame
 ```{r eval = FALSE}
-ps <- ps(obj_filename, dark = mid_dark, flat = mid_flat, diff = 1)
+ps_diff <- ps(obj_filename, dark = NULL, flat = NULL, diff = 1)
 ```
 
+Calculate acf
+```{r eval = FALSE}
+acf <- speckle_acf(ps_diff)
+```
+
+Find secondary peaks on acf
+```{r eval = FALSE}
+rho_theta_first <- find_peak(acf)
+```
+
+Calculate power spectrum
+```{r eval = FALSE}
+ps <- ps(obj_filename, dark = mid_dark, flat = mid_flat, diff = 0) # include stats
+```
+
+Power spectrum cosmetic operation
+```{r eval = FALSE}
+ps_cosm <- ps_cosmetic(ps)
+```
+
+Calculate rho, theta and dm using Pluzhnik (2005) algorithm
+```{r eval = FALSE}
+rho_theta_dm_ccd <- (ps_cosm)
+```
+
+Find real rho and theta
+```{r eval = FALSE}
+rho_theta_dm <- zqt(rho_theta_dm_ccd)
+```
 
 ![Power spectrum](Power_spectrum.png)
 
