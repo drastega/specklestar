@@ -12,10 +12,10 @@ For reduction of speckle images of binary and multiple stars we use algorithm de
 Pluzhnik E.A., Astronomy and Astrophysics, v.431, p.587-596 (2005)](https://www.aanda.org/articles/aa/pdf/2005/08/aa1158.pdf).
 
 ## Installation
-install.packages("fftw")
-install.packages("fftwtools")
+install.packages(c("fftw", "fftwtools"))
 
 install.packages("devtools")
+
 devtools::install_github("drastega/specklestar")
 
 ## Functions
