@@ -1,9 +1,5 @@
 library(tidyverse)
 library(imager)
-library(rgl)
-library(fftwtools) # for fftw
-library(mrbsizeR) # for fftshift
-library(Rcpp)
 library(animation)
 
 speckle_gen <- function() {

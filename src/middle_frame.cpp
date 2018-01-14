@@ -6,7 +6,7 @@ using namespace Rcpp;
 
 //' Middle frame
 //'
-//' Average image in the series of speckle images
+//' Average image of the series of speckle images
 //'
 //' @param filename A string.
 //' @return The 512 x 512 matrix of middle speckle image.

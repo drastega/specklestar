@@ -46,7 +46,7 @@ circle <- function(r_plot, half = FALSE, color = 'red', x0 = 257, y0 = 257){
   if(half == FALSE) {
     phi_plot <- seq(0, 2 * pi, length = 200)
   } else phi_plot <- seq(-pi / 2, pi / 2, length = 100)
-  lines(x = r_plot * cos(phi_plot) + x0, y = r_plot * sin(phi_plot) + y0, col = color) # x0 & y0 here!
+  lines(x = r_plot * cos(phi_plot) + x0, y = r_plot * sin(phi_plot) + y0, col = color)
 }
 
 #--------------------------------------------------------------------------------
