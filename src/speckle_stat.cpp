@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <math.h>
+#include <gsl/gsl_histogram.h>
 #define IMAGE_SIZE (512 * 512 * 2)
 using namespace Rcpp;
 
@@ -20,19 +20,29 @@ using namespace Rcpp;
 //' @export
 // [[Rcpp::export]]
 NumericVector speckle_stat(String filename) {
-
   std::ifstream file(filename, std::ios::binary);
+
   file.seekg(0, std::ios::end);
   size_t file_length = file.tellg();
-  file.seekg(0, std::ios::beg);
-
   int N_frame = file_length / IMAGE_SIZE;
+
   char data[IMAGE_SIZE];
   unsigned short *piData = (unsigned short *)data;
-  std::vector<double> dData(512*512);
-  std::vector<double> outData(512*257);
+  NumericVector dData(512*512);
+  NumericVector meanData(512*512);
 
+  file.seekg(0, std::ios::beg);
+  gsl_histogram * h = gsl_histogram_alloc (65536);
+
+//  for(int f = 0; f < N_frame; f++) {
+    file.read(data, IMAGE_SIZE);
+    for(int i = 0; i < IMAGE_SIZE / sizeof(unsigned short); i++) {
+      dData[i] = (double)piData[i];
+      meanData[i] += dData[i];
+    }
+//  }
+  gsl_histogram_free (h);
   file.close();
 
-  return NumericVector(outData.begin(), outData.end());
+  return meanData;
 }

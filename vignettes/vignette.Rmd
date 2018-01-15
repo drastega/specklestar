@@ -2,7 +2,7 @@
 title: "Reduction of speckle interferometric binary stars"
 author: "Denis Rastegaev"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: pdf_document
 vignette: >
   %\VignetteIndexEntry{Reduction of binary stars}
   %\VignetteEngine{knitr::knitr}
@@ -77,9 +77,9 @@ Power spectrum cosmetic operation
 ps_cosm <- ps_cosmetic(ps)
 ```
 
-Calculate rho, theta and dm using Pluzhnik (2005) algorithm
+Calculate rho, theta and dm using algorithm described in Pluzhnik (2005)
 ```{r eval = FALSE}
-rho_theta_dm_ccd <- (ps_cosm)
+rho_theta_dm_ccd <- NONAME_FUNC(ps_cosm)
 ```
 
 Find real rho and theta

@@ -10,6 +10,8 @@
 #' @name specklestar
 NULL
 
+options(device = "quartz") # For OSX only
+
 ## Functions
 
 #- n_frames(N) - take N frames from series of 512x512x2(bytes) speckle images

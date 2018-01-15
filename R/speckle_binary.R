@@ -12,13 +12,13 @@ library(tidyverse)
 #' parameters <- speckle_binary()
 #' @export
 speckle_binary <- function(object = file.choose(), dark = NULL, flat = NULL) {
-#data_file <- file.choose()
+#object <- file.choose()
 #t0 <- Sys.time() # start time
 
-N_frames <- file.info(data_file)$size/(512 * 512 * 2)
+N_frames <- file.info(object)$size/(512 * 512 * 2)
 
 ### Power Spectrum calculation
-PS_line <- ps(data_file)
+PS_line <- ps(object)
 PS <- matrix(PS_line, 257, 512)
 PS <- mrbsizeR::fftshift(PS, dimension = -1) / (N_frames - 1)
 ACF <- fftwtools::fftw2d(PS, inverse = TRUE, HermConj = 0) %>% abs() %>% mrbsizeR::fftshift(dimension = -1)
