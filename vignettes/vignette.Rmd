@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 output: pdf_document
 vignette: >
   %\VignetteIndexEntry{Reduction of binary stars}
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 

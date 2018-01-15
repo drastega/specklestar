@@ -1,8 +1,12 @@
+// We can now use the BH package
+// [[Rcpp::depends(BH)]]
+
 #include <Rcpp.h>
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <gsl/gsl_histogram.h>
+#include <boost/math/common_factor.hpp>
 #define IMAGE_SIZE (512 * 512 * 2)
 using namespace Rcpp;
 
