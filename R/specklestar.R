@@ -11,6 +11,7 @@
 NULL
 
 options(device = "quartz") # For OSX only
+# options(device = "RStudioGD") # RStudio default graphics device
 
 ## Functions
 
