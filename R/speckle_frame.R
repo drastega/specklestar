@@ -5,14 +5,17 @@
 #' @param filename A string.
 #' @return NULL.
 #' @examples
-#' # Plot frame number 57 from chosen file
+#' # Plot frame number 57 from file you choose
+#' speckle_frame(, 57) # no first argument here
+#' # the same
 #' speckle_frame(file.choose(), 57)
+#' speckle_frame(data_file = file.choose(), 57)
 #' @export
 speckle_frame <- function(data_file = file.choose(), frame = 1) {
   tmp_file <- tools::file_path_sans_ext(data_file)
   tmp_file <- paste(tmp_file, '_frame_', as.character(frame), '.dat', sep = '')
   print(tmp_file)
-  system(sprintf("dd if=%s of=%s bs=512*512*2 skip=%d", data_file, tmp_file, frame - 1))
+  system(sprintf("dd if=%s of=%s bs=512*512*2 skip=%d count=1", data_file, tmp_file, frame - 1))
 
   file_connector = file(tmp_file, "rb")
   frame <- readBin(file_connector, integer(), endian = "little", n = 512 * 512, size = 2)

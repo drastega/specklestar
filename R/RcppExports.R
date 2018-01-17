@@ -76,7 +76,7 @@ speckle_generator <- function(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind)
 #' # Plot
 #' plot(speckle_stat)
 #' @export
-speckle_stat <- function(filename) {
-    .Call('_specklestar_speckle_stat', PACKAGE = 'specklestar', filename)
+speckle_stat <- function(filename, threshold = 50000L) {
+    .Call('_specklestar_speckle_stat', PACKAGE = 'specklestar', filename, threshold)
 }
 

@@ -1,6 +1,7 @@
 #include <Rcpp.h>
 #include <iostream>
 #include <fstream>
+#include <vector>
 #define IMAGE_SIZE (512 * 512)
 using namespace Rcpp;
 
@@ -17,7 +18,7 @@ using namespace Rcpp;
 //' plot(speckle_stat)
 //' @export
 // [[Rcpp::export]]
-NumericVector speckle_stat(String filename) {
+NumericVector speckle_stat(String filename, std::size_t threshold = 50000) {
   std::ifstream file(filename, std::ios::binary);
 
   file.seekg(0, std::ios::end);
@@ -25,17 +26,20 @@ NumericVector speckle_stat(String filename) {
   int N_frame = file_length / (sizeof(unsigned short) * IMAGE_SIZE);
 
   unsigned short piData[IMAGE_SIZE];
-  NumericVector histData(65535);
+  std::vector<unsigned short> badFrames;
 
   file.seekg(0, std::ios::beg);
 
   for(int f = 0; f < N_frame; f++) {
     file.read((char*)piData, IMAGE_SIZE * sizeof(unsigned short));
     for(int i = 0; i < IMAGE_SIZE; i++) {
-      histData[ piData[i] ]++;
+      if (threshold < piData[i]) {
+        badFrames.push_back(f + 1);
+        break;
+      }
     }
   }
   file.close();
 
-  return histData;
+  return NumericVector(badFrames.begin(), badFrames.end());
 }

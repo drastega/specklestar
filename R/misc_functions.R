@@ -42,6 +42,20 @@ n_frames <- function(n, start = 1) {
 }
 
 #--------------------------------------------------------------------------------
+#' Assemble spool of speckle images
+#'
+#' Convert spool of speckle images to single .dat file
+#'
+#' @param dir A string.
+#' @return The .dat file.
+#' @examples
+#' spool_assemble(50)
+#' @export
+spool_assemble <- function(){
+
+}
+
+#--------------------------------------------------------------------------------
 circle <- function(r_plot, half = FALSE, color = 'red', x0 = 257, y0 = 257){
   if(half == FALSE) {
     phi_plot <- seq(0, 2 * pi, length = 200)

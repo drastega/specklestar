@@ -4,7 +4,7 @@
 \alias{speckle_frame}
 \title{Plot selected speckle frame}
 \usage{
-speckle_frame(data_file = file.choose())
+speckle_frame(data_file = file.choose(), frame = 1)
 }
 \arguments{
 \item{filename}{A string.}
@@ -16,6 +16,9 @@ NULL.
 Ploting specified speckle frame from file
 }
 \examples{
-# Plot frame number 57 from chosen file
+# Plot frame number 57 from file you choose
+speckle_frame(, 57) # no first argument here
+# the same
 speckle_frame(file.choose(), 57)
+speckle_frame(data_file = file.choose(), 57)
 }
