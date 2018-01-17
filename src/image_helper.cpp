@@ -1,6 +1,6 @@
 #include "image_helper.h"
 
-bool IsOverchargedFrame(unsigned short *piData, unsigned short threshold)
+bool IsUnderThresholdFrame(unsigned short *piData, unsigned short threshold)
 {
   for(int i = 0; i < IMAGE_SIZE; i++)
     if (threshold < piData[i])

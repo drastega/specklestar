@@ -36,7 +36,7 @@ NumericVector ps(String filename) {
   fftw_complex *out = (fftw_complex*) fftw_malloc(sizeof(fftw_complex) * 512 * (512 / 2 + 1));
   for(int j = 0; j < N_frame; j++){
     file.read((char*)piData, IMAGE_SIZE * sizeof(unsigned short));
-    if (IsOverchargedFrame(piData)) continue;
+    if (IsUnderThresholdFrame(piData)) continue;
 
     for(int i = 0; i < IMAGE_SIZE / sizeof(unsigned short); i++) dData[i] = (double)piData[i];
 
