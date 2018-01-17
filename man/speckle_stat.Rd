@@ -4,7 +4,7 @@
 \alias{speckle_stat}
 \title{Statistics of speckles}
 \usage{
-speckle_stat(filename)
+speckle_stat(filename, threshold = 50000L)
 }
 \arguments{
 \item{filename}{A string.}
