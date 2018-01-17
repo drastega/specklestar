@@ -27,11 +27,15 @@ List speckle_stat(String filename, std::size_t threshold = 50000) {
 
   unsigned short piData[IMAGE_SIZE];
   std::vector<unsigned short> badFrames;
+  std::vector<long> histData(65535);
 
   file.seekg(0, std::ios::beg);
 
   for(int f = 0; f < N_frame; f++) {
     file.read((char*)piData, IMAGE_SIZE * sizeof(unsigned short));
+    for(int i = 0; i < IMAGE_SIZE; i++) {
+      histData[piData[i]]++;
+    }
     if (IsOverThresholdFrame(piData))
         badFrames.push_back(f + 1);
   }
@@ -39,5 +43,5 @@ List speckle_stat(String filename, std::size_t threshold = 50000) {
 
 //  return NumericVector(badFrames.begin(), badFrames.end());
   return List::create(Named("badFrames") = badFrames,
-                      Named("hist") = badFrames);
+                      Named("hist") = histData);
 }
