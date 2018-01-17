@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#define IMAGE_SIZE (512 * 512)
+#include "image_helper.h"
 using namespace Rcpp;
 
 //' Statistics of speckles
@@ -18,7 +18,7 @@ using namespace Rcpp;
 //' plot(speckle_stat)
 //' @export
 // [[Rcpp::export]]
-NumericVector speckle_stat(String filename, std::size_t threshold = 50000) {
+List speckle_stat(String filename, std::size_t threshold = 50000) {
   std::ifstream file(filename, std::ios::binary);
 
   file.seekg(0, std::ios::end);
@@ -32,14 +32,12 @@ NumericVector speckle_stat(String filename, std::size_t threshold = 50000) {
 
   for(int f = 0; f < N_frame; f++) {
     file.read((char*)piData, IMAGE_SIZE * sizeof(unsigned short));
-    for(int i = 0; i < IMAGE_SIZE; i++) {
-      if (threshold < piData[i]) {
+    if (IsOverchargedFrame(piData))
         badFrames.push_back(f + 1);
-        break;
-      }
-    }
   }
   file.close();
 
-  return NumericVector(badFrames.begin(), badFrames.end());
+//  return NumericVector(badFrames.begin(), badFrames.end());
+  return List::create(Named("badFrames") = badFrames,
+                      Named("hist") = badFrames);
 }

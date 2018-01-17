@@ -4,7 +4,7 @@
 #include <fstream>
 #include <vector>
 #include <math.h>
-#define IMAGE_SIZE (512 * 512 * 2)
+#include "image_helper.h"
 using namespace Rcpp;
 
 //' Power Spectrum calculation
@@ -28,15 +28,16 @@ NumericVector ps(String filename) {
   size_t file_length = file.tellg();
   file.seekg(0, std::ios::beg);
 
-  int N_frame = file_length / IMAGE_SIZE;
-  char data[IMAGE_SIZE];
-  unsigned short *piData = (unsigned short *)data;
+  int N_frame = file_length / (IMAGE_SIZE * sizeof(unsigned short));
+  unsigned short piData[IMAGE_SIZE];
   std::vector<double> dData(512*512);
   std::vector<double> outData(512*257);
 
   fftw_complex *out = (fftw_complex*) fftw_malloc(sizeof(fftw_complex) * 512 * (512 / 2 + 1));
   for(int j = 0; j < N_frame; j++){
-    file.read(data, IMAGE_SIZE);
+    file.read((char*)piData, IMAGE_SIZE * sizeof(unsigned short));
+    if (IsOverchargedFrame(piData)) continue;
+
     for(int i = 0; i < IMAGE_SIZE / sizeof(unsigned short); i++) dData[i] = (double)piData[i];
 
     fftw_plan p = fftw_plan_dft_r2c_2d(512, 512, dData.data(), out, FFTW_ESTIMATE);

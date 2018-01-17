@@ -1,5 +1,5 @@
 Package: specklestar
-Version: 0.0.1.2
+Version: 0.0.1.3
 Title: Reduction of speckle data from BTA 6-m telescope.
 Description: A set of functions for obtaining positional parameters and magnitude difference between components of binary and multiple stellar systems from series of speckle images.
 Authors@R: person("Denis", "Rastegaev", email = "leda82@gmail.com", role = c("aut", "cre"))

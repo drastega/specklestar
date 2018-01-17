@@ -45,7 +45,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // speckle_stat
-NumericVector speckle_stat(String filename, std::size_t threshold);
+List speckle_stat(String filename, std::size_t threshold);
 RcppExport SEXP _specklestar_speckle_stat(SEXP filenameSEXP, SEXP thresholdSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
