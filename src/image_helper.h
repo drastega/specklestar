@@ -6,6 +6,6 @@
 
 #endif // IMAGE_SIZE
 
-bool IsUnderThresholdFrame(unsigned short *piData, unsigned short threshold = 50000);
+bool IsOverThresholdFrame(unsigned short *piData, unsigned short threshold = 50000);
 
 #endif // _SPECKLE_IMAGE_HELPER_H_

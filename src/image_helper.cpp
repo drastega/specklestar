@@ -1,9 +1,9 @@
 #include "image_helper.h"
 
-bool IsUnderThresholdFrame(unsigned short *piData, unsigned short threshold)
+bool IsOverThresholdFrame(unsigned short *piData, unsigned short threshold)
 {
   for(int i = 0; i < IMAGE_SIZE; i++)
-    if (threshold < piData[i])
+    if (piData[i] > threshold)
       return true;
 
     return false;
