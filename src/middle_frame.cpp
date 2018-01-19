@@ -18,7 +18,7 @@ using namespace Rcpp;
 //' plot(as.cimg(mf))
 //' @export
 // [[Rcpp::export]]
-NumericMatrix middle_frame(String filename) {
+NumericMatrix middle_frame(String filename, std::size_t threshold = 50000) {
   std::ifstream file(filename, std::ios::binary);
 
   file.seekg(0, std::ios::end);
@@ -27,16 +27,23 @@ NumericMatrix middle_frame(String filename) {
 
   unsigned short piData[IMAGE_SIZE];
   NumericMatrix meanData(512, 512);
+  int n_good_frames = 0;
 
   file.seekg(0, std::ios::beg);
   for(int f = 0; f < N_frame; f++) {
     file.read((char*)piData, IMAGE_SIZE * sizeof(unsigned short));
-    if (IsOverThresholdFrame(piData)) continue;
+    if (IsOverThresholdFrame(piData, threshold)) continue;
+    n_good_frames++;
 
     for(int i = 0; i < IMAGE_SIZE; i++) {
       meanData[i] += piData[i];
     }
   }
+
+  for(int i = 0; i < IMAGE_SIZE; i++) {
+    meanData[i] = meanData[i] / n_good_frames;
+  }
+
   file.close();
   return meanData;
 }

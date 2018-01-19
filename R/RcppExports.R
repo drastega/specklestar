@@ -14,8 +14,8 @@
 #' library(imager)
 #' plot(as.cimg(mf))
 #' @export
-middle_frame <- function(filename) {
-    .Call('_specklestar_middle_frame', PACKAGE = 'specklestar', filename)
+middle_frame <- function(filename, threshold = 50000L) {
+    .Call('_specklestar_middle_frame', PACKAGE = 'specklestar', filename, threshold)
 }
 
 #' Power Spectrum calculation
@@ -31,8 +31,8 @@ middle_frame <- function(filename) {
 #' library(imager)
 #' plot(as.cimg(pow_spec^0.01))
 #' @export
-ps <- function(filename) {
-    .Call('_specklestar_ps', PACKAGE = 'specklestar', filename)
+ps <- function(filename, threshold = 50000L) {
+    .Call('_specklestar_ps', PACKAGE = 'specklestar', filename, threshold)
 }
 
 #' Speckle Generator
