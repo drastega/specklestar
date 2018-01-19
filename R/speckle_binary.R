@@ -11,21 +11,26 @@ library(tidyverse)
 #' @examples
 #' parameters <- speckle_binary()
 #' @export
-speckle_binary <- function(object = file.choose(), dark = NULL, flat = NULL) {
-#object <- file.choose()
-#t0 <- Sys.time() # start time
+speckle_binary <- function(object_file = file.choose(), dark_file = file.choose(), flat_file = file.choose()) {
 
-N_frames <- file.info(object)$size/(512 * 512 * 2)
+  object_file <- '/Users/leda/home/Reduction/mavr/2010/2_3_july_2010/ads15182_550.dat'
+  dark_file <- '/Users/leda/home/Reduction/mavr/2010/2_3_july_2010/dark3.dat'
+  flat_file <- '/Users/leda/home/Reduction/mavr/2010/30june_1july2010/flat550.dat'
+
+  obj_stat <- speckle_stat(object_file) # look threshold
+  dark_stat <- speckle_stat(dark_file, threshold = 55000)
+  flat_stat <- speckle_stat(flat_file)
+
+  middle_dark <- middle_frame(dark_file) # change threshold if need
+  middle_flat <- middle_frame(flat_file, middle_dark) # change threshold if need
 
 ### Power Spectrum calculation
 PS_line <- ps(object)
 PS <- matrix(PS_line, 257, 512)
-PS <- mrbsizeR::fftshift(PS, dimension = -1) / (N_frames - 1)
+PS <- mrbsizeR::fftshift(PS, dimension = -1)
 ACF <- fftwtools::fftw2d(PS, inverse = TRUE, HermConj = 0) %>% abs() %>% mrbsizeR::fftshift(dimension = -1)
 PS_short <<- PS
 ACF_short <- ACF
-
-#print(Sys.time() - t0) # runtime calculation
 
 ### Visualization of secondary peak in ACF
 ## imager & rgl

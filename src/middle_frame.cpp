@@ -1,7 +1,7 @@
 #include <Rcpp.h>
 #include <iostream>
 #include <fstream>
-#define IMAGE_SIZE (512 * 512)
+#include "image_helper.h"
 using namespace Rcpp;
 
 //' Middle frame
@@ -31,6 +31,8 @@ NumericMatrix middle_frame(String filename) {
   file.seekg(0, std::ios::beg);
   for(int f = 0; f < N_frame; f++) {
     file.read((char*)piData, IMAGE_SIZE * sizeof(unsigned short));
+    if (IsOverThresholdFrame(piData)) continue;
+
     for(int i = 0; i < IMAGE_SIZE; i++) {
       meanData[i] += piData[i];
     }

@@ -36,7 +36,7 @@ List speckle_stat(String filename, std::size_t threshold = 50000) {
     for(int i = 0; i < IMAGE_SIZE; i++) {
       histData[piData[i]]++;
     }
-    if (IsOverThresholdFrame(piData))
+    if (IsOverThresholdFrame(piData, threshold))
         badFrames.push_back(f + 1);
   }
   file.close();

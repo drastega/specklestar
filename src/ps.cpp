@@ -21,7 +21,7 @@ using namespace Rcpp;
 //' plot(as.cimg(pow_spec^0.01))
 //' @export
 // [[Rcpp::export]]
-NumericVector ps(String filename) {
+NumericVector ps(String filename, std::size_t threshold = 50000) {
 
   std::ifstream file(filename, std::ios::binary);
   file.seekg(0, std::ios::end);
@@ -36,7 +36,7 @@ NumericVector ps(String filename) {
   fftw_complex *out = (fftw_complex*) fftw_malloc(sizeof(fftw_complex) * 512 * (512 / 2 + 1));
   for(int j = 0; j < N_frame; j++){
     file.read((char*)piData, IMAGE_SIZE * sizeof(unsigned short));
-    if (IsOverThresholdFrame(piData)) continue;
+    if (IsOverThresholdFrame(piData, threshold)) continue;
 
     for(int i = 0; i < IMAGE_SIZE / sizeof(unsigned short); i++) dData[i] = (double)piData[i];
 
