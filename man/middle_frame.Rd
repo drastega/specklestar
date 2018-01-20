@@ -4,7 +4,7 @@
 \alias{middle_frame}
 \title{Middle frame}
 \usage{
-middle_frame(filename)
+middle_frame(filename, subtrahend = matrix(512, 512), threshold = 50000L)
 }
 \arguments{
 \item{filename}{A string.}
@@ -13,7 +13,7 @@ middle_frame(filename)
 The 512 x 512 matrix of middle speckle image.
 }
 \description{
-Average image of the series of speckle images
+Average image of the series of 512 x 512 px images
 }
 \examples{
 mf <- middle_frame(file.choose())

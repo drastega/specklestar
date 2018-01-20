@@ -15,7 +15,8 @@ n_frames(n, start = 1)
 The array of \code{n} frames.
 }
 \description{
-Take N frames from series of speckle images 512x512x2(bytes)
+Take N frames from series of 512 x 512 speckle images
+and write to separate binary file.
 }
 \examples{
 n_frames(50) # take first 50 frames

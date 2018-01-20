@@ -6,7 +6,7 @@ using namespace Rcpp;
 
 //' Middle frame
 //'
-//' Average image of the series of speckle images
+//' Average image of the series of 512 x 512 px images
 //'
 //' @param filename A string.
 //' @return The 512 x 512 matrix of middle speckle image.
@@ -18,7 +18,7 @@ using namespace Rcpp;
 //' plot(as.cimg(mf))
 //' @export
 // [[Rcpp::export]]
-NumericMatrix middle_frame(String filename, std::size_t threshold = 50000) {
+NumericMatrix middle_frame(String filename, NumericMatrix subtrahend, std::size_t threshold = 50000) {
   std::ifstream file(filename, std::ios::binary);
 
   file.seekg(0, std::ios::end);
@@ -27,6 +27,7 @@ NumericMatrix middle_frame(String filename, std::size_t threshold = 50000) {
 
   unsigned short piData[IMAGE_SIZE];
   NumericMatrix meanData(512, 512);
+//  NumericMatrix subtrahend(512, 512);
   int n_good_frames = 0;
 
   file.seekg(0, std::ios::beg);
@@ -36,14 +37,14 @@ NumericMatrix middle_frame(String filename, std::size_t threshold = 50000) {
     n_good_frames++;
 
     for(int i = 0; i < IMAGE_SIZE; i++) {
-      meanData[i] += piData[i];
+      meanData[i] += piData[i] - subtrahend[i];
     }
   }
 
   for(int i = 0; i < IMAGE_SIZE; i++) {
     meanData[i] = meanData[i] / n_good_frames;
   }
-
+  Rcout << n_good_frames << " averaged frames";
   file.close();
   return meanData;
 }

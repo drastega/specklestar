@@ -23,7 +23,8 @@ spe2dat <- function(SPE_file) {
 #--------------------------------------------------------------------------------
 #' N frames from file
 #'
-#' Take N frames from series of speckle images 512x512x2(bytes)
+#' Take N frames from series of 512 x 512 speckle images
+#' and write to separate binary file.
 #'
 #' @param n A number.
 #' @param start A number.

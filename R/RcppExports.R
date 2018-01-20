@@ -3,7 +3,7 @@
 
 #' Middle frame
 #'
-#' Average image of the series of speckle images
+#' Average image of the series of 512 x 512 px images
 #'
 #' @param filename A string.
 #' @return The 512 x 512 matrix of middle speckle image.
@@ -14,8 +14,8 @@
 #' library(imager)
 #' plot(as.cimg(mf))
 #' @export
-middle_frame <- function(filename, threshold = 50000L) {
-    .Call('_specklestar_middle_frame', PACKAGE = 'specklestar', filename, threshold)
+middle_frame <- function(filename, subtrahend, threshold = 50000L) {
+    .Call('_specklestar_middle_frame', PACKAGE = 'specklestar', filename, subtrahend, threshold)
 }
 
 #' Power Spectrum calculation

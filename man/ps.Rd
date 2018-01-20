@@ -4,7 +4,7 @@
 \alias{ps}
 \title{Power Spectrum calculation}
 \usage{
-ps(filename)
+ps(filename, threshold = 50000L)
 }
 \arguments{
 \item{filename}{A string.}
