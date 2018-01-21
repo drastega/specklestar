@@ -18,12 +18,30 @@ middle_frame <- function(filename, subtrahend, threshold = 50000L) {
     .Call('_specklestar_middle_frame', PACKAGE = 'specklestar', filename, subtrahend, threshold)
 }
 
-#' Power Spectrum calculation
+#' Power spectrum calculation
 #'
-#' Power Spectrum of the series of speckle images
+#' Power spectrum of the difference of neighboring frames
+#' in the series of speckle images
 #'
 #' @param filename A string.
-#' @return The 512 x 512 double vector of Power Spectrum.
+#' @return The 257 x 512 double vector of power spectrum.
+#' @examples
+#' pow_spec_diff <- ps_diff(file.choose())
+#'
+#' # Plot
+#' library(imager)
+#' plot(as.cimg(pow_spec^0.01))
+#' @export
+ps_diff <- function(filename, threshold = 50000L) {
+    .Call('_specklestar_ps_diff', PACKAGE = 'specklestar', filename, threshold)
+}
+
+#' Power spectrum calculation
+#'
+#' Power spectrum of the series of speckle images
+#'
+#' @param filename A string.
+#' @return The 257 x 512 double vector of power spectrum.
 #' @examples
 #' pow_spec <- ps(file.choose())
 #'

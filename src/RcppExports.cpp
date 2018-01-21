@@ -18,6 +18,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// ps_diff
+NumericVector ps_diff(String filename, std::size_t threshold);
+RcppExport SEXP _specklestar_ps_diff(SEXP filenameSEXP, SEXP thresholdSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< String >::type filename(filenameSEXP);
+    Rcpp::traits::input_parameter< std::size_t >::type threshold(thresholdSEXP);
+    rcpp_result_gen = Rcpp::wrap(ps_diff(filename, threshold));
+    return rcpp_result_gen;
+END_RCPP
+}
 // ps
 NumericVector ps(String filename, std::size_t threshold);
 RcppExport SEXP _specklestar_ps(SEXP filenameSEXP, SEXP thresholdSEXP) {
@@ -62,6 +74,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_specklestar_middle_frame", (DL_FUNC) &_specklestar_middle_frame, 3},
+    {"_specklestar_ps_diff", (DL_FUNC) &_specklestar_ps_diff, 2},
     {"_specklestar_ps", (DL_FUNC) &_specklestar_ps, 2},
     {"_specklestar_speckle_generator", (DL_FUNC) &_specklestar_speckle_generator, 7},
     {"_specklestar_speckle_stat", (DL_FUNC) &_specklestar_speckle_stat, 2},

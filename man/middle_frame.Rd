@@ -4,7 +4,7 @@
 \alias{middle_frame}
 \title{Middle frame}
 \usage{
-middle_frame(filename, subtrahend = matrix(512, 512), threshold = 50000L)
+middle_frame(filename, subtrahend, threshold = 50000L)
 }
 \arguments{
 \item{filename}{A string.}

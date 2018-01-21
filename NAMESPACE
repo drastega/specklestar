@@ -3,6 +3,7 @@
 export(middle_frame)
 export(n_frames)
 export(ps)
+export(ps_diff)
 export(spe2dat)
 export(speckle_binary)
 export(speckle_frame)
