@@ -1,11 +1,13 @@
-#include <Rcpp.h>
 #include <fftw3.h>
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <math.h>
+#include "RcppArmadillo.h"
 #include "image_helper.h"
 using namespace Rcpp;
+
+// [[Rcpp::depends(RcppArmadillo)]]
 
 //' Power spectrum calculation
 //'
@@ -38,7 +40,7 @@ NumericVector ps(String filename, std::size_t threshold = 50000) {
     file.read((char*)piData, IMAGE_SIZE * sizeof(unsigned short));
     if (IsOverThresholdFrame(piData, threshold)) continue;
 
-    for(int i = 0; i < IMAGE_SIZE / sizeof(unsigned short); i++) dData[i] = (double)piData[i];
+    for(int i = 0; i < IMAGE_SIZE; i++) dData[i] = (double)piData[i];
 
     fftw_plan p = fftw_plan_dft_r2c_2d(512, 512, dData.data(), out, FFTW_ESTIMATE);
     fftw_execute(p); /* repeat as needed */
@@ -49,4 +51,12 @@ NumericVector ps(String filename, std::size_t threshold = 50000) {
   file.close();
 
   return NumericVector(outData.begin(), outData.end());
+}
+
+// [[Rcpp::export]]
+arma::mat rcpparma_hello_world() {
+  arma::mat m1 = arma::eye<arma::mat>(3, 3);
+  arma::mat m2 = arma::eye<arma::mat>(3, 3);
+
+  return m1 + 3 * (m1 + m2);
 }

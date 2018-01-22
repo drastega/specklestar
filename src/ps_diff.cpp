@@ -22,7 +22,7 @@ using namespace Rcpp;
 //' plot(as.cimg(pow_spec^0.01))
 //' @export
 // [[Rcpp::export]]
-NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
+NumericMatrix ps_diff(String filename, std::size_t threshold = 50000) {
 
   std::ifstream file(filename, std::ios::binary);
   file.seekg(0, std::ios::end);
@@ -32,10 +32,13 @@ NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
   int N_frame = file_length / (IMAGE_SIZE * sizeof(unsigned short));
   unsigned short piData1[IMAGE_SIZE];
   unsigned short piData2[IMAGE_SIZE];
-  std::vector<double> dData(512*512);
-  std::vector<double> outData(512*257);
+//  std::vector<double> dData(512*512);
+  std::vector<double> big_dData(1024*1024);
+//  std::vector<double> outData(1024*513);
+  NumericMatrix outData(513, 1024);
+//  NumericMatrix outData_matrix(513, 1024);
 
-  fftw_complex *out = (fftw_complex*) fftw_malloc(sizeof(fftw_complex) * 512 * (512 / 2 + 1));
+  fftw_complex *out = (fftw_complex*) fftw_malloc(sizeof(fftw_complex) * 1024 * (1024 / 2 + 1));
   for(int j = 0; j < N_frame; j++){
     file.read((char*)piData1, IMAGE_SIZE * sizeof(unsigned short));
     if (IsOverThresholdFrame(piData1, threshold)) continue;
@@ -44,15 +47,18 @@ NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
 
     file.seekg(-IMAGE_SIZE * sizeof(unsigned short), std::ios_base::cur); // shift pointer one frame back
 
-    for(int i = 0; i < IMAGE_SIZE / sizeof(unsigned short); i++) dData[i] = (double)piData2[i] - (double)piData1[i];
+    for(int i = 0; i < IMAGE_SIZE; i++) big_dData[i] = (double)piData2[i] - (double)piData1[i];
 
-    fftw_plan p = fftw_plan_dft_r2c_2d(512, 512, dData.data(), out, FFTW_ESTIMATE);
+    fftw_plan p = fftw_plan_dft_r2c_2d(1024, 1024, big_dData.data(), out, FFTW_ESTIMATE);
     fftw_execute(p); /* repeat as needed */
     fftw_destroy_plan(p);
-    for (int i = 0; i < 512 * 257; i++) outData[i] += out[i][0] * out[i][0] + out[i][1] * out[i][1];
+    for (int i = 0; i < 1024 * 513; i++) outData[i] += out[i][0] * out[i][0] + out[i][1] * out[i][1];
   }
   fftw_free(out);
   file.close();
 
-  return NumericVector(outData.begin(), outData.end());
+//  for(int i = 0; i < 1024 * 513; i++) outData_matrix[i] = outData[i]; // convert to [513, 1024] output array
+
+  return outData;
+//  return NumericVector(outData.begin(), outData.end());
 }

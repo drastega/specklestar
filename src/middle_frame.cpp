@@ -27,7 +27,6 @@ NumericMatrix middle_frame(String filename, NumericMatrix subtrahend, std::size_
 
   unsigned short piData[IMAGE_SIZE];
   NumericMatrix meanData(512, 512);
-//  NumericMatrix subtrahend(512, 512);
   int n_good_frames = 0;
 
   file.seekg(0, std::ios::beg);
@@ -44,7 +43,9 @@ NumericMatrix middle_frame(String filename, NumericMatrix subtrahend, std::size_
   for(int i = 0; i < IMAGE_SIZE; i++) {
     meanData[i] = meanData[i] / n_good_frames;
   }
+
   Rcout << n_good_frames << " averaged frames";
+
   file.close();
   return meanData;
 }

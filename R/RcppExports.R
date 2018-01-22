@@ -53,6 +53,10 @@ ps <- function(filename, threshold = 50000L) {
     .Call('_specklestar_ps', PACKAGE = 'specklestar', filename, threshold)
 }
 
+rcpparma_hello_world <- function() {
+    .Call('_specklestar_rcpparma_hello_world', PACKAGE = 'specklestar')
+}
+
 #' Speckle Generator
 #'
 #' Generate model 512 x 512 x 2 (bytes) speckle image of binary star
