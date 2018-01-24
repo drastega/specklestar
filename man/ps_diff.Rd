@@ -10,7 +10,7 @@ ps_diff(filename, threshold = 50000L)
 \item{filename}{A string.}
 }
 \value{
-The 257 x 512 double vector of power spectrum.
+The 513 x 1024 double vector of power spectrum.
 }
 \description{
 Power spectrum of the difference of neighboring frames

@@ -24,7 +24,7 @@ middle_frame <- function(filename, subtrahend, threshold = 50000L) {
 #' in the series of speckle images
 #'
 #' @param filename A string.
-#' @return The 257 x 512 double vector of power spectrum.
+#' @return The 513 x 1024 double vector of power spectrum.
 #' @examples
 #' pow_spec_diff <- ps_diff(file.choose())
 #'
@@ -38,7 +38,7 @@ ps_diff <- function(filename, threshold = 50000L) {
 
 #' Power spectrum calculation
 #'
-#' Power spectrum of the series of speckle images
+#' Power spectrum of the series of 512 x 512 speckle images
 #'
 #' @param filename A string.
 #' @return The 257 x 512 double vector of power spectrum.
@@ -88,15 +88,19 @@ speckle_generator <- function(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind)
 
 #' Statistics of speckles
 #'
-#' Calculate statistics of speckles in the series of speckle images and filter "bad" frames
+#' Calculate statistics of speckles in the series of 512 x 512
+#' speckle images and filter "bad" frames.
 #'
-#' @param filename A string.
-#' @return The double vector of speckle statistics.
+#' @param filename A string with name of file
+#' @param threshold Int
+#' @return The list with 2 elements 'badFrames' and 'hist': \cr
+#' 1 number of bad frames, \cr
+#' 2 double vector of speckle statistics
 #' @examples
 #' spec_stat <- speckle_stat(file.choose())
 #'
 #' # Plot
-#' plot(speckle_stat)
+#' plot(speckle_stat$hist, type = 'l')
 #' @export
 speckle_stat <- function(filename, threshold = 50000L) {
     .Call('_specklestar_speckle_stat', PACKAGE = 'specklestar', filename, threshold)

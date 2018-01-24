@@ -11,7 +11,7 @@ using namespace Rcpp;
 
 //' Power spectrum calculation
 //'
-//' Power spectrum of the series of speckle images
+//' Power spectrum of the series of 512 x 512 speckle images
 //'
 //' @param filename A string.
 //' @return The 257 x 512 double vector of power spectrum.
@@ -55,8 +55,8 @@ NumericVector ps(String filename, std::size_t threshold = 50000) {
 
 // [[Rcpp::export]]
 arma::mat rcpparma_hello_world() {
-  arma::mat m1 = arma::eye<arma::mat>(3, 3);
-  arma::mat m2 = arma::eye<arma::mat>(3, 3);
-
-  return m1 + 3 * (m1 + m2);
+  arma::mat m1(5, 5, arma::fill::zeros);
+//  arma::mat m2 = arma::eye<arma::mat>(3, 3);
+  m1.submat(0, 0, 2, 2) = arma::ones(3, 3);
+  return m1;
 }

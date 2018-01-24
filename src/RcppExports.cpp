@@ -20,7 +20,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // ps_diff
-NumericMatrix ps_diff(String filename, std::size_t threshold);
+NumericVector ps_diff(String filename, std::size_t threshold);
 RcppExport SEXP _specklestar_ps_diff(SEXP filenameSEXP, SEXP thresholdSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;

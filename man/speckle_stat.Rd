@@ -7,17 +7,22 @@
 speckle_stat(filename, threshold = 50000L)
 }
 \arguments{
-\item{filename}{A string.}
+\item{filename}{A string with name of file}
+
+\item{threshold}{Int}
 }
 \value{
-The double vector of speckle statistics.
+The list with 2 elements 'badFrames' and 'hist': \cr
+1 number of bad frames, \cr
+2 double vector of speckle statistics
 }
 \description{
-Calculate statistics of speckles in the series of speckle images and filter "bad" frames
+Calculate statistics of speckles in the series of 512 x 512
+speckle images and filter "bad" frames.
 }
 \examples{
 spec_stat <- speckle_stat(file.choose())
 
 # Plot
-plot(speckle_stat)
+plot(speckle_stat$hist, type = 'l')
 }

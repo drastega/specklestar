@@ -13,7 +13,7 @@ ps(filename, threshold = 50000L)
 The 257 x 512 double vector of power spectrum.
 }
 \description{
-Power spectrum of the series of speckle images
+Power spectrum of the series of 512 x 512 speckle images
 }
 \examples{
 pow_spec <- ps(file.choose())
