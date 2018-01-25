@@ -23,7 +23,6 @@ using namespace Rcpp;
 //' @export
 // [[Rcpp::export]]
 NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
-//NumericMatrix ps_diff(String filename, std::size_t threshold = 50000) {
   std::ifstream file(filename, std::ios::binary);
   file.seekg(0, std::ios::end);
   size_t file_length = file.tellg();
@@ -32,10 +31,8 @@ NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
   int N_frame = file_length / (IMAGE_SIZE * sizeof(unsigned short));
   unsigned short piData1[IMAGE_SIZE];
   unsigned short piData2[IMAGE_SIZE];
-//  std::vector<double> dData(512*512);
-  std::vector<double> big_dData(1024*1024);
-//  NumericVector big_dData(1024*1024);
-//  std::vector<double> outData(1024*513);
+//  std::vector<double> big_dData(1024*1024);
+  NumericMatrix big_dData(1024, 1024);
   NumericMatrix outData(513, 1024);
 
   fftw_complex *out = (fftw_complex*) fftw_malloc(sizeof(fftw_complex) * 1024 * (1024 / 2 + 1));
@@ -53,7 +50,8 @@ NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
 
     file.seekg(-IMAGE_SIZE * sizeof(unsigned short), std::ios_base::cur); // shift pointer one frame back
 
-    fftw_plan p = fftw_plan_dft_r2c_2d(1024, 1024, big_dData.data(), out, FFTW_ESTIMATE);
+    fftw_plan p = fftw_plan_dft_r2c_2d(1024, 1024, big_dData.begin(), out, FFTW_ESTIMATE);
+//    fftw_plan p = fftw_plan_dft_r2c_2d(1024, 1024, big_dData.data(), out, FFTW_ESTIMATE);
     fftw_execute(p); /* repeat as needed */
     fftw_destroy_plan(p);
     for (int i = 0; i < 1024 * 513; i++) outData[i] += out[i][0] * out[i][0] + out[i][1] * out[i][1];
@@ -62,5 +60,6 @@ NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
   file.close();
 
 //  return NumericVector(big_dData.begin(), big_dData.end());
-  return NumericVector(outData.begin(), outData.end());
+  return outData;
+//  return big_dData;
 }
