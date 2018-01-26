@@ -5,7 +5,7 @@ Overview
 
 R package *specklestar* is a set of R and C++ (via Rcpp) functions used in the [**Group of high-resolution methods in astronomy**](https://www.sao.ru/Doc-en/index.html) of the Special Astrophysical Observatory
 of the Russian Academy of Science for reduction of speckle data obtained from BTA 6-m telescope.
-Input data are series of 512x512 (x2 bytes) speckle images.
+Input data are series of 512 x 512 (x 2 bytes) speckle images :stars:
 
 For reduction of speckle images of binary and multiple stars we use algorithm described in paper
 ["Differential photometry of speckle-interferometric binary and multiple stars"
