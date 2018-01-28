@@ -4,21 +4,26 @@
 \alias{ps}
 \title{Power spectrum calculation}
 \usage{
-ps(filename, threshold = 50000L)
+ps(filename, dark, flat, threshold = 50000L)
 }
 \arguments{
 \item{filename}{A string.}
+
+\item{512}{x 512 middle frame matrix}
+
+\item{512}{x 512 middle flat field matrix}
 }
 \value{
-The 257 x 512 double vector of power spectrum.
+The 513 x 1024 double vector of power spectrum.
 }
 \description{
 Power spectrum of the series of 512 x 512 speckle images
 }
 \examples{
-pow_spec <- ps(file.choose())
+# Suppose we have midd_dark and midd_flat 512 x 512 matrices
+pow_spec <- ps(file.choose(), dark = midd_dark, flat = midd_flat)
 
 # Plot
-library(imager)
-plot(as.cimg(pow_spec^0.01))
+library(imageviewer)
+imageviewer(log10(pow_spec))
 }

@@ -20,6 +20,6 @@ in the series of speckle images
 pow_spec_diff <- ps_diff(file.choose())
 
 # Plot
-library(imager)
-plot(as.cimg(pow_spec^0.01))
+library(imageviewer)
+imageviewer(pow_spec_diff)
 }

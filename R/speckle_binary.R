@@ -25,6 +25,10 @@ speckle_binary <- function(object_file = file.choose(), dark_file = file.choose(
   middle_dark <- middle_frame(dark_file, subtrahend = zero_matrix) # change threshold if need
   middle_flat <- middle_frame(flat_file, subtrahend = middle_dark) # change threshold if need
 
+  ps_diff <- ps_diff(object_file)
+  ps <- ps(object_file, middle_dark, middle_flat)
+
+
 ### Power Spectrum calculation
 PS_line <- ps(object)
 PS <- matrix(PS_line, 257, 512)

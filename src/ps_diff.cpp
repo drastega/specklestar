@@ -18,8 +18,8 @@ using namespace Rcpp;
 //' pow_spec_diff <- ps_diff(file.choose())
 //'
 //' # Plot
-//' library(imager)
-//' plot(as.cimg(pow_spec^0.01))
+//' library(imageviewer)
+//' imageviewer(pow_spec_diff)
 //' @export
 // [[Rcpp::export]]
 NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
@@ -60,6 +60,7 @@ NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
                                 - (double)(state ? piData2 : piData1)[i * 512 + j];
       }
     }
+
     fftw_plan p = fftw_plan_dft_r2c_2d(1024, 1024, big_dData.begin(), out, FFTW_ESTIMATE);
     fftw_execute(p); // repeat as needed
     fftw_destroy_plan(p);
