@@ -27,7 +27,9 @@ speckle_binary <- function(object_file = file.choose(), dark_file = file.choose(
 
   ps_diff <- ps_diff(object_file)
   ps <- ps(object_file, middle_dark, middle_flat)
-
+  ps_full <- matrix(1, 1024, 1024)
+  ps_full[512:1024, 1:1024] <- mrbsizeR::fftshift(ps, dimension = 2)
+  ps_full[513:1, 1024:1] <- mrbsizeR::fftshift(ps, dimension = 2)
 
 ### Power Spectrum calculation
 PS_line <- ps(object)
