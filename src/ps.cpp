@@ -23,7 +23,7 @@ using namespace Rcpp;
 //' plot(as.cimg(pow_spec^0.01))
 //' @export
 // [[Rcpp::export]]
-NumericVector ps(String filename, std::size_t threshold = 50000) {
+NumericVector ps(String filename, NumericMatrix dark, NumericMatrix flat, std::size_t threshold = 50000) {
 
   std::ifstream file(filename, std::ios::binary);
   file.seekg(0, std::ios::end);
@@ -32,25 +32,29 @@ NumericVector ps(String filename, std::size_t threshold = 50000) {
 
   int N_frame = file_length / (IMAGE_SIZE * sizeof(unsigned short));
   unsigned short piData[IMAGE_SIZE];
-  std::vector<double> dData(512*512);
-  std::vector<double> outData(512*257);
+  NumericMatrix outData(513, 1024);
+  NumericMatrix big_dData(1024, 1024);
 
-  fftw_complex *out = (fftw_complex*) fftw_malloc(sizeof(fftw_complex) * 512 * (512 / 2 + 1));
+  fftw_complex *out = (fftw_complex*) fftw_malloc(sizeof(fftw_complex) * 1024 * (1024 / 2 + 1));
   for(int j = 0; j < N_frame; j++) {
     file.read((char*)piData, IMAGE_SIZE * sizeof(unsigned short));
     if (IsOverThresholdFrame(piData, threshold)) continue;
 
-    for(int i = 0; i < IMAGE_SIZE; i++) dData[i] = (double)piData[i];
+    for(int i = 0; i < 512; i++) {
+      for(int j = 0; j < 512; j++) {
+        big_dData[j * 1024 + i] = ((double)piData[i * 512 + j] - dark[i * 512 + j]) / flat[i * 512 + j];
+      }
+    }
 
-    fftw_plan p = fftw_plan_dft_r2c_2d(512, 512, dData.data(), out, FFTW_ESTIMATE);
+    fftw_plan p = fftw_plan_dft_r2c_2d(1024, 1024, big_dData.begin(), out, FFTW_ESTIMATE);
     fftw_execute(p); /* repeat as needed */
     fftw_destroy_plan(p);
-    for (int i = 0; i < 512 * 257; i++) outData[i] += out[i][0] * out[i][0] + out[i][1] * out[i][1];
+    for (int i = 0; i < 1024 * 513; i++) outData[i] += out[i][0] * out[i][0] + out[i][1] * out[i][1];
   }
   fftw_free(out);
   file.close();
 
-  return NumericVector(outData.begin(), outData.end());
+  return outData;
 }
 
 // [[Rcpp::export]]

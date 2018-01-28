@@ -49,8 +49,8 @@ ps_diff <- function(filename, threshold = 50000L) {
 #' library(imager)
 #' plot(as.cimg(pow_spec^0.01))
 #' @export
-ps <- function(filename, threshold = 50000L) {
-    .Call('_specklestar_ps', PACKAGE = 'specklestar', filename, threshold)
+ps <- function(filename, dark, flat, threshold = 50000L) {
+    .Call('_specklestar_ps', PACKAGE = 'specklestar', filename, dark, flat, threshold)
 }
 
 rcpparma_hello_world <- function() {
