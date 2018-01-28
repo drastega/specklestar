@@ -36,7 +36,7 @@ NumericVector ps(String filename, std::size_t threshold = 50000) {
   std::vector<double> outData(512*257);
 
   fftw_complex *out = (fftw_complex*) fftw_malloc(sizeof(fftw_complex) * 512 * (512 / 2 + 1));
-  for(int j = 0; j < N_frame; j++){
+  for(int j = 0; j < N_frame; j++) {
     file.read((char*)piData, IMAGE_SIZE * sizeof(unsigned short));
     if (IsOverThresholdFrame(piData, threshold)) continue;
 

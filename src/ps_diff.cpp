@@ -44,12 +44,14 @@ NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
   bool state = true;
   int j = 0;
   while( file.read((char*)piData1, frameSize) ) {
+    if( !file ) break;
     j++;
     if (IsOverThresholdFrame(piData1, threshold)) continue;
     break;
   }
-  for(; j < N_frame; j++) {
+  for(; file && j < N_frame; j++) {
     file.read((char*)(state ? piData1 : piData2), frameSize);
+    if( !file ) break;
     if (IsOverThresholdFrame((state ? piData1 : piData2), threshold)) continue;
 
     for(int i = 0; i < 512; i++) {
@@ -68,7 +70,7 @@ NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
   fftw_free(out);
   file.close();
 
-//  return NumericVector(big_dData.begin(), big_dData.end());
+  Rcout << j << " averaged frames";
+
   return outData;
-//  return big_dData;
 }
