@@ -26,6 +26,11 @@ speckle_binary <- function(object_file = file.choose(), dark_file = file.choose(
   middle_flat <- middle_frame(flat_file, subtrahend = middle_dark) # change threshold if need
 
   ps_diff <- ps_diff(object_file)
+  ps_diff_full <- matrix(1, 1024, 1024)
+  ps_diff_full[512:1024, 1:1024] <- mrbsizeR::fftshift(ps_diff, dimension = 2)
+  ps_diff_full[513:1, 1024:1] <- mrbsizeR::fftshift(ps_diff, dimension = 2)
+  acf <- fftwtools::fftw2d(ps_diff_full, inverse = TRUE, HermConj = 0) %>% abs() %>% mrbsizeR::fftshift(dimension = -1)
+
   ps <- ps(object_file, middle_dark, middle_flat)
   ps_full <- matrix(1, 1024, 1024)
   ps_full[512:1024, 1:1024] <- mrbsizeR::fftshift(ps, dimension = 2)

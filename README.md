@@ -18,7 +18,7 @@ devtools::install_github("yapus/imageviewer")
 devtools::install_github("drastega/specklestar", build_vignettes = TRUE)
 ```
 ## Usage
-See full description in the package vignette
+See full description in the package [vignette](https://drastega.github.io/docs/specklestar_vignette.html)
 ```
 browseVignettes(package = "specklestar")
 ```
