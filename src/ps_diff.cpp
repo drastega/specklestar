@@ -32,6 +32,7 @@ NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
 
   NumericMatrix outData(513, 1024);
   NumericMatrix big_dData(1024, 1024);
+  int good_frames = 1;
 
   int N_frame = file_length / frameSize;
   unsigned short piData1[IMAGE_SIZE]
@@ -67,11 +68,13 @@ NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
     for (int i = 0; i < 1024 * 513; i++) outData[i] += out[i][0] * out[i][0] + out[i][1] * out[i][1];
     // state = 0 == state ? 1 : 0;
     state = !state;
+
+    good_frames += 1;
   }
   fftw_free(out);
   file.close();
 
-  Rcout << j << " averaged frames";
+  Rcout << good_frames << " processed frames";
 
   return outData;
 }

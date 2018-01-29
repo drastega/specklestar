@@ -14,8 +14,8 @@ using namespace Rcpp;
 //' Power spectrum of the series of 512 x 512 speckle images
 //'
 //' @param filename A string.
-//' @param 512 x 512 middle frame matrix
-//' @param 512 x 512 middle flat field matrix
+//' @param dark 512 x 512 middle frame matrix.
+//' @param flat 512 x 512 middle flat field matrix.
 //' @return The 513 x 1024 double vector of power spectrum.
 //' @examples
 //' # Suppose we have midd_dark and midd_flat 512 x 512 matrices

@@ -6,6 +6,7 @@
 #' Average image of the series of 512 x 512 px images
 #'
 #' @param filename A string.
+#' @param subtrahend 512 x 512 matrix to subtract.
 #' @return The 512 x 512 matrix of middle speckle image.
 #' @examples
 #' mf <- middle_frame(file.choose())
@@ -16,30 +17,6 @@
 #' @export
 middle_frame <- function(filename, subtrahend, threshold = 50000L) {
     .Call('_specklestar_middle_frame', PACKAGE = 'specklestar', filename, subtrahend, threshold)
-}
-
-#' Power spectrum calculation
-#'
-#' Power spectrum of the series of 512 x 512 speckle images
-#'
-#' @param filename A string.
-#' @param 512 x 512 middle frame matrix
-#' @param 512 x 512 middle flat field matrix
-#' @return The 513 x 1024 double vector of power spectrum.
-#' @examples
-#' # Suppose we have midd_dark and midd_flat 512 x 512 matrices
-#' pow_spec <- ps(file.choose(), dark = midd_dark, flat = midd_flat)
-#'
-#' # Plot
-#' library(imageviewer)
-#' imageviewer(log10(pow_spec))
-#' @export
-ps <- function(filename, dark, flat, threshold = 50000L) {
-    .Call('_specklestar_ps', PACKAGE = 'specklestar', filename, dark, flat, threshold)
-}
-
-rcpparma_hello_world <- function() {
-    .Call('_specklestar_rcpparma_hello_world', PACKAGE = 'specklestar')
 }
 
 #' Power spectrum calculation
@@ -58,6 +35,30 @@ rcpparma_hello_world <- function() {
 #' @export
 ps_diff <- function(filename, threshold = 50000L) {
     .Call('_specklestar_ps_diff', PACKAGE = 'specklestar', filename, threshold)
+}
+
+#' Power spectrum calculation
+#'
+#' Power spectrum of the series of 512 x 512 speckle images
+#'
+#' @param filename A string.
+#' @param dark 512 x 512 middle frame matrix.
+#' @param flat 512 x 512 middle flat field matrix.
+#' @return The 513 x 1024 double vector of power spectrum.
+#' @examples
+#' # Suppose we have midd_dark and midd_flat 512 x 512 matrices
+#' pow_spec <- ps(file.choose(), dark = midd_dark, flat = midd_flat)
+#'
+#' # Plot
+#' library(imageviewer)
+#' imageviewer(log10(pow_spec))
+#' @export
+ps <- function(filename, dark, flat, threshold = 50000L) {
+    .Call('_specklestar_ps', PACKAGE = 'specklestar', filename, dark, flat, threshold)
+}
+
+rcpparma_hello_world <- function() {
+    .Call('_specklestar_rcpparma_hello_world', PACKAGE = 'specklestar')
 }
 
 #' Speckle Generator
@@ -92,13 +93,13 @@ speckle_generator <- function(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind)
 #' Statistics of speckles
 #'
 #' Calculate statistics of speckles in the series of 512 x 512
-#' speckle images and filter "bad" frames.
+#' speckle images and filter "bad" frames
 #'
-#' @param filename A string with name of file
-#' @param threshold Int
+#' @param filename A string with name of file.
+#' @param threshold Int.
 #' @return The list with 2 elements 'badFrames' and 'hist': \cr
 #' 1 number of bad frames, \cr
-#' 2 double vector of speckle statistics
+#' 2 double vector of speckle statistics.
 #' @examples
 #' spec_stat <- speckle_stat(file.choose())
 #'

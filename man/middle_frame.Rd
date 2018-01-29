@@ -8,6 +8,8 @@ middle_frame(filename, subtrahend, threshold = 50000L)
 }
 \arguments{
 \item{filename}{A string.}
+
+\item{subtrahend}{512 x 512 matrix to subtract.}
 }
 \value{
 The 512 x 512 matrix of middle speckle image.

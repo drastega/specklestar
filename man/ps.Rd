@@ -9,9 +9,9 @@ ps(filename, dark, flat, threshold = 50000L)
 \arguments{
 \item{filename}{A string.}
 
-\item{512}{x 512 middle frame matrix}
+\item{dark}{512 x 512 middle frame matrix.}
 
-\item{512}{x 512 middle flat field matrix}
+\item{flat}{512 x 512 middle flat field matrix.}
 }
 \value{
 The 513 x 1024 double vector of power spectrum.

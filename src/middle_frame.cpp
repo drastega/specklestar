@@ -9,6 +9,7 @@ using namespace Rcpp;
 //' Average image of the series of 512 x 512 px images
 //'
 //' @param filename A string.
+//' @param subtrahend 512 x 512 matrix to subtract.
 //' @return The 512 x 512 matrix of middle speckle image.
 //' @examples
 //' mf <- middle_frame(file.choose())
