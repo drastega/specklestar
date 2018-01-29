@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <cstring>
 #include <math.h>
 #include "RcppArmadillo.h"
 #include "image_helper.h"
@@ -35,6 +36,8 @@ NumericVector ps(String filename, NumericMatrix dark, NumericMatrix flat, std::s
 
   int N_frame = file_length / (IMAGE_SIZE * sizeof(unsigned short));
   unsigned short piData[IMAGE_SIZE];
+  memset(piData, 0, IMAGE_SIZE * sizeof(unsigned short));
+
   NumericMatrix outData(513, 1024);
   NumericMatrix big_dData(1024, 1024);
 

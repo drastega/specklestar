@@ -17,19 +17,19 @@ speckle_binary <- function(object_file = file.choose(), dark_file = file.choose(
   dark_file <- '/Users/leda/home/Reduction/mavr/2010/2_3_july_2010/dark3.dat'
   flat_file <- '/Users/leda/home/Reduction/mavr/2010/30june_1july2010/flat550.dat'
 
-  obj_stat <- speckle_stat(object_file) # look threshold
-  dark_stat <- speckle_stat(dark_file, threshold = 55000)
-  flat_stat <- speckle_stat(flat_file)
+#  obj_stat <- speckle_stat(object_file) # look threshold
+#  dark_stat <- speckle_stat(dark_file, threshold = 55000)
+#  flat_stat <- speckle_stat(flat_file)
 
   zero_matrix <- matrix(0, 512, 512)
   middle_dark <- middle_frame(dark_file, subtrahend = zero_matrix) # change threshold if need
   middle_flat <- middle_frame(flat_file, subtrahend = middle_dark) # change threshold if need
 
-  ps_diff <- ps_diff(object_file)
+  ps_diff_obj <- ps_diff(object_file)
   ps_diff_full <- matrix(1, 1024, 1024)
-  ps_diff_full[512:1024, 1:1024] <- mrbsizeR::fftshift(ps_diff, dimension = 2)
-  ps_diff_full[513:1, 1024:1] <- mrbsizeR::fftshift(ps_diff, dimension = 2)
-  acf <- fftwtools::fftw2d(ps_diff_full, inverse = TRUE, HermConj = 0) %>% abs() %>% mrbsizeR::fftshift(dimension = -1)
+  ps_diff_full[512:1024, 1:1024] <- mrbsizeR::fftshift(ps_diff_obj, dimension = 2)
+  ps_diff_full[513:1, 1024:1] <- mrbsizeR::fftshift(ps_diff_obj, dimension = 2)
+#  acf <- fftwtools::fftw2d(ps_diff_full, inverse = TRUE, HermConj = 0) %>% abs() %>% mrbsizeR::fftshift(dimension = -1)
 
   ps <- ps(object_file, middle_dark, middle_flat)
   ps_full <- matrix(1, 1024, 1024)

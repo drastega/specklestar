@@ -25,7 +25,8 @@ To obtain positional paramaters and magnitude difference between components of b
 obj_filename <- file.choose() # Choose file with binary star
 dark_filename <- file.choose() # Choose dark file
 flat_filename <- file.choose() # Choose flat field file
-rho_theta_dm <- speckle_binary(object = obj_filename, dark = dark_filename, flat = flat_filename)
+rho_theta_dm <- speckle_binary(object = obj_filename, dark = dark_filename,
+                               flat = flat_filename)
 print(rho_theta_dm)
 ```
 

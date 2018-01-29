@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <cstring>
 #include <math.h>
 #include "image_helper.h"
 using namespace Rcpp;
@@ -32,12 +33,14 @@ NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
 
   NumericMatrix outData(513, 1024);
   NumericMatrix big_dData(1024, 1024);
-  int good_frames = 1;
+  int good_frames = 0;
 
   int N_frame = file_length / frameSize;
   unsigned short piData1[IMAGE_SIZE]
                , piData2[IMAGE_SIZE]
                ;
+  memset(piData1, 0, frameSize);
+  memset(piData2, 0, frameSize);
 
   fftw_complex *out = (fftw_complex*) fftw_malloc(sizeof(fftw_complex) * 1024 * (1024 / 2 + 1));
 
@@ -48,6 +51,7 @@ NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
     if( !file ) break;
     j++;
     if (IsOverThresholdFrame(piData1, threshold)) continue;
+    good_frames += 1;
     break;
   }
   for(; file && j < N_frame; j++) {
@@ -62,6 +66,7 @@ NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
       }
     }
 
+    //fftw_plan p = fftw_plan_dft_r2c_2d(1024, 1024, big_dData.begin(), out, FFTW_ESTIMATE);
     fftw_plan p = fftw_plan_dft_r2c_2d(1024, 1024, big_dData.begin(), out, FFTW_ESTIMATE);
     fftw_execute(p); // repeat as needed
     fftw_destroy_plan(p);
@@ -74,7 +79,7 @@ NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
   fftw_free(out);
   file.close();
 
-  Rcout << good_frames << " processed frames";
+  Rcout << good_frames << " processed frames\n";
 
   return outData;
 }

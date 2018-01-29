@@ -24,16 +24,14 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 List speckle_stat(String filename, std::size_t threshold = 50000) {
   std::ifstream file(filename, std::ios::binary);
-
   file.seekg(0, std::ios::end);
   size_t file_length = file.tellg();
   int N_frame = file_length / (sizeof(unsigned short) * IMAGE_SIZE);
+  file.seekg(0, std::ios::beg);
 
   unsigned short piData[IMAGE_SIZE];
-  std::vector<unsigned short> badFrames;
-  std::vector<long> histData(65535);
-
-  file.seekg(0, std::ios::beg);
+  NumericVector badFrames;
+  NumericVector histData(65535);
 
   for(int f = 0; f < N_frame; f++) {
     file.read((char*)piData, IMAGE_SIZE * sizeof(unsigned short));

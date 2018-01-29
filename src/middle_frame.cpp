@@ -1,6 +1,7 @@
 #include <Rcpp.h>
 #include <iostream>
 #include <fstream>
+#include <cstring>
 #include "image_helper.h"
 using namespace Rcpp;
 
@@ -27,6 +28,8 @@ NumericMatrix middle_frame(String filename, NumericMatrix subtrahend, std::size_
   int N_frame = file_length / (sizeof(unsigned short) * IMAGE_SIZE);
 
   unsigned short piData[IMAGE_SIZE];
+  memset(piData, 0, IMAGE_SIZE * sizeof(unsigned short));
+
   NumericMatrix meanData(512, 512);
   int n_good_frames = 0;
 
@@ -45,7 +48,7 @@ NumericMatrix middle_frame(String filename, NumericMatrix subtrahend, std::size_
     meanData[i] = meanData[i] / n_good_frames;
   }
 
-  Rcout << n_good_frames << " averaged frames";
+  Rcout << n_good_frames << " averaged frames\n";
 
   file.close();
   return meanData;
