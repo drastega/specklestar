@@ -61,6 +61,23 @@ rcpparma_hello_world <- function() {
     .Call('_specklestar_rcpparma_hello_world', PACKAGE = 'specklestar')
 }
 
+#' Autocorrelation function calculation
+#'
+#' Autocorrelation function of power spectrum
+#'
+#' @param ps 513 x 1024 power spectrum double matrix.
+#' @return The 513 x 1024 double matrix of ACF.
+#' @examples
+#' acf <- speckle_acf(ps)
+#'
+#' # Plot
+#' library(imageviewer)
+#' imageviewer(log10(acf))
+#' @export
+speckle_acf <- function(ps) {
+    .Call('_specklestar_speckle_acf', PACKAGE = 'specklestar', ps)
+}
+
 #' Speckle Generator
 #'
 #' Generate model 512 x 512 x 2 (bytes) speckle image of binary star

@@ -55,6 +55,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// speckle_acf
+NumericVector speckle_acf(NumericMatrix ps);
+RcppExport SEXP _specklestar_speckle_acf(SEXP psSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type ps(psSEXP);
+    rcpp_result_gen = Rcpp::wrap(speckle_acf(ps));
+    return rcpp_result_gen;
+END_RCPP
+}
 // speckle_generator
 NumericVector speckle_generator(double seeing, double speckle_sigma, double m1, double m2, double rho_x, double rho_y, double wind);
 RcppExport SEXP _specklestar_speckle_generator(SEXP seeingSEXP, SEXP speckle_sigmaSEXP, SEXP m1SEXP, SEXP m2SEXP, SEXP rho_xSEXP, SEXP rho_ySEXP, SEXP windSEXP) {
@@ -90,6 +101,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_specklestar_ps_diff", (DL_FUNC) &_specklestar_ps_diff, 2},
     {"_specklestar_ps", (DL_FUNC) &_specklestar_ps, 4},
     {"_specklestar_rcpparma_hello_world", (DL_FUNC) &_specklestar_rcpparma_hello_world, 0},
+    {"_specklestar_speckle_acf", (DL_FUNC) &_specklestar_speckle_acf, 1},
     {"_specklestar_speckle_generator", (DL_FUNC) &_specklestar_speckle_generator, 7},
     {"_specklestar_speckle_stat", (DL_FUNC) &_specklestar_speckle_stat, 2},
     {NULL, NULL, 0}
