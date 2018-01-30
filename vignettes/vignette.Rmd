@@ -2,7 +2,7 @@
 title: "Reduction of speckle interferometric binary stars"
 author: "Denis Rastegaev"
 date: "`r Sys.Date()`"
-output: pdf_document
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Reduction of binary stars}
   %\VignetteEngine{knitr::rmarkdown}
