@@ -1,4 +1,6 @@
 #include <Rcpp.h>
+#include <math.h>
+#include <complex>
 #include <fftw3.h>
 using namespace Rcpp;
 
@@ -17,25 +19,31 @@ using namespace Rcpp;
 //' @export
 // [[Rcpp::export]]
 NumericVector speckle_acf(NumericMatrix ps) {
-  NumericMatrix big_ps(1024, 1024);
-  NumericMatrix acf(513, 1024);
 
-  for(int i = 0; i < 1024; i++) {
-    for(int j = 511; j < 1024; j++) {
-      big_ps[j * 1024 + i] = ps[i * 513 + j];
+  NumericMatrix acf(1024, 1024);
+  std::vector<std::complex<double>> data(513 * 1024);
+
+  for( int i = 0; i < 513; i++ ){
+    for( int j = 0; j < 1024; j++ ){
+      data[1024 * i + j].real( ps(i, j) );
+      data[1024 * i + j].imag( 0 );
     }
   }
 
-  fftw_complex *out = (fftw_complex*) fftw_malloc(sizeof(fftw_complex) * 1024 * (1024 / 2 + 1));
+//  return data;
 
-  fftw_plan p = fftw_plan_dft_r2c_2d(1024, 1024, big_ps.begin(), out, FFTW_BACKWARD);
-  fftw_execute(p); /* repeat as needed */
-  fftw_destroy_plan(p);
+  fftw_complex *ps_fftw_cmplx = reinterpret_cast<fftw_complex*>(data.data());
 
-  for (int i = 0; i < 1024 * 513; i++) acf[i] += out[i][0] * out[i][0] + out[i][1] * out[i][1];
+    //fftw_complex *out = (fftw_complex*) fftw_malloc(sizeof(fftw_complex) * 1024 * 1024);
+    double *out = (double*) fftw_malloc(sizeof(double) * 1024 * 1024);
 
-  fftw_free(out);
+    fftw_plan p = fftw_plan_dft_c2r_2d(1024, 1024, ps_fftw_cmplx, out, FFTW_ESTIMATE);
+    fftw_execute(p); /* repeat as needed */
+    fftw_destroy_plan(p);
 
-//  return acf;
-  return big_ps;
+    for (int i = 0; i < 1024 * 1024; i++) acf[i] = out[i];
+
+    fftw_free(out);
+
+  return acf;
 }
