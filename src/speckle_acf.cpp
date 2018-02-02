@@ -19,7 +19,6 @@ using namespace Rcpp;
 //' @export
 // [[Rcpp::export]]
 NumericVector speckle_acf(NumericMatrix ps) {
-//std::vector<std::complex<double>> speckle_acf(NumericMatrix ps) {
 
   NumericMatrix acf(1024, 1024);
   std::vector<std::complex<double>> data(513 * 1024);
@@ -31,15 +30,12 @@ NumericVector speckle_acf(NumericMatrix ps) {
     }
   }
 
-//  return data;
-
   fftw_complex *ps_fftw_cmplx = reinterpret_cast<fftw_complex*>(data.data());
 
-    //fftw_complex *out = (fftw_complex*) fftw_malloc(sizeof(fftw_complex) * 1024 * 1024);
     double *out = (double*) fftw_malloc(sizeof(double) * 1024 * 1024);
 
     fftw_plan p = fftw_plan_dft_c2r_2d(1024, 1024, ps_fftw_cmplx, out, FFTW_ESTIMATE);
-    fftw_execute(p); /* repeat as needed */
+    fftw_execute(p);
     fftw_destroy_plan(p);
 
     for (int i = 0; i < 1024 * 1024; i++) acf[i] = out[i];

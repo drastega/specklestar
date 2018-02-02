@@ -68,7 +68,7 @@ NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
 
     //fftw_plan p = fftw_plan_dft_r2c_2d(1024, 1024, big_dData.begin(), out, FFTW_ESTIMATE);
     fftw_plan p = fftw_plan_dft_r2c_2d(1024, 1024, big_dData.begin(), out, FFTW_ESTIMATE);
-    fftw_execute(p); // repeat as needed
+    fftw_execute(p);
     fftw_destroy_plan(p);
     for (int i = 0; i < 1024 * 513; i++) outData[i] += out[i][0] * out[i][0] + out[i][1] * out[i][1];
     // state = 0 == state ? 1 : 0;
