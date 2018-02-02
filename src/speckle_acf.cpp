@@ -19,14 +19,15 @@ using namespace Rcpp;
 //' @export
 // [[Rcpp::export]]
 NumericVector speckle_acf(NumericMatrix ps) {
+//std::vector<std::complex<double>> speckle_acf(NumericMatrix ps) {
 
   NumericMatrix acf(1024, 1024);
   std::vector<std::complex<double>> data(513 * 1024);
 
-  for( int i = 0; i < 513; i++ ){
-    for( int j = 0; j < 1024; j++ ){
-      data[1024 * i + j].real( ps(i, j) );
-      data[1024 * i + j].imag( 0 );
+  for( int j = 0; j < 1024; j++ ){
+    for( int i = 0; i < 513; i++ ){
+      data[513 * j + i].real( ps(i, j) / (1024 * 1024) );
+      data[513 * j + i].imag( 0 );
     }
   }
 
