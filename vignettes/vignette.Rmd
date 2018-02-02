@@ -18,19 +18,6 @@ knitr::opts_chunk$set(
 
 ## Workflow for reduction of speckle interferometric binary stars
 
-### Short way
-To obtain positional paramaters and magnitude difference between components of binary star just type
-
-```{r eval = FALSE}
-obj_filename <- file.choose() # Choose file with binary star
-dark_filename <- file.choose() # Choose dark file
-flat_filename <- file.choose() # Choose flat field file
-rho_theta_dm <- speckle_binary(object = obj_filename, dark = dark_filename,
-                               flat = flat_filename)
-print(rho_theta_dm)
-```
-
-### Long way
 Calculate statistics for object file
 ```{r eval = FALSE}
 obj_filename <- file.choose() # Choose file with binary star
@@ -63,31 +50,10 @@ Calculate acf
 acf <- speckle_acf(ps_diff)
 ```
 
-Find secondary peaks on acf
-```{r eval = FALSE}
-rho_theta_first <- find_peak(acf)
-```
-
 Calculate power spectrum
 ```{r eval = FALSE}
 ps <- ps(obj_filename, dark = mid_dark, flat = mid_flat, diff = 0) # include stats
 ```
 
-Power spectrum cosmetic operation
-```{r eval = FALSE}
-ps_cosm <- ps_cosmetic(ps)
-```
+![Example of power spectrum](Power_spectrum.png)
 
-Calculate rho, theta and dm using algorithm described in Pluzhnik (2005)
-```{r eval = FALSE}
-rho_theta_dm_ccd <- NONAME_FUNC(ps_cosm)
-```
-
-Find real rho and theta
-```{r eval = FALSE}
-rho_theta_dm <- zqt(rho_theta_dm_ccd)
-```
-
-![Power spectrum](Power_spectrum.png)
-
-## Scale calibration
