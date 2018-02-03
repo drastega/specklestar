@@ -21,7 +21,7 @@ using namespace Rcpp;
 NumericVector speckle_acf(NumericMatrix ps) {
 
   NumericMatrix acf(1024, 1024);
-  std::vector<std::complex<double>> data(513 * 1024);
+  std::vector<std::complex<double> > data(513 * 1024);
 
   for( int j = 0; j < 1024; j++ ){
     for( int i = 0; i < 513; i++ ){
