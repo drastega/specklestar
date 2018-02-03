@@ -21,7 +21,7 @@ using namespace Rcpp;
 //' # plot(as.cimg(mf))
 //' @export
 // [[Rcpp::export]]
-NumericMatrix middle_frame(String filename, NumericMatrix subtrahend, std::size_t threshold = 50000) {
+NumericVector middle_frame(String filename, NumericMatrix subtrahend, std::size_t threshold = 50000) {
   std::ifstream file(filename, std::ios::binary);
 
   file.seekg(0, std::ios::end);
