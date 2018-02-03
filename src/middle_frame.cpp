@@ -22,7 +22,7 @@ using namespace Rcpp;
 //' @export
 // [[Rcpp::export]]
 NumericVector middle_frame(String filename, NumericMatrix subtrahend, std::size_t threshold = 50000) {
-  std::ifstream file(filename, std::ios::binary);
+  std::ifstream file(filename.get_cstring(), std::ios::binary);
 
   file.seekg(0, std::ios::end);
   size_t file_length = file.tellg();
