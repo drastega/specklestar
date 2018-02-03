@@ -8,16 +8,3 @@ bool IsOverThresholdFrame(unsigned short *piData, unsigned short threshold)
 
     return false;
 }
-
-bool IsZeroFrame(unsigned short *piData) {
-  long sumData;
-
-  for(int i = 0; i < IMAGE_SIZE; i++) {
-//  if (piData[0] != 0) return false; ???
-    sumData += piData[i];
-  }
-    if (sumData == 0)
-      return true;
-
-    return false;
-}

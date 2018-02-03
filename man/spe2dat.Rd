@@ -13,7 +13,7 @@ spe2dat(SPE_file)
 Save converted dat file on the disk in the same folder.
 }
 \description{
-Convert SPE to dat
+Convert SPE to dat (i.e. removing 4100 byte SPE header)
 }
 \examples{
 # spe2dat(file.choose())
