@@ -5,14 +5,13 @@ NULL
 #--------------------------------------------------------------------------------
 #' SPE to dat converter
 #'
-#' Convert SPE to dat
+#' Convert SPE to dat (i.e. removing 4100 byte SPE header)
 #'
 #' @param SPE_file A string.
 #' @return Save converted dat file on the disk in the same folder.
 #' @examples
 #' # spe2dat(file.choose())
 #' @export
-# SPE to dat conversion (i.e. removing 4100 byte SPE header)
 spe2dat <- function(SPE_file) {
   dat_file <- tools::file_path_sans_ext(SPE_file)
   dat_file <- paste(dat_file, 'dat', sep = '.')
