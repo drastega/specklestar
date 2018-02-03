@@ -4,11 +4,9 @@
 #include <vector>
 #include <cstring>
 #include <math.h>
-#include "RcppArmadillo.h"
+#include <Rcpp.h>
 #include "image_helper.h"
 using namespace Rcpp;
-
-// [[Rcpp::depends(RcppArmadillo)]]
 
 //' Power spectrum calculation
 //'
@@ -62,12 +60,4 @@ NumericVector ps(String filename, NumericMatrix dark, NumericMatrix flat, std::s
   file.close();
 
   return outData;
-}
-
-// [[Rcpp::export]]
-arma::mat rcpparma_hello_world() {
-  arma::mat m1(5, 5, arma::fill::zeros);
-//  arma::mat m2 = arma::eye<arma::mat>(3, 3);
-  m1.submat(0, 0, 2, 2) = arma::ones(3, 3);
-  return m1;
 }

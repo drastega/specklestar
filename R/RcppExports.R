@@ -60,10 +60,6 @@ ps <- function(filename, dark, flat, threshold = 50000L) {
     .Call('_specklestar_ps', PACKAGE = 'specklestar', filename, dark, flat, threshold)
 }
 
-rcpparma_hello_world <- function() {
-    .Call('_specklestar_rcpparma_hello_world', PACKAGE = 'specklestar')
-}
-
 #' Autocorrelation function calculation
 #'
 #' Autocorrelation function of power spectrum
