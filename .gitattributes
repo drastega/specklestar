@@ -2,4 +2,5 @@
 .gitignore export-ignore
 src/.gitignore export-ignore
 .Rbuildignore export-ignore
-specklestar.txt
+specklestar.txt export-ignore
+R/speckle_binary.R export-ignore

@@ -22,6 +22,25 @@ middle_frame <- function(filename, subtrahend, threshold = 50000L) {
 
 #' Power spectrum calculation
 #'
+#' Power spectrum of the difference of neighboring frames
+#' in the series of speckle images
+#'
+#' @param filename A string.
+#' @param threshold An integer (default 50000).
+#' @return The 513 x 1024 double vector of power spectrum.
+#' @examples
+#' # pow_spec_diff <- ps_diff(file.choose())
+#'
+#' ## Plot
+#' # library(imageviewer)
+#' # imageviewer(pow_spec_diff)
+#' @export
+ps_diff <- function(filename, threshold = 50000L) {
+    .Call('_specklestar_ps_diff', PACKAGE = 'specklestar', filename, threshold)
+}
+
+#' Power spectrum calculation
+#'
 #' Power spectrum of the series of 512 x 512 speckle images
 #'
 #' @param filename A string.
@@ -39,25 +58,6 @@ middle_frame <- function(filename, subtrahend, threshold = 50000L) {
 #' @export
 ps <- function(filename, dark, flat, threshold = 50000L) {
     .Call('_specklestar_ps', PACKAGE = 'specklestar', filename, dark, flat, threshold)
-}
-
-#' Power spectrum calculation
-#'
-#' Power spectrum of the difference of neighboring frames
-#' in the series of speckle images
-#'
-#' @param filename A string.
-#' @param threshold An integer (default 50000).
-#' @return The 513 x 1024 double vector of power spectrum.
-#' @examples
-#' # pow_spec_diff <- ps_diff(file.choose())
-#'
-#' ## Plot
-#' # library(imageviewer)
-#' # imageviewer(pow_spec_diff)
-#' @export
-ps_diff <- function(filename, threshold = 50000L) {
-    .Call('_specklestar_ps_diff', PACKAGE = 'specklestar', filename, threshold)
 }
 
 #' Autocorrelation function calculation
