@@ -6,7 +6,7 @@
 using namespace Rcpp;
 
 // middle_frame
-NumericMatrix middle_frame(String filename, NumericMatrix subtrahend, std::size_t threshold);
+NumericVector middle_frame(String filename, NumericMatrix subtrahend, std::size_t threshold);
 RcppExport SEXP _specklestar_middle_frame(SEXP filenameSEXP, SEXP subtrahendSEXP, SEXP thresholdSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
