@@ -7,7 +7,9 @@
 speckle_frame(data_file = file.choose(), frame = 1)
 }
 \arguments{
-\item{filename}{A string.}
+\item{data_file}{A string.}
+
+\item{frame}{An integer.}
 }
 \value{
 NULL.
@@ -16,9 +18,9 @@ NULL.
 Ploting specified speckle frame from file
 }
 \examples{
-# Plot frame number 57 from file you choose
-speckle_frame(, 57) # no first argument here
-# the same
-speckle_frame(file.choose(), 57)
-speckle_frame(data_file = file.choose(), 57)
+## Plot frame number 57 from file you choose
+# speckle_frame(, 57) # no first argument here
+## the same
+# speckle_frame(file.choose(), 57)
+# speckle_frame(data_file = file.choose(), 57)
 }

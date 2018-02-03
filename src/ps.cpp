@@ -17,14 +17,15 @@ using namespace Rcpp;
 //' @param filename A string.
 //' @param dark 512 x 512 middle frame matrix.
 //' @param flat 512 x 512 middle flat field matrix.
+//' @param threshold An integer (default 50000).
 //' @return The 513 x 1024 double vector of power spectrum.
 //' @examples
-//' # Suppose we have midd_dark and midd_flat 512 x 512 matrices
-//' pow_spec <- ps(file.choose(), dark = midd_dark, flat = midd_flat)
+//' ## Suppose we have midd_dark and midd_flat 512 x 512 matrices
+//' # pow_spec <- ps(file.choose(), dark = midd_dark, flat = midd_flat)
 //'
-//' # Plot
-//' library(imageviewer)
-//' imageviewer(log10(pow_spec))
+//' ## Plot
+//' # library(imageviewer)
+//' # imageviewer(log10(pow_spec))
 //' @export
 // [[Rcpp::export]]
 NumericVector ps(String filename, NumericMatrix dark, NumericMatrix flat, std::size_t threshold = 50000) {

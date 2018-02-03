@@ -16,5 +16,5 @@ Save converted dat file on the disk in the same folder.
 Convert SPE to dat
 }
 \examples{
-spe2dat(file.choose())
+# spe2dat(file.choose())
 }

@@ -10,7 +10,7 @@ NULL
 #' @param SPE_file A string.
 #' @return Save converted dat file on the disk in the same folder.
 #' @examples
-#' spe2dat(file.choose())
+#' # spe2dat(file.choose())
 #' @export
 # SPE to dat conversion (i.e. removing 4100 byte SPE header)
 spe2dat <- function(SPE_file) {
@@ -30,8 +30,8 @@ spe2dat <- function(SPE_file) {
 #' @param start A number.
 #' @return The array of \code{n} frames.
 #' @examples
-#' n_frames(50) # take first 50 frames
-#' n_frames(15, 10) or
+#' # n_frames(50) # take first 50 frames
+#' # n_frames(15, 10) or
 #' @export
 n_frames <- function(n, start = 1) {
   input_file <- file.choose() # choose .dat file
@@ -47,10 +47,9 @@ n_frames <- function(n, start = 1) {
 #'
 #' Convert spool of speckle images to single .dat file
 #'
-#' @param dir A string.
 #' @return The .dat file.
 #' @examples
-#' spool_assemble(50)
+#' # spool_assemble(50)
 #' @export
 spool_assemble <- function(){
 

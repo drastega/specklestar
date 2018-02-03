@@ -11,11 +11,11 @@ using namespace Rcpp;
 //' @param ps 513 x 1024 power spectrum double matrix.
 //' @return The 513 x 1024 double matrix of ACF.
 //' @examples
-//' acf <- speckle_acf(ps)
+//' # acf <- speckle_acf(ps)
 //'
-//' # Plot
-//' library(imageviewer)
-//' imageviewer(log10(acf))
+//' ## Plot
+//' # library(imageviewer)
+//' # imageviewer(log10(acf))
 //' @export
 // [[Rcpp::export]]
 NumericVector speckle_acf(NumericMatrix ps) {

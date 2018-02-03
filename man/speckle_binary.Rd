@@ -8,7 +8,11 @@ speckle_binary(object_file = file.choose(), dark_file = file.choose(),
   flat_file = file.choose())
 }
 \arguments{
-\item{filename}{A string.}
+\item{object_file}{A string.}
+
+\item{dark_file}{A string.}
+
+\item{flat_file}{A string.}
 }
 \value{
 double vector of rho, theta and dm.
@@ -19,5 +23,5 @@ differenece between components of binary star
 from the series of speckle images
 }
 \examples{
-parameters <- speckle_binary()
+# parameters <- speckle_binary()
 }

@@ -14,13 +14,14 @@ using namespace Rcpp;
 //' in the series of speckle images
 //'
 //' @param filename A string.
+//' @param threshold An integer (default 50000).
 //' @return The 513 x 1024 double vector of power spectrum.
 //' @examples
-//' pow_spec_diff <- ps_diff(file.choose())
+//' # pow_spec_diff <- ps_diff(file.choose())
 //'
-//' # Plot
-//' library(imageviewer)
-//' imageviewer(pow_spec_diff)
+//' ## Plot
+//' # library(imageviewer)
+//' # imageviewer(pow_spec_diff)
 //' @export
 // [[Rcpp::export]]
 NumericVector ps_diff(String filename, std::size_t threshold = 50000) {

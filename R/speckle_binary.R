@@ -6,10 +6,12 @@ library(tidyverse)
 #' differenece between components of binary star
 #' from the series of speckle images
 #'
-#' @param filename A string.
+#' @param object_file A string.
+#' @param dark_file A string.
+#' @param flat_file A string.
 #' @return double vector of rho, theta and dm.
 #' @examples
-#' parameters <- speckle_binary()
+#' # parameters <- speckle_binary()
 #' @export
 speckle_binary <- function(object_file = file.choose(), dark_file = file.choose(), flat_file = file.choose()) {
 

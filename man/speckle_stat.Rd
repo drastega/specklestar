@@ -21,8 +21,8 @@ Calculate statistics of speckles in the series of 512 x 512
 speckle images and filter "bad" frames
 }
 \examples{
-spec_stat <- speckle_stat(file.choose())
+# spec_stat <- speckle_stat(file.choose())
 
-# Plot
-plot(speckle_stat$hist, type = 'l')
+## Plot
+# plot(speckle_stat$hist, type = 'l')
 }

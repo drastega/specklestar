@@ -6,9 +6,6 @@
 \usage{
 spool_assemble()
 }
-\arguments{
-\item{dir}{A string.}
-}
 \value{
 The .dat file.
 }
@@ -16,5 +13,5 @@ The .dat file.
 Convert spool of speckle images to single .dat file
 }
 \examples{
-spool_assemble(50)
+# spool_assemble(50)
 }

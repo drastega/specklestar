@@ -10,6 +10,8 @@ middle_frame(filename, subtrahend, threshold = 50000L)
 \item{filename}{A string.}
 
 \item{subtrahend}{512 x 512 matrix to subtract.}
+
+\item{threshold}{An integer (default 50000).}
 }
 \value{
 The 512 x 512 matrix of middle speckle image.
@@ -18,9 +20,9 @@ The 512 x 512 matrix of middle speckle image.
 Average image of the series of 512 x 512 px images
 }
 \examples{
-mf <- middle_frame(file.choose())
+# mf <- middle_frame(file.choose())
 
-# Plot
-library(imager)
-plot(as.cimg(mf))
+## Plot
+# library(imager)
+# plot(as.cimg(mf))
 }

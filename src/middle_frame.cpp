@@ -11,13 +11,14 @@ using namespace Rcpp;
 //'
 //' @param filename A string.
 //' @param subtrahend 512 x 512 matrix to subtract.
+//' @param threshold An integer (default 50000).
 //' @return The 512 x 512 matrix of middle speckle image.
 //' @examples
-//' mf <- middle_frame(file.choose())
+//' # mf <- middle_frame(file.choose())
 //'
-//' # Plot
-//' library(imager)
-//' plot(as.cimg(mf))
+//' ## Plot
+//' # library(imager)
+//' # plot(as.cimg(mf))
 //' @export
 // [[Rcpp::export]]
 NumericMatrix middle_frame(String filename, NumericMatrix subtrahend, std::size_t threshold = 50000) {

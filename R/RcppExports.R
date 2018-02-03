@@ -7,13 +7,14 @@
 #'
 #' @param filename A string.
 #' @param subtrahend 512 x 512 matrix to subtract.
+#' @param threshold An integer (default 50000).
 #' @return The 512 x 512 matrix of middle speckle image.
 #' @examples
-#' mf <- middle_frame(file.choose())
+#' # mf <- middle_frame(file.choose())
 #'
-#' # Plot
-#' library(imager)
-#' plot(as.cimg(mf))
+#' ## Plot
+#' # library(imager)
+#' # plot(as.cimg(mf))
 #' @export
 middle_frame <- function(filename, subtrahend, threshold = 50000L) {
     .Call('_specklestar_middle_frame', PACKAGE = 'specklestar', filename, subtrahend, threshold)
@@ -25,13 +26,14 @@ middle_frame <- function(filename, subtrahend, threshold = 50000L) {
 #' in the series of speckle images
 #'
 #' @param filename A string.
+#' @param threshold An integer (default 50000).
 #' @return The 513 x 1024 double vector of power spectrum.
 #' @examples
-#' pow_spec_diff <- ps_diff(file.choose())
+#' # pow_spec_diff <- ps_diff(file.choose())
 #'
-#' # Plot
-#' library(imageviewer)
-#' imageviewer(pow_spec_diff)
+#' ## Plot
+#' # library(imageviewer)
+#' # imageviewer(pow_spec_diff)
 #' @export
 ps_diff <- function(filename, threshold = 50000L) {
     .Call('_specklestar_ps_diff', PACKAGE = 'specklestar', filename, threshold)
@@ -44,14 +46,15 @@ ps_diff <- function(filename, threshold = 50000L) {
 #' @param filename A string.
 #' @param dark 512 x 512 middle frame matrix.
 #' @param flat 512 x 512 middle flat field matrix.
+#' @param threshold An integer (default 50000).
 #' @return The 513 x 1024 double vector of power spectrum.
 #' @examples
-#' # Suppose we have midd_dark and midd_flat 512 x 512 matrices
-#' pow_spec <- ps(file.choose(), dark = midd_dark, flat = midd_flat)
+#' ## Suppose we have midd_dark and midd_flat 512 x 512 matrices
+#' # pow_spec <- ps(file.choose(), dark = midd_dark, flat = midd_flat)
 #'
-#' # Plot
-#' library(imageviewer)
-#' imageviewer(log10(pow_spec))
+#' ## Plot
+#' # library(imageviewer)
+#' # imageviewer(log10(pow_spec))
 #' @export
 ps <- function(filename, dark, flat, threshold = 50000L) {
     .Call('_specklestar_ps', PACKAGE = 'specklestar', filename, dark, flat, threshold)
@@ -68,11 +71,11 @@ rcpparma_hello_world <- function() {
 #' @param ps 513 x 1024 power spectrum double matrix.
 #' @return The 513 x 1024 double matrix of ACF.
 #' @examples
-#' acf <- speckle_acf(ps)
+#' # acf <- speckle_acf(ps)
 #'
-#' # Plot
-#' library(imageviewer)
-#' imageviewer(log10(acf))
+#' ## Plot
+#' # library(imageviewer)
+#' # imageviewer(log10(acf))
 #' @export
 speckle_acf <- function(ps) {
     .Call('_specklestar_speckle_acf', PACKAGE = 'specklestar', ps)
@@ -94,14 +97,15 @@ speckle_acf <- function(ps) {
 #' Details here.
 #' @return The vector of model speckle image.
 #' @examples
-#' # Generate speckle image of binary star with
-#' # 7 parameters
-#' speckle_vector <- speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000, m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
-#' speckle_matrix <- matrix(speckle_vector, nrow = 512, ncol = 512)
+#' ## Generate speckle image of binary star with
+#' ## 7 parameters
+#' # speckle_vector <- speckle_generator(seeing = 30, speckle_sigma = 1,
+#' # m1 = 1000, m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
+#' # peckle_matrix <- matrix(speckle_vector, nrow = 512, ncol = 512)
 #'
-#' # Plot result
-#' library(imager)
-#' plot(as.cimg(speckle_matrix))
+#' ## Plot result
+#' # library(imager)
+#' # plot(as.cimg(speckle_matrix))
 #' @export
 speckle_generator <- function(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind) {
     .Call('_specklestar_speckle_generator', PACKAGE = 'specklestar', seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind)
@@ -118,10 +122,10 @@ speckle_generator <- function(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind)
 #' 1 number of bad frames, \cr
 #' 2 double vector of speckle statistics.
 #' @examples
-#' spec_stat <- speckle_stat(file.choose())
+#' # spec_stat <- speckle_stat(file.choose())
 #'
-#' # Plot
-#' plot(speckle_stat$hist, type = 'l')
+#' ## Plot
+#' # plot(speckle_stat$hist, type = 'l')
 #' @export
 speckle_stat <- function(filename, threshold = 50000L) {
     .Call('_specklestar_speckle_stat', PACKAGE = 'specklestar', filename, threshold)

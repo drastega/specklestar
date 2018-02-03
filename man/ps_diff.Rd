@@ -8,6 +8,8 @@ ps_diff(filename, threshold = 50000L)
 }
 \arguments{
 \item{filename}{A string.}
+
+\item{threshold}{An integer (default 50000).}
 }
 \value{
 The 513 x 1024 double vector of power spectrum.
@@ -17,9 +19,9 @@ Power spectrum of the difference of neighboring frames
 in the series of speckle images
 }
 \examples{
-pow_spec_diff <- ps_diff(file.choose())
+# pow_spec_diff <- ps_diff(file.choose())
 
-# Plot
-library(imageviewer)
-imageviewer(pow_spec_diff)
+## Plot
+# library(imageviewer)
+# imageviewer(pow_spec_diff)
 }

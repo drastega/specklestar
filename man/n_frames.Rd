@@ -19,6 +19,6 @@ Take N frames from series of 512 x 512 speckle images
 and write to separate binary file.
 }
 \examples{
-n_frames(50) # take first 50 frames
-n_frames(15, 10) or
+# n_frames(50) # take first 50 frames
+# n_frames(15, 10) or
 }
