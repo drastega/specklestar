@@ -14,7 +14,8 @@ using namespace Rcpp;
 //' @param threshold An integer (default 50000).
 //' @return The 512 x 512 matrix of middle speckle image.
 //' @examples
-//' # mf <- middle_frame(file.choose())
+//' # zero_matrix <- matrix(0, 512, 512)
+//' # mf <- middle_frame(file.choose(), subtrahend = zero_matrix)
 //'
 //' ## Plot
 //' # library(imager)

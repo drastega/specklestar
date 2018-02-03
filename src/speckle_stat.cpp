@@ -23,7 +23,7 @@ using namespace Rcpp;
 //' @export
 // [[Rcpp::export]]
 List speckle_stat(String filename, std::size_t threshold = 50000) {
-  std::ifstream file(filename, std::ios::binary);
+  std::ifstream file(filename.get_cstring(), std::ios::binary);
   file.seekg(0, std::ios::end);
   size_t file_length = file.tellg();
   int N_frame = file_length / (sizeof(unsigned short) * IMAGE_SIZE);

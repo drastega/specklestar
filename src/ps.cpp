@@ -28,7 +28,7 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 NumericVector ps(String filename, NumericMatrix dark, NumericMatrix flat, std::size_t threshold = 50000) {
 
-  std::ifstream file(filename, std::ios::binary);
+  std::ifstream file(filename.get_cstring(), std::ios::binary);
   file.seekg(0, std::ios::end);
   size_t file_length = file.tellg();
   file.seekg(0, std::ios::beg);

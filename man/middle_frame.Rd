@@ -20,7 +20,8 @@ The 512 x 512 matrix of middle speckle image.
 Average image of the series of 512 x 512 px images
 }
 \examples{
-# mf <- middle_frame(file.choose())
+# zero_matrix <- matrix(0, 512, 512)
+# mf <- middle_frame(file.choose(), subtrahend = zero_matrix)
 
 ## Plot
 # library(imager)
