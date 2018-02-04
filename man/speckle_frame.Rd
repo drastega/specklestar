@@ -12,7 +12,7 @@ speckle_frame(data_file = file.choose(), frame = 1)
 \item{frame}{An integer.}
 }
 \value{
-NULL.
+512 x 512 matrix with given frame
 }
 \description{
 Ploting specified speckle frame from file
