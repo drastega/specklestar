@@ -30,19 +30,26 @@ dark_filename <- file.choose() # Choose file with dark frames
 dark_stat <- speckle_stat(dark_filename)
 ```
 
+Calculate statistics for flat file
+```{r eval = FALSE}
+flat_filename <- file.choose() # Choose file with flat field frames
+flat_stat <- speckle_stat(flat_filename)
+```
+
 Calculate average dark frame
 ```{r eval = FALSE}
-mid_dark <- middle_frame(filename = dark_filename, stat = dark_stat)
+zero_matrix <- matrix(0, 512, 512)
+mid_dark <- middle_frame(filename = dark_filename, subtrahend = zero_matrix)
 ```
 
 Calculate average flat field frame with average dark subtraction
 ```{r eval = FALSE}
-mid_flat <- middle_frame(filename = file.choose() , dark = mid_dark) # Choose file with flat fields
+mid_flat <- middle_frame(flat_filename, subtrahend = mid_dark)
 ```
 
 Calculate power spectrum with subtraction of neighboring frame
 ```{r eval = FALSE}
-ps_diff <- ps(obj_filename, dark = NULL, flat = NULL, diff = 1)
+ps_diff <- ps_diff(obj_filename)
 ```
 
 Calculate acf
@@ -52,7 +59,7 @@ acf <- speckle_acf(ps_diff)
 
 Calculate power spectrum
 ```{r eval = FALSE}
-ps <- ps(obj_filename, dark = mid_dark, flat = mid_flat, diff = 0) # include stats
+ps <- ps(obj_filename, dark = mid_dark, flat = mid_flat)
 ```
 
 ![Example of power spectrum](Power_spectrum.png)
