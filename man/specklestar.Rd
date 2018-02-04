@@ -6,11 +6,6 @@
 \alias{specklestar-package}
 \title{specklestar: A package for reduction of speckle data.}
 \description{
-The specklestar package provides three categories of important functions:
-foo, bar and baz.
+The specklestar package provides functions for obtaining
+power spectrum and autocorrelation function from speckle data.
 }
-\section{Foo functions}{
-
-The foo functions ...
-}
-
