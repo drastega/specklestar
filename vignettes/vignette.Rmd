@@ -62,5 +62,6 @@ Calculate power spectrum
 ps <- ps(obj_filename, dark = mid_dark, flat = mid_flat)
 ```
 
-![Example of power spectrum](Power_spectrum.png)
-
+```{r, echo = FALSE, out.width = "400px", fig.cap = "Fig. 1. Power spectrum of star ADS 15182 in 550/20 nm band."}
+knitr::include_graphics("Power_spectrum.png")
+```
