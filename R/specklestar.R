@@ -8,6 +8,8 @@
 #'
 #' @docType package
 #' @name specklestar
+#'
+#' @import fftw
 NULL
 
 options(device = "quartz") # For OSX only
