@@ -18,9 +18,9 @@ speckle_frame(data_file = file.choose(), frame = 1)
 Ploting specified speckle frame from file
 }
 \examples{
-## Plot frame number 57 from file you choose
-# speckle_frame(, 57) # no first argument here
+## Read frame number 57 from file you choose
+# frame57 <- speckle_frame(, 57) # no first argument here
 ## the same
-# speckle_frame(file.choose(), 57)
-# speckle_frame(data_file = file.choose(), 57)
+# frame57 <- speckle_frame(file.choose(), 57)
+# frame57 <- speckle_frame(data_file = file.choose(), 57)
 }

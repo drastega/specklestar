@@ -6,11 +6,11 @@
 #' @param frame An integer.
 #' @return 512 x 512 matrix with given frame
 #' @examples
-#' ## Plot frame number 57 from file you choose
-#' # speckle_frame(, 57) # no first argument here
+#' ## Read frame number 57 from file you choose
+#' # frame57 <- speckle_frame(, 57) # no first argument here
 #' ## the same
-#' # speckle_frame(file.choose(), 57)
-#' # speckle_frame(data_file = file.choose(), 57)
+#' # frame57 <- speckle_frame(file.choose(), 57)
+#' # frame57 <- speckle_frame(data_file = file.choose(), 57)
 #' @export
 speckle_frame <- function(data_file = file.choose(), frame = 1) {
   tmp_file <- tools::file_path_sans_ext(data_file)

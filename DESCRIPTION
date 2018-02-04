@@ -9,14 +9,13 @@ URL: https://drastega.github.io/docs/specklestar_vignette.html
 BugReports: https://github.com/drastega/specklestar/issues
 Depends: R (>= 3.4.2)
 Imports:
-    imager,
-    tidyverse,
     Rcpp,
-    mrbsizeR,
-    ff,
     fftw
 Suggests:
+    imager,
+    tidyverse,
     rgl,
+    mrbsizeR,
     knitr,
     rmarkdown
 License: GPL-2
