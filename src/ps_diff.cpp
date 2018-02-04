@@ -24,12 +24,12 @@ using namespace Rcpp;
 //' # imageviewer(pow_spec_diff)
 //' @export
 // [[Rcpp::export]]
-NumericVector ps_diff(String filename, std::size_t threshold = 50000) {
-  size_t frameSize = IMAGE_SIZE * sizeof(unsigned short);
+NumericVector ps_diff(String filename, int threshold = 50000) {
+  long frameSize = IMAGE_SIZE * sizeof(unsigned short);
 
   std::ifstream file(filename.get_cstring(), std::ios::binary);
   file.seekg(0, std::ios::end);
-  size_t file_length = file.tellg();
+  long file_length = file.tellg();
   file.seekg(0, std::ios::beg);
 
   NumericMatrix outData(513, 1024);

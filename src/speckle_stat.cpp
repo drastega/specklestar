@@ -22,10 +22,10 @@ using namespace Rcpp;
 //' # plot(speckle_stat$hist, type = 'l')
 //' @export
 // [[Rcpp::export]]
-List speckle_stat(String filename, std::size_t threshold = 50000) {
+List speckle_stat(String filename, int threshold = 50000) {
   std::ifstream file(filename.get_cstring(), std::ios::binary);
   file.seekg(0, std::ios::end);
-  size_t file_length = file.tellg();
+  long file_length = file.tellg();
   int N_frame = file_length / (sizeof(unsigned short) * IMAGE_SIZE);
   file.seekg(0, std::ios::beg);
 

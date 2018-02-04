@@ -22,11 +22,11 @@ using namespace Rcpp;
 //' # plot(as.cimg(mf))
 //' @export
 // [[Rcpp::export]]
-NumericVector middle_frame(String filename, NumericMatrix subtrahend, std::size_t threshold = 50000) {
+NumericVector middle_frame(String filename, NumericMatrix subtrahend, int threshold = 50000) {
   std::ifstream file(filename.get_cstring(), std::ios::binary);
 
   file.seekg(0, std::ios::end);
-  size_t file_length = file.tellg();
+  long file_length = file.tellg();
   int N_frame = file_length / (sizeof(unsigned short) * IMAGE_SIZE);
 
   unsigned short piData[IMAGE_SIZE];

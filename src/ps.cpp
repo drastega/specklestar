@@ -26,11 +26,11 @@ using namespace Rcpp;
 //' # imageviewer(log10(pow_spec))
 //' @export
 // [[Rcpp::export]]
-NumericVector ps(String filename, NumericMatrix dark, NumericMatrix flat, std::size_t threshold = 50000) {
+NumericVector ps(String filename, NumericMatrix dark, NumericMatrix flat, int threshold = 50000) {
 
   std::ifstream file(filename.get_cstring(), std::ios::binary);
   file.seekg(0, std::ios::end);
-  size_t file_length = file.tellg();
+  long file_length = file.tellg();
   file.seekg(0, std::ios::beg);
 
   int N_frame = file_length / (IMAGE_SIZE * sizeof(unsigned short));

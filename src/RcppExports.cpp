@@ -6,32 +6,32 @@
 using namespace Rcpp;
 
 // middle_frame
-NumericVector middle_frame(String filename, NumericMatrix subtrahend, std::size_t threshold);
+NumericVector middle_frame(String filename, NumericMatrix subtrahend, int threshold);
 RcppExport SEXP _specklestar_middle_frame(SEXP filenameSEXP, SEXP subtrahendSEXP, SEXP thresholdSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< String >::type filename(filenameSEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type subtrahend(subtrahendSEXP);
-    Rcpp::traits::input_parameter< std::size_t >::type threshold(thresholdSEXP);
+    Rcpp::traits::input_parameter< int >::type threshold(thresholdSEXP);
     rcpp_result_gen = Rcpp::wrap(middle_frame(filename, subtrahend, threshold));
     return rcpp_result_gen;
 END_RCPP
 }
 // ps_diff
-NumericVector ps_diff(String filename, std::size_t threshold);
+NumericVector ps_diff(String filename, int threshold);
 RcppExport SEXP _specklestar_ps_diff(SEXP filenameSEXP, SEXP thresholdSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< String >::type filename(filenameSEXP);
-    Rcpp::traits::input_parameter< std::size_t >::type threshold(thresholdSEXP);
+    Rcpp::traits::input_parameter< int >::type threshold(thresholdSEXP);
     rcpp_result_gen = Rcpp::wrap(ps_diff(filename, threshold));
     return rcpp_result_gen;
 END_RCPP
 }
 // ps
-NumericVector ps(String filename, NumericMatrix dark, NumericMatrix flat, std::size_t threshold);
+NumericVector ps(String filename, NumericMatrix dark, NumericMatrix flat, int threshold);
 RcppExport SEXP _specklestar_ps(SEXP filenameSEXP, SEXP darkSEXP, SEXP flatSEXP, SEXP thresholdSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -39,7 +39,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< String >::type filename(filenameSEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type dark(darkSEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type flat(flatSEXP);
-    Rcpp::traits::input_parameter< std::size_t >::type threshold(thresholdSEXP);
+    Rcpp::traits::input_parameter< int >::type threshold(thresholdSEXP);
     rcpp_result_gen = Rcpp::wrap(ps(filename, dark, flat, threshold));
     return rcpp_result_gen;
 END_RCPP
@@ -73,13 +73,13 @@ BEGIN_RCPP
 END_RCPP
 }
 // speckle_stat
-List speckle_stat(String filename, std::size_t threshold);
+List speckle_stat(String filename, int threshold);
 RcppExport SEXP _specklestar_speckle_stat(SEXP filenameSEXP, SEXP thresholdSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< String >::type filename(filenameSEXP);
-    Rcpp::traits::input_parameter< std::size_t >::type threshold(thresholdSEXP);
+    Rcpp::traits::input_parameter< int >::type threshold(thresholdSEXP);
     rcpp_result_gen = Rcpp::wrap(speckle_stat(filename, threshold));
     return rcpp_result_gen;
 END_RCPP
