@@ -6,5 +6,5 @@ bool IsOverThresholdFrame(unsigned short *piData, unsigned short threshold)
     if (piData[i] > threshold)
       return true;
 
-    return false;
+  return false;
 }
