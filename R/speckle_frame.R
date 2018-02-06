@@ -7,9 +7,9 @@
 #' @return 512 x 512 matrix with given frame
 #' @examples
 #' ## On Unix-like operating systems only
-#' ## Read frame number 3 from file
-#' # obj_filename <- system.file("extdata", "ads15182_550_5_frames.dat", package = "specklestar")
-#' # frame3 <- speckle_frame(obj_filename, 3)
+#' ## Read frame number 2 from file
+#' # obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
+#' # frame3 <- speckle_frame(obj_filename, 2)
 #' @export
 speckle_frame <- function(data_file = file.choose(), frame = 1) {
   tmp_file <- tools::file_path_sans_ext(data_file)

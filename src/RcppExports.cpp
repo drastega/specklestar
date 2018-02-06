@@ -46,6 +46,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// speckle_ps_diff
+NumericVector speckle_ps_diff(String filename, int threshold);
+RcppExport SEXP _specklestar_speckle_ps_diff(SEXP filenameSEXP, SEXP thresholdSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< String >::type filename(filenameSEXP);
+    Rcpp::traits::input_parameter< int >::type threshold(thresholdSEXP);
+    rcpp_result_gen = Rcpp::wrap(speckle_ps_diff(filename, threshold));
+    return rcpp_result_gen;
+END_RCPP
+}
 // speckle_ps
 NumericVector speckle_ps(String filename, NumericMatrix dark, NumericMatrix flat, int threshold);
 RcppExport SEXP _specklestar_speckle_ps(SEXP filenameSEXP, SEXP darkSEXP, SEXP flatSEXP, SEXP thresholdSEXP) {
@@ -57,18 +69,6 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericMatrix >::type flat(flatSEXP);
     Rcpp::traits::input_parameter< int >::type threshold(thresholdSEXP);
     rcpp_result_gen = Rcpp::wrap(speckle_ps(filename, dark, flat, threshold));
-    return rcpp_result_gen;
-END_RCPP
-}
-// speckle_ps_diff
-NumericVector speckle_ps_diff(String filename, int threshold);
-RcppExport SEXP _specklestar_speckle_ps_diff(SEXP filenameSEXP, SEXP thresholdSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< String >::type filename(filenameSEXP);
-    Rcpp::traits::input_parameter< int >::type threshold(thresholdSEXP);
-    rcpp_result_gen = Rcpp::wrap(speckle_ps_diff(filename, threshold));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -89,8 +89,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_specklestar_middle_frame", (DL_FUNC) &_specklestar_middle_frame, 3},
     {"_specklestar_speckle_acf", (DL_FUNC) &_specklestar_speckle_acf, 1},
     {"_specklestar_speckle_generator", (DL_FUNC) &_specklestar_speckle_generator, 7},
-    {"_specklestar_speckle_ps", (DL_FUNC) &_specklestar_speckle_ps, 4},
     {"_specklestar_speckle_ps_diff", (DL_FUNC) &_specklestar_speckle_ps_diff, 2},
+    {"_specklestar_speckle_ps", (DL_FUNC) &_specklestar_speckle_ps, 4},
     {"_specklestar_speckle_stat", (DL_FUNC) &_specklestar_speckle_stat, 2},
     {NULL, NULL, 0}
 };

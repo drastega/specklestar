@@ -17,7 +17,8 @@ using namespace Rcpp;
 //' Details here.
 //' @return The vector of model speckle image.
 //' @examples
-//' speckle_vector <- speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000, m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
+//' speckle_vector <- speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000,
+//' m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
 //' speckle_matrix <- matrix(speckle_vector, nrow = 512, ncol = 512)
 //' @export
 // [[Rcpp::export]]

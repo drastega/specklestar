@@ -11,7 +11,7 @@ using namespace Rcpp;
 //' @param ps 513 x 1024 power spectrum double matrix.
 //' @return The 513 x 1024 double matrix of ACF.
 //' @examples
-//' obj_filename <- system.file("extdata", "ads15182_550_5_frames.dat", package = "specklestar")
+//' obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
 //' pow_spec_diff <- speckle_ps_diff(obj_filename)
 //' acf <- speckle_acf(pow_spec_diff)
 //' @export

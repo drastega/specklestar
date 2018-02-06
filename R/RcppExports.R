@@ -10,7 +10,7 @@
 #' @param threshold An integer (default 50000).
 #' @return The 512 x 512 matrix of middle speckle image.
 #' @examples
-#' obj_filename <- system.file("extdata", "ads15182_550_5_frames.dat", package = "specklestar")
+#' obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
 #' zero_matrix <- matrix(0, 512, 512)
 #' mf <- middle_frame(obj_filename, subtrahend = zero_matrix)
 #' @export
@@ -25,7 +25,7 @@ middle_frame <- function(filename, subtrahend, threshold = 50000L) {
 #' @param ps 513 x 1024 power spectrum double matrix.
 #' @return The 513 x 1024 double matrix of ACF.
 #' @examples
-#' obj_filename <- system.file("extdata", "ads15182_550_5_frames.dat", package = "specklestar")
+#' obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
 #' pow_spec_diff <- speckle_ps_diff(obj_filename)
 #' acf <- speckle_acf(pow_spec_diff)
 #' @export
@@ -49,11 +49,28 @@ speckle_acf <- function(ps) {
 #' Details here.
 #' @return The vector of model speckle image.
 #' @examples
-#' speckle_vector <- speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000, m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
+#' speckle_vector <- speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000,
+#' m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
 #' speckle_matrix <- matrix(speckle_vector, nrow = 512, ncol = 512)
 #' @export
 speckle_generator <- function(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind) {
     .Call('_specklestar_speckle_generator', PACKAGE = 'specklestar', seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind)
+}
+
+#' Power spectrum calculation
+#'
+#' Power spectrum of the difference of neighboring frames
+#' in the series of speckle images
+#'
+#' @param filename A string.
+#' @param threshold An integer (default 50000).
+#' @return The 513 x 1024 double vector of power spectrum.
+#' @examples
+#' obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
+#' pow_spec_diff <- speckle_ps_diff(obj_filename)
+#' @export
+speckle_ps_diff <- function(filename, threshold = 50000L) {
+    .Call('_specklestar_speckle_ps_diff', PACKAGE = 'specklestar', filename, threshold)
 }
 
 #' Power spectrum calculation
@@ -66,29 +83,13 @@ speckle_generator <- function(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind)
 #' @param threshold An integer (default 50000).
 #' @return The 513 x 1024 double vector of power spectrum.
 #' @examples
-#' obj_filename <- system.file("extdata", "ads15182_550_5_frames.dat", package = "specklestar")
+#' obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
 #' midd_dark <- matrix(0, 512, 512)
 #' midd_flat <- matrix(1, 512, 512)
 #' pow_spec <- speckle_ps(obj_filename, dark = midd_dark, flat = midd_flat)
 #' @export
 speckle_ps <- function(filename, dark, flat, threshold = 50000L) {
     .Call('_specklestar_speckle_ps', PACKAGE = 'specklestar', filename, dark, flat, threshold)
-}
-
-#' Power spectrum calculation
-#'
-#' Power spectrum of the difference of neighboring frames
-#' in the series of speckle images
-#'
-#' @param filename A string.
-#' @param threshold An integer (default 50000).
-#' @return The 513 x 1024 double vector of power spectrum.
-#' @examples
-#' obj_filename <- system.file("extdata", "ads15182_550_5_frames.dat", package = "specklestar")
-#' pow_spec_diff <- speckle_ps_diff(obj_filename)
-#' @export
-speckle_ps_diff <- function(filename, threshold = 50000L) {
-    .Call('_specklestar_speckle_ps_diff', PACKAGE = 'specklestar', filename, threshold)
 }
 
 #' Statistics of speckles
@@ -102,7 +103,7 @@ speckle_ps_diff <- function(filename, threshold = 50000L) {
 #' 1 number of bad frames, \cr
 #' 2 double vector of speckle statistics.
 #' @examples
-#' obj_filename <- system.file("extdata", "ads15182_550_5_frames.dat", package = "specklestar")
+#' obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
 #' spec_stat <- speckle_stat(obj_filename)
 #' @export
 speckle_stat <- function(filename, threshold = 50000L) {

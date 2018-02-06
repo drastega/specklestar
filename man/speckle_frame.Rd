@@ -19,7 +19,7 @@ Get specified speckle frame as matrix from file
 }
 \examples{
 ## On Unix-like operating systems only
-## Read frame number 3 from file
-# obj_filename <- system.file("extdata", "ads15182_550_5_frames.dat", package = "specklestar")
-# frame3 <- speckle_frame(obj_filename, 3)
+## Read frame number 2 from file
+# obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
+# frame3 <- speckle_frame(obj_filename, 2)
 }
