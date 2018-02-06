@@ -16,10 +16,8 @@ using namespace Rcpp;
 //' 1 number of bad frames, \cr
 //' 2 double vector of speckle statistics.
 //' @examples
-//' # spec_stat <- speckle_stat(file.choose())
-//'
-//' ## Plot
-//' # plot(speckle_stat$hist, type = 'l')
+//' obj_filename <- system.file("extdata", "ads15182_550_5_frames.dat", package = "specklestar")
+//' spec_stat <- speckle_stat(obj_filename)
 //' @export
 // [[Rcpp::export]]
 List speckle_stat(String filename, int threshold = 50000) {

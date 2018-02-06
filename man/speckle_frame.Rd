@@ -2,7 +2,7 @@
 % Please edit documentation in R/speckle_frame.R
 \name{speckle_frame}
 \alias{speckle_frame}
-\title{Plot selected speckle frame}
+\title{Get selected speckle frame}
 \usage{
 speckle_frame(data_file = file.choose(), frame = 1)
 }
@@ -15,12 +15,10 @@ speckle_frame(data_file = file.choose(), frame = 1)
 512 x 512 matrix with given frame
 }
 \description{
-Ploting specified speckle frame from file
+Get specified speckle frame as matrix from file
 }
 \examples{
-## Read frame number 57 from file you choose
-# frame57 <- speckle_frame(, 57) # no first argument here
-## the same
-# frame57 <- speckle_frame(file.choose(), 57)
-# frame57 <- speckle_frame(data_file = file.choose(), 57)
+# Read frame number 3 from file
+obj_filename <- system.file("extdata", "ads15182_550_5_frames.dat", package = "specklestar")
+frame3 <- speckle_frame(obj_filename, 3)
 }

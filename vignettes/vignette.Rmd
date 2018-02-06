@@ -49,7 +49,7 @@ mid_flat <- middle_frame(flat_filename, subtrahend = mid_dark)
 
 Calculate power spectrum with subtraction of neighboring frame
 ```{r eval = FALSE}
-ps_diff <- ps_diff(obj_filename)
+ps_diff <- speckle_ps_diff(obj_filename)
 ```
 
 Calculate acf
@@ -59,7 +59,7 @@ acf <- speckle_acf(ps_diff)
 
 Calculate power spectrum
 ```{r eval = FALSE}
-ps <- ps(obj_filename, dark = mid_dark, flat = mid_flat)
+ps <- speckle_ps(obj_filename, dark = mid_dark, flat = mid_flat)
 ```
 
 ```{r, echo = FALSE, out.width = "400px", fig.cap = "Fig. 1. Power spectrum of star ADS 15182 in 550/20 nm band."}

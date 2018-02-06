@@ -21,8 +21,6 @@ Calculate statistics of speckles in the series of 512 x 512
 speckle images and filter "bad" frames
 }
 \examples{
-# spec_stat <- speckle_stat(file.choose())
-
-## Plot
-# plot(speckle_stat$hist, type = 'l')
+obj_filename <- system.file("extdata", "ads15182_550_5_frames.dat", package = "specklestar")
+spec_stat <- speckle_stat(obj_filename)
 }

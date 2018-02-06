@@ -16,9 +16,7 @@ The 513 x 1024 double matrix of ACF.
 Autocorrelation function of power spectrum
 }
 \examples{
-# acf <- speckle_acf(ps)
-
-## Plot
-# library(imageviewer)
-# imageviewer(log10(acf))
+obj_filename <- system.file("extdata", "ads15182_550_5_frames.dat", package = "specklestar")
+pow_spec_diff <- speckle_ps_diff(obj_filename)
+acf <- speckle_acf(pow_spec_diff)
 }

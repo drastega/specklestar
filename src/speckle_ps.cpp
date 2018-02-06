@@ -18,15 +18,13 @@ using namespace Rcpp;
 //' @param threshold An integer (default 50000).
 //' @return The 513 x 1024 double vector of power spectrum.
 //' @examples
-//' ## Suppose we have midd_dark and midd_flat 512 x 512 matrices
-//' # pow_spec <- ps(file.choose(), dark = midd_dark, flat = midd_flat)
-//'
-//' ## Plot
-//' # library(imageviewer)
-//' # imageviewer(log10(pow_spec))
+//' obj_filename <- system.file("extdata", "ads15182_550_5_frames.dat", package = "specklestar")
+//' midd_dark <- matrix(0, 512, 512)
+//' midd_flat <- matrix(1, 512, 512)
+//' pow_spec <- speckle_ps(obj_filename, dark = midd_dark, flat = midd_flat)
 //' @export
 // [[Rcpp::export]]
-NumericVector ps(String filename, NumericMatrix dark, NumericMatrix flat, int threshold = 50000) {
+NumericVector speckle_ps(String filename, NumericMatrix dark, NumericMatrix flat, int threshold = 50000) {
 
   std::ifstream file(filename.get_cstring(), std::ios::binary);
   file.seekg(0, std::ios::end);

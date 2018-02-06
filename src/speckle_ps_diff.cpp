@@ -17,14 +17,11 @@ using namespace Rcpp;
 //' @param threshold An integer (default 50000).
 //' @return The 513 x 1024 double vector of power spectrum.
 //' @examples
-//' # pow_spec_diff <- ps_diff(file.choose())
-//'
-//' ## Plot
-//' # library(imageviewer)
-//' # imageviewer(pow_spec_diff)
+//' obj_filename <- system.file("extdata", "ads15182_550_5_frames.dat", package = "specklestar")
+//' pow_spec_diff <- speckle_ps_diff(obj_filename)
 //' @export
 // [[Rcpp::export]]
-NumericVector ps_diff(String filename, int threshold = 50000) {
+NumericVector speckle_ps_diff(String filename, int threshold = 50000) {
   long frameSize = IMAGE_SIZE * sizeof(unsigned short);
 
   std::ifstream file(filename.get_cstring(), std::ios::binary);
