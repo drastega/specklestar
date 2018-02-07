@@ -20,7 +20,7 @@ Get specified speckle frame as matrix from file
 \examples{
 \dontrun{
 # On Unix-like operating systems only
-# Read frame number 2 from file
+# Read frame number 2 from file to matrix
 obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
 frame2 <- speckle_frame(obj_filename, 2)
 }

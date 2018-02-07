@@ -16,7 +16,6 @@
 #' @export
 spe2dat <- function(SPE_file = file.choose(), dat_file) {
   system(sprintf("dd if=%s of=%s bs=4100 skip=1", SPE_file, dat_file))
-  print(dat_file)
 }
 
 #-------------------------------------------------------------------------------
@@ -40,5 +39,4 @@ spe2dat <- function(SPE_file = file.choose(), dat_file) {
 n_frames <- function(input_file = file.choose(), output_file, n, from = 1) {
   system(sprintf("dd if=%s of=%s bs=524288 count=%d skip=%d",
                  input_file, output_file, n, (from - 1)))
-  print(output_file)
 }
