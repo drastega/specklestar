@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 ```
 
 ## Workflow for reduction of speckle interferometric binary stars
+For reduction of speckle images of binary and multiple stars we use algorithm described in paper [Pluzhnik (2005)](https://www.aanda.org/articles/aa/pdf/2005/08/aa1158.pdf).
 
 Calculate statistics for object file
 ```{r eval = FALSE}

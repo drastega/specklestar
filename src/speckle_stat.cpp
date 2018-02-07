@@ -10,8 +10,8 @@ using namespace Rcpp;
 //' Calculate statistics of speckles in the series of 512 x 512
 //' speckle images and filter "bad" frames
 //'
-//' @param filename A string with name of file.
-//' @param threshold Int.
+//' @param filename a character string with the path name to a file.
+//' @param threshold an integer (default is 50000).
 //' @return The list with 2 elements 'badFrames' and 'hist': \cr
 //' 1 number of bad frames, \cr
 //' 2 double vector of speckle statistics.

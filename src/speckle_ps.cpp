@@ -12,11 +12,11 @@ using namespace Rcpp;
 //'
 //' Power spectrum of the series of 512 x 512 speckle images
 //'
-//' @param filename A string.
+//' @param filename a character string with the path name to a file.
 //' @param dark 512 x 512 middle frame matrix.
 //' @param flat 512 x 512 middle flat field matrix.
-//' @param threshold An integer (default 50000).
-//' @return The 513 x 1024 double vector of power spectrum.
+//' @param threshold an integer (default is 50000).
+//' @return The 513 x 1024 double matrix of power spectrum.
 //' @examples
 //' obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
 //' midd_dark <- matrix(0, 512, 512)

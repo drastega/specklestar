@@ -13,9 +13,9 @@ using namespace Rcpp;
 //' Power spectrum of the difference of neighboring frames
 //' in the series of speckle images
 //'
-//' @param filename A string.
-//' @param threshold An integer (default 50000).
-//' @return The 513 x 1024 double vector of power spectrum.
+//' @param filename a character string with the path name to a file.
+//' @param threshold an integer (default is 50000).
+//' @return The 513 x 1024 double matrix of power spectrum.
 //' @examples
 //' obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
 //' pow_spec_diff <- speckle_ps_diff(obj_filename)

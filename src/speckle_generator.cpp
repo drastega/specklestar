@@ -5,16 +5,13 @@ using namespace Rcpp;
 //'
 //' Generate model 512 x 512 x 2 (bytes) speckle image of binary star
 //'
-//' @param seeing A number.
-//' @param speckle_sigma A number.
-//' @param m1 A number.
-//' @param m2 A number.
-//' @param rho_x A number.
-//' @param rho_y A number.
-//' @param wind A number.
-//' @section Details:
-//' Details here.
-//' Details here.
+//' @param seeing a number.
+//' @param speckle_sigma a number.
+//' @param m1 a number.
+//' @param m2 a number.
+//' @param rho_x a number.
+//' @param rho_y a number.
+//' @param wind a number.
 //' @return The vector of model speckle image.
 //' @examples
 //' speckle_vector <- speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000,

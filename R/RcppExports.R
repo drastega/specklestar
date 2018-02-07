@@ -37,16 +37,13 @@ speckle_acf <- function(ps) {
 #'
 #' Generate model 512 x 512 x 2 (bytes) speckle image of binary star
 #'
-#' @param seeing A number.
-#' @param speckle_sigma A number.
-#' @param m1 A number.
-#' @param m2 A number.
-#' @param rho_x A number.
-#' @param rho_y A number.
-#' @param wind A number.
-#' @section Details:
-#' Details here.
-#' Details here.
+#' @param seeing a number.
+#' @param speckle_sigma a number.
+#' @param m1 a number.
+#' @param m2 a number.
+#' @param rho_x a number.
+#' @param rho_y a number.
+#' @param wind a number.
 #' @return The vector of model speckle image.
 #' @examples
 #' speckle_vector <- speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000,
@@ -62,9 +59,9 @@ speckle_generator <- function(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind)
 #' Power spectrum of the difference of neighboring frames
 #' in the series of speckle images
 #'
-#' @param filename A string.
-#' @param threshold An integer (default 50000).
-#' @return The 513 x 1024 double vector of power spectrum.
+#' @param filename a character string with the path name to a file.
+#' @param threshold an integer (default is 50000).
+#' @return The 513 x 1024 double matrix of power spectrum.
 #' @examples
 #' obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
 #' pow_spec_diff <- speckle_ps_diff(obj_filename)
@@ -77,11 +74,11 @@ speckle_ps_diff <- function(filename, threshold = 50000L) {
 #'
 #' Power spectrum of the series of 512 x 512 speckle images
 #'
-#' @param filename A string.
+#' @param filename a character string with the path name to a file.
 #' @param dark 512 x 512 middle frame matrix.
 #' @param flat 512 x 512 middle flat field matrix.
-#' @param threshold An integer (default 50000).
-#' @return The 513 x 1024 double vector of power spectrum.
+#' @param threshold an integer (default is 50000).
+#' @return The 513 x 1024 double matrix of power spectrum.
 #' @examples
 #' obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
 #' midd_dark <- matrix(0, 512, 512)
@@ -97,8 +94,8 @@ speckle_ps <- function(filename, dark, flat, threshold = 50000L) {
 #' Calculate statistics of speckles in the series of 512 x 512
 #' speckle images and filter "bad" frames
 #'
-#' @param filename A string with name of file.
-#' @param threshold Int.
+#' @param filename a character string with the path name to a file.
+#' @param threshold an integer (default is 50000).
 #' @return The list with 2 elements 'badFrames' and 'hist': \cr
 #' 1 number of bad frames, \cr
 #' 2 double vector of speckle statistics.

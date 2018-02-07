@@ -7,9 +7,9 @@
 speckle_stat(filename, threshold = 50000L)
 }
 \arguments{
-\item{filename}{A string with name of file.}
+\item{filename}{a character string with the path name to a file.}
 
-\item{threshold}{Int.}
+\item{threshold}{an integer (default is 50000).}
 }
 \value{
 The list with 2 elements 'badFrames' and 'hist': \cr

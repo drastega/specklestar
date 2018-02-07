@@ -7,19 +7,19 @@
 speckle_generator(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind)
 }
 \arguments{
-\item{seeing}{A number.}
+\item{seeing}{a number.}
 
-\item{speckle_sigma}{A number.}
+\item{speckle_sigma}{a number.}
 
-\item{m1}{A number.}
+\item{m1}{a number.}
 
-\item{m2}{A number.}
+\item{m2}{a number.}
 
-\item{rho_x}{A number.}
+\item{rho_x}{a number.}
 
-\item{rho_y}{A number.}
+\item{rho_y}{a number.}
 
-\item{wind}{A number.}
+\item{wind}{a number.}
 }
 \value{
 The vector of model speckle image.
@@ -27,12 +27,6 @@ The vector of model speckle image.
 \description{
 Generate model 512 x 512 x 2 (bytes) speckle image of binary star
 }
-\section{Details}{
-
-Details here.
-Details here.
-}
-
 \examples{
 speckle_vector <- speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000,
 m2 = 900, rho_x = 50, rho_y = 70, wind = 0)

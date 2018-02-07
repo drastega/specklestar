@@ -7,19 +7,21 @@
 speckle_frame(data_file = file.choose(), frame = 1)
 }
 \arguments{
-\item{data_file}{A string.}
+\item{data_file}{a character string with the path name to a file.}
 
-\item{frame}{An integer.}
+\item{frame}{an integer.}
 }
 \value{
-512 x 512 matrix with given frame
+512 x 512 matrix with given frame.
 }
 \description{
 Get specified speckle frame as matrix from file
 }
 \examples{
-## On Unix-like operating systems only
-## Read frame number 2 from file
-# obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
-# frame3 <- speckle_frame(obj_filename, 2)
+\dontrun{
+# On Unix-like operating systems only
+# Read frame number 2 from file
+obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
+frame2 <- speckle_frame(obj_filename, 2)
+}
 }

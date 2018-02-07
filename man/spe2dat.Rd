@@ -4,17 +4,23 @@
 \alias{spe2dat}
 \title{SPE to dat converter}
 \usage{
-spe2dat(SPE_file)
+spe2dat(SPE_file = file.choose(), dat_file)
 }
 \arguments{
-\item{SPE_file}{A string.}
+\item{SPE_file}{a character string with the path name to SPE file.}
+
+\item{dat_file}{a character string with the path name to output dat file.}
 }
 \value{
-Save converted dat file on the disk in the same folder.
+Saved converted dat file on the disk.
 }
 \description{
-Convert SPE to dat (i.e. removing 4100 byte SPE header)
+Convert SPE to dat (i.e. removing 4100 byte SPE header) and save it on disk
 }
 \examples{
-# spe2dat(file.choose())
+\dontrun{
+# On Unix-like operating systems only
+# Convert choosed SPE file to dat and save it as your_file.dat
+spe2dat(, "your_file.dat")
+}
 }

@@ -7,16 +7,16 @@
 speckle_ps(filename, dark, flat, threshold = 50000L)
 }
 \arguments{
-\item{filename}{A string.}
+\item{filename}{a character string with the path name to a file.}
 
 \item{dark}{512 x 512 middle frame matrix.}
 
 \item{flat}{512 x 512 middle flat field matrix.}
 
-\item{threshold}{An integer (default 50000).}
+\item{threshold}{an integer (default is 50000).}
 }
 \value{
-The 513 x 1024 double vector of power spectrum.
+The 513 x 1024 double matrix of power spectrum.
 }
 \description{
 Power spectrum of the series of 512 x 512 speckle images

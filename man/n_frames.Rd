@@ -4,21 +4,28 @@
 \alias{n_frames}
 \title{N frames from file}
 \usage{
-n_frames(n, start = 1)
+n_frames(input_file = file.choose(), output_file, n, from = 1)
 }
 \arguments{
-\item{n}{A number.}
+\item{input_file}{a character string with the path name to input dat file.}
 
-\item{start}{A number.}
+\item{output_file}{a character string with the path name to output dat file.}
+
+\item{n}{a number of frames.}
+
+\item{from}{a number of first frame.}
 }
 \value{
 The array of \code{n} frames.
 }
 \description{
 Take N frames from series of 512 x 512 speckle images
-and write to separate binary file.
+and write them to separate binary file
 }
 \examples{
-# n_frames(50) # take first 50 frames
-# n_frames(15, 10) or
+\dontrun{
+# On Unix-like operating systems only
+# Write first 50 frames from choosed file to 50_frames.dat file
+n_frames(, "50_frames.dat", 50)
+}
 }
