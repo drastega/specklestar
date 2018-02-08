@@ -37,21 +37,20 @@ speckle_acf <- function(ps) {
 #'
 #' Generate model 512 x 512 x 2 (bytes) speckle image of binary star
 #'
+#' @param rho a separation (an arcsec).
+#' @param theta a positional angle.
+#' @param dm a magnitude difference.
 #' @param seeing a number.
 #' @param speckle_sigma a number.
-#' @param m1 a number.
-#' @param m2 a number.
-#' @param rho_x a number.
-#' @param rho_y a number.
-#' @param wind a number.
+#' @param wind a wind speed.
 #' @return The vector of model speckle image.
 #' @examples
-#' speckle_vector <- speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000,
-#' m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
+#' speckle_vector <- speckle_generator(rho = 0.5, theta = 70,
+#' dm = 0.3, seeing = 20, speckle_sigma = 1, wind = 0)
 #' speckle_matrix <- matrix(speckle_vector, nrow = 512, ncol = 512)
 #' @export
-speckle_generator <- function(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind) {
-    .Call('_specklestar_speckle_generator', PACKAGE = 'specklestar', seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind)
+speckle_generator <- function(rho, theta, dm, seeing, speckle_sigma, wind) {
+    .Call('_specklestar_speckle_generator', PACKAGE = 'specklestar', rho, theta, dm, seeing, speckle_sigma, wind)
 }
 
 #' Power spectrum calculation

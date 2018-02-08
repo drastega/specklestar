@@ -30,19 +30,18 @@ BEGIN_RCPP
 END_RCPP
 }
 // speckle_generator
-NumericVector speckle_generator(double seeing, double speckle_sigma, double m1, double m2, double rho_x, double rho_y, double wind);
-RcppExport SEXP _specklestar_speckle_generator(SEXP seeingSEXP, SEXP speckle_sigmaSEXP, SEXP m1SEXP, SEXP m2SEXP, SEXP rho_xSEXP, SEXP rho_ySEXP, SEXP windSEXP) {
+NumericVector speckle_generator(double rho, double theta, double dm, double seeing, double speckle_sigma, double wind);
+RcppExport SEXP _specklestar_speckle_generator(SEXP rhoSEXP, SEXP thetaSEXP, SEXP dmSEXP, SEXP seeingSEXP, SEXP speckle_sigmaSEXP, SEXP windSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< double >::type dm(dmSEXP);
     Rcpp::traits::input_parameter< double >::type seeing(seeingSEXP);
     Rcpp::traits::input_parameter< double >::type speckle_sigma(speckle_sigmaSEXP);
-    Rcpp::traits::input_parameter< double >::type m1(m1SEXP);
-    Rcpp::traits::input_parameter< double >::type m2(m2SEXP);
-    Rcpp::traits::input_parameter< double >::type rho_x(rho_xSEXP);
-    Rcpp::traits::input_parameter< double >::type rho_y(rho_ySEXP);
     Rcpp::traits::input_parameter< double >::type wind(windSEXP);
-    rcpp_result_gen = Rcpp::wrap(speckle_generator(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind));
+    rcpp_result_gen = Rcpp::wrap(speckle_generator(rho, theta, dm, seeing, speckle_sigma, wind));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -88,7 +87,7 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_specklestar_middle_frame", (DL_FUNC) &_specklestar_middle_frame, 3},
     {"_specklestar_speckle_acf", (DL_FUNC) &_specklestar_speckle_acf, 1},
-    {"_specklestar_speckle_generator", (DL_FUNC) &_specklestar_speckle_generator, 7},
+    {"_specklestar_speckle_generator", (DL_FUNC) &_specklestar_speckle_generator, 6},
     {"_specklestar_speckle_ps_diff", (DL_FUNC) &_specklestar_speckle_ps_diff, 2},
     {"_specklestar_speckle_ps", (DL_FUNC) &_specklestar_speckle_ps, 4},
     {"_specklestar_speckle_stat", (DL_FUNC) &_specklestar_speckle_stat, 2},

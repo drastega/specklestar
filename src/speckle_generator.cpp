@@ -5,24 +5,29 @@ using namespace Rcpp;
 //'
 //' Generate model 512 x 512 x 2 (bytes) speckle image of binary star
 //'
+//' @param rho a separation (an arcsec).
+//' @param theta a positional angle.
+//' @param dm a magnitude difference.
 //' @param seeing a number.
 //' @param speckle_sigma a number.
-//' @param m1 a number.
-//' @param m2 a number.
-//' @param rho_x a number.
-//' @param rho_y a number.
-//' @param wind a number.
+//' @param wind a wind speed.
 //' @return The vector of model speckle image.
 //' @examples
-//' speckle_vector <- speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000,
-//' m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
+//' speckle_vector <- speckle_generator(rho = 0.5, theta = 70,
+//' dm = 0.3, seeing = 20, speckle_sigma = 1, wind = 0)
 //' speckle_matrix <- matrix(speckle_vector, nrow = 512, ncol = 512)
 //' @export
 // [[Rcpp::export]]
-NumericVector speckle_generator(double seeing, double speckle_sigma, double m1, double m2, double rho_x, double rho_y, double wind) {
+NumericVector speckle_generator(double rho, double theta, double dm, double seeing, double speckle_sigma, double wind) {
   int N_speckle = 300;
   int n_x = 512;
   int n_y = n_x;
+
+  double m1 = 1000;
+  double m2 = m1 / pow(2.512, dm);
+
+  double rho_x = rho * (512 / 4.4) * cos((theta + 180) * M_PI / 180);
+  double rho_y = rho * (512 / 4.4) * sin((theta + 180) * M_PI / 180);
 
   double stellar_center_x = R::rnorm(n_x / 2, wind);
   double stellar_center_y = R::rnorm(n_y / 2, wind);

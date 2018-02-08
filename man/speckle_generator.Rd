@@ -4,22 +4,20 @@
 \alias{speckle_generator}
 \title{Speckle Generator}
 \usage{
-speckle_generator(seeing, speckle_sigma, m1, m2, rho_x, rho_y, wind)
+speckle_generator(rho, theta, dm, seeing, speckle_sigma, wind)
 }
 \arguments{
+\item{rho}{a separation (an arcsec).}
+
+\item{theta}{a positional angle.}
+
+\item{dm}{a magnitude difference.}
+
 \item{seeing}{a number.}
 
 \item{speckle_sigma}{a number.}
 
-\item{m1}{a number.}
-
-\item{m2}{a number.}
-
-\item{rho_x}{a number.}
-
-\item{rho_y}{a number.}
-
-\item{wind}{a number.}
+\item{wind}{a wind speed.}
 }
 \value{
 The vector of model speckle image.
@@ -28,7 +26,7 @@ The vector of model speckle image.
 Generate model 512 x 512 x 2 (bytes) speckle image of binary star
 }
 \examples{
-speckle_vector <- speckle_generator(seeing = 30, speckle_sigma = 1, m1 = 1000,
-m2 = 900, rho_x = 50, rho_y = 70, wind = 0)
+speckle_vector <- speckle_generator(rho = 0.5, theta = 70,
+dm = 0.3, seeing = 20, speckle_sigma = 1, wind = 0)
 speckle_matrix <- matrix(speckle_vector, nrow = 512, ncol = 512)
 }
