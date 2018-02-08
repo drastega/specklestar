@@ -1,5 +1,4 @@
 #' Get selected speckle frame
-#'
 #' Get specified speckle frame as matrix from file
 #'
 #' @param data_file a character string with the path name to a file.

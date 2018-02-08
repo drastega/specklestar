@@ -2,7 +2,8 @@
 % Please edit documentation in R/speckle_frame.R
 \name{speckle_frame}
 \alias{speckle_frame}
-\title{Get selected speckle frame}
+\title{Get selected speckle frame
+Get specified speckle frame as matrix from file}
 \usage{
 speckle_frame(data_file = file.choose(), frame = 1)
 }
@@ -15,6 +16,7 @@ speckle_frame(data_file = file.choose(), frame = 1)
 512 x 512 matrix with given frame.
 }
 \description{
+Get selected speckle frame
 Get specified speckle frame as matrix from file
 }
 \examples{
