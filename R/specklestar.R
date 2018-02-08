@@ -7,6 +7,5 @@
 #' @name specklestar
 #'
 #' @useDynLib specklestar
-#' @import fftw
 #' @importFrom Rcpp sourceCpp
 NULL
