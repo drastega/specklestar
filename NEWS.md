@@ -5,7 +5,6 @@
 
 # Roadmap of specklestar package
 
-- Exclude fftw R package.
 - Function to find position of secondary maximum on ACF.
 - Function to calculate contrast.
 - Calculation of precise rho, phi and dm.
