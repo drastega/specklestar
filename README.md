@@ -12,18 +12,17 @@ For reduction of speckle images of binary and multiple stars we use algorithm de
 Pluzhnik E.A., Astronomy and Astrophysics, v.431, p.587-596 (2005)](https://www.aanda.org/articles/aa/pdf/2005/08/aa1158.pdf).
 
 ## Installation
-First install [fftw](http://www.fftw.org/) library. Then
+First install [fftw](http://www.fftw.org/) library. Then [package](https://cran.r-project.org/package=specklestar) from CRAN
 ```
-# From CRAN
 install.packages("specklestar", dependencies = TRUE, repos = "http://cran.rstudio.com/")
 ```
+Development [version](https://github.com/drastega/specklestar) from GitHub
 ```
-# Development version from GitHub
 install.packages("devtools")
 devtools::install_github("drastega/specklestar", build_vignettes = TRUE)
 ```
+Recommended image [viewer](https://github.com/yapus/imageviewer)
 ```
-# Recommended image viewer
 devtools::install_github("yapus/imageviewer")
 ```
 ## Usage
