@@ -5,7 +5,7 @@
 \title{Get selected speckle frame
 Get specified speckle frame as matrix from file}
 \usage{
-speckle_frame(data_file = file.choose(), frame = 1)
+speckle_frame(data_file = NULL, frame = 1)
 }
 \arguments{
 \item{data_file}{a character string with the path name to a file.}

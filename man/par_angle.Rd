@@ -4,7 +4,7 @@
 \alias{par_angle}
 \title{Calculate parallactic angles from BTA log file}
 \usage{
-par_angle(log_file = file.choose(), log_date)
+par_angle(log_file = NULL, log_date = NULL)
 }
 \arguments{
 \item{log_file}{a character string with the path name to a log file.}

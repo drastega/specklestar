@@ -8,8 +8,14 @@
 #' log_filename <- system.file("extdata", "2010-02-27.tel", package = "specklestar")
 #' par_angle(log_filename, '2010-02-27')
 #' @export
-par_angle <- function(log_file = file.choose(), log_date) {
+par_angle <- function(log_file = NULL, log_date = NULL) {
   library(tidyverse)
+
+  if (is.null(log_file)) {
+    log_file <- file.choose()
+    print(log_file)
+  }
+  if (is.null(log_date)) log_date <- readline(prompt = 'Enter a log date (YYYY-MM-DD): ')
 
   column_names <- c('Name', 'Alpha_h', 'Alpha_m', 'Alpha_s', 'Delta_d', 'Delta_m', 'Delta_s', 'Mtime', 'Stime', 'z', 'Focus')
 

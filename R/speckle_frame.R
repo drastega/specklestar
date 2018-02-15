@@ -12,7 +12,11 @@
 #' frame2 <- speckle_frame(obj_filename, 2)
 #' }
 #' @export
-speckle_frame <- function(data_file = file.choose(), frame = 1) {
+speckle_frame <- function(data_file = NULL, frame = 1) {
+  if (is.null(data_file)) {
+    data_file <- file.choose()
+    print(data_file)
+  }
   tmp_file <- paste(tempdir(), '/tmp.dat', sep = '')
   system(sprintf("dd if=%s of=%s bs=512*512*2 skip=%d count=1", data_file, tmp_file, frame - 1),
          ignore.stderr = TRUE)
