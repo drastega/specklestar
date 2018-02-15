@@ -2,8 +2,8 @@
 #'
 #' @param log_file a character string with the path name to a log file.
 #' @param log_date a character string with date of observations (YYYY-MM-DD).
-#' @return Tibble with names, parallactic angles and mean date and UTC time
-#' of observations calculated from BTA log file.
+#' @return Tibble with names, parallactic angles (in degrees) and mean date
+#' and UTC time of observations calculated from BTA log file.
 #' @examples
 #' log_filename <- system.file("extdata", "2010-02-27.tel", package = "specklestar")
 #' par_angle(log_filename, '2010-02-27')

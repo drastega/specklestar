@@ -2,6 +2,7 @@
 
 export(middle_frame)
 export(par_angle)
+export(par_angle_manual)
 export(speckle_acf)
 export(speckle_frame)
 export(speckle_generator)
