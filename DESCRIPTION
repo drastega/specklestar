@@ -12,9 +12,10 @@ Imports:
 Suggests:
     imager,
     tidyverse,
-    rgl,
+    celestial,
     fftw,
     mrbsizeR,
+    rgl,
     knitr,
     rmarkdown
 License: GPL-2

@@ -2,20 +2,22 @@
 % Please edit documentation in R/par_angle.R
 \name{par_angle}
 \alias{par_angle}
-\title{Calculate parallactic angle}
+\title{Calculate parallactic angles from BTA log file}
 \usage{
-par_angle(log_file = file.choose())
+par_angle(log_file = file.choose(), log_date)
 }
 \arguments{
 \item{log_file}{a character string with the path name to a log file.}
+
+\item{log_date}{a character string with date of observations (YYYY-MM-DD).}
 }
 \value{
 Tibble with names and parallactic angles calculated from BTA log file.
 }
 \description{
-Calculate parallactic angle
+Calculate parallactic angles from BTA log file
 }
 \examples{
 log_filename <- system.file("extdata", "2010-02-27.tel", package = "specklestar")
-par_angle(log_filename)
+par_angle(log_filename, '2010-02-27')
 }
