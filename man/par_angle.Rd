@@ -12,7 +12,8 @@ par_angle(log_file = file.choose(), log_date)
 \item{log_date}{a character string with date of observations (YYYY-MM-DD).}
 }
 \value{
-Tibble with names and parallactic angles calculated from BTA log file.
+Tibble with names, parallactic angles and mean date and UTC time
+of observations calculated from BTA log file.
 }
 \description{
 Calculate parallactic angles from BTA log file
