@@ -44,14 +44,14 @@ log_data <- log_data %>%
   mutate(mean_Alpha_rad = mean(Alpha_rad)) %>%
   mutate(mean_Delta_rad = mean(Delta_rad)) %>%
   mutate(mean_Stime_rad = mean(Stime_rad)) %>%
-  distinct() %>%
 
   mutate(Hour_angle_rad = mean_Stime_rad - mean_Alpha_rad) %>%
 
   mutate(Q_degr = atan(sin(Hour_angle_rad) / (tan(BTA_latitude_rad) * cos(mean_Delta_rad) -
                                      sin(mean_Delta_rad) * cos(Hour_angle_rad))) * 180 / pi) %>%
 
-  select(c(Name, Q_degr))
+  select(c(Name, Q_degr)) %>%
+  distinct()
 
 return(log_data)
 }
