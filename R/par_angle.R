@@ -3,13 +3,12 @@ library(celestial)
 #' Calculate parallactic angle
 #'
 #' @param log_file a character string with the path name to a log file.
-#' @return Print tibble with parallactic angle calculated from BTA log file.
+#' @return Tibble with names and parallactic angles calculated from BTA log file.
 #' @examples
 #' log_filename <- system.file("extdata", "2010-02-27.tel", package = "specklestar")
 #' par_angle(log_filename)
 #' @export
 par_angle <- function(log_file = file.choose()) {
-#log_file <- "/Users/leda/home/programs/python/Dates_Times_Parallactic_angle/2010-02-27.tel"
 column_names <- c('Name', 'Alpha_h', 'Alpha_m', 'Alpha_s', 'Delta_d', 'Delta_m', 'Delta_s', 'Mtime', 'Stime', 'z', 'Focus')
 
 log_data <- read_table(log_file, col_names = column_names, col_types = cols(
@@ -43,15 +42,16 @@ log_data <- log_data %>%
   group_by(Name) %>% # vulnerable place!
   mutate(mean_Sdate = mean(Sdate)) %>%
   mutate(mean_Alpha_rad = mean(Alpha_rad)) %>%
-  mutate(mean_Delta_rad = mean(Delta_rad))  %>%
+  mutate(mean_Delta_rad = mean(Delta_rad)) %>%
   mutate(mean_Stime_rad = mean(Stime_rad)) %>%
-  select(c(Name, mean_Alpha_rad, mean_Delta_rad, mean_Stime_rad)) %>%
   distinct() %>%
 
   mutate(Hour_angle_rad = mean_Stime_rad - mean_Alpha_rad) %>%
 
   mutate(Q_degr = atan(sin(Hour_angle_rad) / (tan(BTA_latitude_rad) * cos(mean_Delta_rad) -
-                                     sin(mean_Delta_rad) * cos(Hour_angle_rad))) * 180 / pi)
+                                     sin(mean_Delta_rad) * cos(Hour_angle_rad))) * 180 / pi) %>%
 
-print(log_data)
+  select(c(Name, Q_degr))
+
+return(log_data)
 }
