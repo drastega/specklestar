@@ -2,16 +2,24 @@
 % Please edit documentation in R/par_angle_manual.R
 \name{par_angle_manual}
 \alias{par_angle_manual}
-\title{Calculate parallactic angles from manually entered data}
+\title{Calculate parallactic angles from Alpha, Delta and Stime for BTA location}
 \usage{
-par_angle_manual()
+par_angle_manual(Alpha = NULL, Delta = NULL, Stime = NULL)
+}
+\arguments{
+\item{Alpha}{a character string (hh:mm:ss)}
+
+\item{Delta}{a character string (dd:mm:ss)}
+
+\item{Stime}{a character string (hh:mm:ss)}
 }
 \value{
-Parallactic angle in degrees from manually entered data.
+Parallactic angle in degrees.
 }
 \description{
-Calculate parallactic angles from manually entered data
+Calculate parallactic angles from Alpha, Delta and Stime for BTA location
 }
 \examples{
+par_angle_manual(Alpha = '00:33:32.7', Delta = '55:18:59.5', Stime = '06:53:00')
 par_angle_manual()
 }

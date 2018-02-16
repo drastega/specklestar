@@ -23,7 +23,7 @@ par_angle <- function(log_file = NULL, log_date = NULL) {
 
   log_data <- log_data %>% na.omit()
 
-  BTA_latitude_rad <- 0.761894396137 # +43 deg 39' 12''
+  BTA_latitude_rad <- 43.6467 * pi / 180 # BTA latitude in rad
 
   log_data <- log_data %>%
     mutate(Alpha_h = as.integer(str_replace(Alpha_h, 'Alpha=', ''))) %>%
@@ -60,7 +60,7 @@ par_angle <- function(log_file = NULL, log_date = NULL) {
     mutate(Hour_angle_rad = mean_Stime_rad - mean_Alpha_rad) %>%
 
     mutate(Q_degr = atan(sin(Hour_angle_rad) / (tan(BTA_latitude_rad) * cos(mean_Delta_rad) -
-                                     sin(mean_Delta_rad) * cos(Hour_angle_rad))) * 180 / pi) %>%
+      sin(mean_Delta_rad) * cos(Hour_angle_rad))) * 180 / pi) %>%
 
     select(c(Name, Q_degr, mean_Mdate)) %>%
     distinct()
