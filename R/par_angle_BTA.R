@@ -5,10 +5,10 @@
 #' @param Stime a character string (hh:mm:ss)
 #' @return Parallactic angle in degrees.
 #' @examples
-#' par_angle_manual(Alpha = '00:33:32.7', Delta = '55:18:59.5', Stime = '06:53:00')
-#' par_angle_manual()
+#' par_angle_BTA(Alpha = '00:33:32.7', Delta = '55:18:59.5', Stime = '06:53:00')
+#' par_angle_BTA()
 #' @export
-par_angle_manual <- function(Alpha = NULL, Delta = NULL, Stime = NULL) {
+par_angle_BTA <- function(Alpha = NULL, Delta = NULL, Stime = NULL) {
 
   BTA_latitude_rad <- 43.6467 * pi / 180 # BTA latitude in rad
 

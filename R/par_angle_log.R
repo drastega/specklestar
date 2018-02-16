@@ -6,9 +6,9 @@
 #' and UTC time of observations calculated from BTA log file.
 #' @examples
 #' log_filename <- system.file("extdata", "2010-02-27.tel", package = "specklestar")
-#' par_angle(log_filename, '2010-02-27')
+#' par_angle_log(log_filename, '2010-02-27')
 #' @export
-par_angle <- function(log_file = NULL, log_date = NULL) {
+par_angle_log <- function(log_file = NULL, log_date = NULL) {
   library(tidyverse)
 
   if (is.null(log_file)) {
