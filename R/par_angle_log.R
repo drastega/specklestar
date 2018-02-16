@@ -1,4 +1,6 @@
-#' Calculate parallactic angles from BTA log file
+#' Parallactic angles
+#'
+#' Returns tibble with parallactic angles calculated from BTA log file
 #'
 #' @param log_file a character string with the path name to a log file.
 #' @param log_date a character string with date of observations (YYYY-MM-DD).

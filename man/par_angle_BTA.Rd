@@ -2,7 +2,7 @@
 % Please edit documentation in R/par_angle_BTA.R
 \name{par_angle_BTA}
 \alias{par_angle_BTA}
-\title{Calculate parallactic angles from Alpha, Delta and Stime for BTA location}
+\title{Parallactic angle}
 \usage{
 par_angle_BTA(Alpha = NULL, Delta = NULL, Stime = NULL)
 }
@@ -17,7 +17,7 @@ par_angle_BTA(Alpha = NULL, Delta = NULL, Stime = NULL)
 Parallactic angle in degrees.
 }
 \description{
-Calculate parallactic angles from Alpha, Delta and Stime for BTA location
+Returns parallactic angle calculated from Alpha, Delta and Stime for BTA location
 }
 \examples{
 par_angle_BTA(Alpha = '00:33:32.7', Delta = '55:18:59.5', Stime = '06:53:00')

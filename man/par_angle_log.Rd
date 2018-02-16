@@ -2,7 +2,7 @@
 % Please edit documentation in R/par_angle_log.R
 \name{par_angle_log}
 \alias{par_angle_log}
-\title{Calculate parallactic angles from BTA log file}
+\title{Parallactic angles}
 \usage{
 par_angle_log(log_file = NULL, log_date = NULL)
 }
@@ -16,7 +16,7 @@ Tibble with names, parallactic angles (in degrees) and mean date
 and UTC time of observations calculated from BTA log file.
 }
 \description{
-Calculate parallactic angles from BTA log file
+Returns tibble with parallactic angles calculated from BTA log file
 }
 \examples{
 log_filename <- system.file("extdata", "2010-02-27.tel", package = "specklestar")

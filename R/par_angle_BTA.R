@@ -1,4 +1,6 @@
-#' Calculate parallactic angles from Alpha, Delta and Stime for BTA location
+#' Parallactic angle
+#'
+#' Returns parallactic angle calculated from Alpha, Delta and Stime for BTA location
 #'
 #' @param Alpha a character string (hh:mm:ss)
 #' @param Delta a character string (dd:mm:ss)
@@ -27,9 +29,9 @@ par_angle_BTA <- function(Alpha = NULL, Delta = NULL, Stime = NULL) {
   }
   Stime_rad <- celestial::hms2deg(Stime) * pi / 180
 
-  Hour_angle_rad = Stime_rad - Alpha_rad
+  Hour_angle_rad <- Stime_rad - Alpha_rad
 
-  Q_degr = atan(sin(Hour_angle_rad) / (tan(BTA_latitude_rad) * cos(Delta_rad) -
+  Q_degr <- atan(sin(Hour_angle_rad) / (tan(BTA_latitude_rad) * cos(Delta_rad) -
     sin(Delta_rad) * cos(Hour_angle_rad))) * 180 / pi
 
   return(Q_degr)
