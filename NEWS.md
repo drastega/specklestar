@@ -7,10 +7,13 @@
 
 * Added par_angle.R and par_angle_manual.R functions for
 calculation of parallactic angles for BTA location
+* Added database constrution from folder with
+BTA observational journals
 
 # Roadmap of specklestar package
 
 - Remove log_date from par_angle.R
+- Calculation of binary star orbit
 - Function to find position of secondary maximum on ACF
 - Function to calculate contrast
 - Calculation of precise rho, phi and dm
