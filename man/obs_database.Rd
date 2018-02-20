@@ -10,7 +10,7 @@ obs_database(logs_dir = NULL)
 \item{logs_dir}{a character string of path to folder with observational journals}
 }
 \value{
-Data frame of observational journals.
+Tibble with observational journals.
 }
 \description{
 Returns data frame of BTA observational journals
