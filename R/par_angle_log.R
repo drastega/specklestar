@@ -19,7 +19,7 @@ par_angle_log <- function(log_file = NULL, log_date = NULL) {
   }
   if (is.null(log_date)) log_date <- readline(prompt = 'Enter a log date (YYYY-MM-DD): ')
 
-  column_names <- c('Name', 'Alpha_h', 'Alpha_m', 'Alpha_s', 'Delta_d', 'Delta_m', 'Delta_s', 'Mtime', 'Stime', 'z', 'Focus')
+  column_names <- c('Name', 'Alpha_h', 'Alpha_m', 'Alpha_s', 'Delta_d', 'Delta_m', 'Delta_s', 'Mtime', 'Stime', 'Z', 'Focus')
 
   log_data <- read.table(log_file, col.names = column_names)
 
