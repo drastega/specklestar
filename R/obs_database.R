@@ -11,7 +11,7 @@ obs_database <- function(logs_dir = NULL) {
   library(tidyverse)
 
   if (is.null(logs_dir)) {
-    logs_dir <- '/Volumes/E/Data/new_telescope_EDIT/'
+    logs_dir <- '/Volumes/E/Data/new_telescope_EDIT'
     print(logs_dir)
   }
 
@@ -44,13 +44,17 @@ obs_database <- function(logs_dir = NULL) {
   BTA_latitude_rad <- 0.761779
 
   database <- database %>%
+    mutate(Name = as.character(Name)) %>%
+
     mutate(Alpha_h = as.integer(str_replace(Alpha_h, 'Alpha=', ''))) %>%
     mutate(Alpha = paste(Alpha_h, Alpha_m, Alpha_s, sep = ':')) %>%
-    mutate(Alpha_rad = celestial::hms2deg(Alpha) * pi / 180) %>%
+    mutate(Alpha_deg = celestial::hms2deg(Alpha)) %>%
+    mutate(Alpha_rad = Alpha_deg * pi / 180) %>%
 
     mutate(Delta_d = str_replace(Delta_d, 'Delta=', '')) %>%
     mutate(Delta = paste(Delta_d, Delta_m, Delta_s, sep = ':')) %>%
-    mutate(Delta_rad = celestial::dms2deg(Delta) * pi / 180) %>%
+    mutate(Delta_deg = celestial::dms2deg(Delta)) %>%
+    mutate(Delta_rad = Delta_deg * pi / 180) %>%
 
     mutate(Stime = str_replace(Stime, 'Stime=', '')) %>%
     mutate(Stime_s = as.integer(as.integer(str_sub(Stime, start = -1)) * 6)) %>%
@@ -60,18 +64,26 @@ obs_database <- function(logs_dir = NULL) {
     mutate(Stime_rad = celestial::hms2deg(Stime) * pi / 180) %>%
 
     mutate(Mtime = str_replace(Mtime, 'Mtime=', '')) %>%
+    mutate(Mtime = str_replace(Mtime, '60.0', '59.9')) %>%
     mutate(Mtime_s = as.integer(as.integer(str_sub(Mtime, start = -1)) * 6)) %>%
     mutate(Mtime = str_sub(Mtime, start = 1, end = 5)) %>%
     mutate(Mtime = paste(Mtime, Mtime_s, sep = ':')) %>%
 
     mutate(Mdate_time = paste(Date, Mtime, sep = ' ')) %>%
-#    mutate(Mdate_time = lubridate::dmy_hms(Mdate)) %>%
+    mutate(Mdate_time = lubridate::dmy_hms(Mdate_time)) %>%
 
     mutate(Z = str_replace(Z, 'Z=', '')) %>%
     mutate(Focus = str_replace(Focus, 'Focus=', '')) %>%
     mutate(Date = lubridate::dmy(Date)) %>%
 
-    select(c(Name, Alpha, Delta, Mtime, Stime, Date, Z, Focus, Alpha_rad, Delta_rad, Mdate_time)) %>%
+    select(c(Name, Alpha, Delta, Mtime, Stime, Date, Z, Focus, Alpha_deg, Delta_deg, Mdate_time)) %>%
+
+    group_by(Name) %>%
+    mutate(n = n()) %>%
+    filter(!str_detect(Name, "dark*")) %>%
+    filter(!str_detect(Name, "flat*")) %>%
+    arrange(desc(n)) %>%
+
     as.tibble()
 
   return(database)
