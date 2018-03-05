@@ -40,8 +40,8 @@ NumericVector speckle_generator(double rho, double theta, double dm, double seei
     double y0 = R::rnorm(stellar_center_y, seeing) - rho_y / 2;
     for (int x = 0;  x < n_x; x++) {
       for (int y = 0; y < n_y; y++) {
-        gaussian_2d[x * n_y + y] = m1 * exp(-(pow((x - x0), 2)/(2 * pow(speckle_sigma, 2)) + pow((y - y0), 2)/(2 * pow(speckle_sigma, 2)))) + \
-          m2 * exp(-(pow((x - x0 - rho_x), 2)/(2 * pow(speckle_sigma, 2)) + pow((y - y0 - rho_y), 2)/(2 * pow(speckle_sigma, 2))));
+        gaussian_2d[x * n_y + y] = m1 * exp(-(pow((x - x0), 2) / (2 * pow(speckle_sigma, 2)) + pow((y - y0), 2) / (2 * pow(speckle_sigma, 2)))) + \
+          m2 * exp(-(pow((x - x0 - rho_x), 2) / (2 * pow(speckle_sigma, 2)) + pow((y - y0 - rho_y), 2) / (2 * pow(speckle_sigma, 2))));
       }
     }
     for (int c = 0 ; c < 262144 ; c++) {

@@ -56,6 +56,11 @@ speckle_rho <- function(rho_px = NULL, rho_px_err = NULL, band = NULL) {
     rho_sec_err <- rho_sec * (rho_sec_err_550 / rho_sec_550 + q_800_err / q_800)
   }
 
+  if (band == '850') {
+    rho_sec <- rho_sec_550 * q_850
+    rho_sec_err <- rho_sec * (rho_sec_err_550 / rho_sec_550 + q_850_err / q_850)
+  }
+
   return(list(rho_sec = rho_sec, rho_sec_err = rho_sec_err))
 
 }
