@@ -13,7 +13,7 @@
 #' @export
 annulus <- function(im, R, dR = 2, center = NULL) {
   if(is.null(center)) {
-    center <- nrow(im) / 2
+    center <- nrow(im) / 2 # Check nrow and ncol
     center <- c(center, ncol(im) / 2)
   }
 

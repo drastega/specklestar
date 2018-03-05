@@ -78,11 +78,11 @@ obs_database <- function(logs_dir = NULL) {
 
     select(c(Name, Alpha, Delta, Mtime, Stime, Date, Z, Focus, Alpha_deg, Delta_deg, Mdate_time)) %>%
 
-    group_by(Name) %>%
-    mutate(n = n()) %>%
-    filter(!str_detect(Name, "dark*")) %>%
-    filter(!str_detect(Name, "flat*")) %>%
-    arrange(desc(n)) %>%
+#    group_by(Name) %>%
+#    mutate(n = n()) %>%
+#    filter(!str_detect(Name, "dark*")) %>%
+#    filter(!str_detect(Name, "flat*")) %>%
+#    arrange(desc(n)) %>%
 
     as.tibble()
 

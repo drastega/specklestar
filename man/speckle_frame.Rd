@@ -5,15 +5,24 @@
 \title{Get selected speckle frame
 Get specified speckle frame as matrix from file}
 \usage{
-speckle_frame(data_file = NULL, frame = 1)
+speckle_frame(data_file = NULL, frame = 1, x_pix = 512, y_pix = 512,
+  type = "int", byte = 2)
 }
 \arguments{
 \item{data_file}{a character string with the path name to a file.}
 
 \item{frame}{an integer.}
+
+\item{x_pix}{a number of x pixels (default is 512).}
+
+\item{y_pix}{a number of y pixels (default is 512).}
+
+\item{type}{a string 'int' or 'num'.}
+
+\item{byte}{a number of bytes in pixel.}
 }
 \value{
-512 x 512 matrix with given frame.
+Matrix with given frame.
 }
 \description{
 Get selected speckle frame
