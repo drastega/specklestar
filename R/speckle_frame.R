@@ -1,12 +1,13 @@
-#' Get selected speckle frame
-#' Get specified speckle frame as matrix from file
+#' Selected frame from binary file
+#'
+#' Get specified frame as matrix from binary file
 #'
 #' @param data_file a character string with the path name to a file.
 #' @param frame an integer.
 #' @param x_pix a number of x pixels (default is 512).
 #' @param y_pix a number of y pixels (default is 512).
-#' @param type a string 'int' or 'num'.
-#' @param byte a number of bytes in pixel.
+#' @param type a string 'int' or 'num' (default is 'int').
+#' @param byte a number of bytes in pixel (default is 2).
 #' @return Matrix with given frame.
 #' @examples
 #' \dontrun{

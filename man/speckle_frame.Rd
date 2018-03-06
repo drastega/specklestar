@@ -2,8 +2,7 @@
 % Please edit documentation in R/speckle_frame.R
 \name{speckle_frame}
 \alias{speckle_frame}
-\title{Get selected speckle frame
-Get specified speckle frame as matrix from file}
+\title{Selected frame from binary file}
 \usage{
 speckle_frame(data_file = NULL, frame = 1, x_pix = 512, y_pix = 512,
   type = "int", byte = 2)
@@ -17,16 +16,15 @@ speckle_frame(data_file = NULL, frame = 1, x_pix = 512, y_pix = 512,
 
 \item{y_pix}{a number of y pixels (default is 512).}
 
-\item{type}{a string 'int' or 'num'.}
+\item{type}{a string 'int' or 'num' (default is 'int').}
 
-\item{byte}{a number of bytes in pixel.}
+\item{byte}{a number of bytes in pixel (default is 2).}
 }
 \value{
 Matrix with given frame.
 }
 \description{
-Get selected speckle frame
-Get specified speckle frame as matrix from file
+Get specified frame as matrix from binary file
 }
 \examples{
 \dontrun{

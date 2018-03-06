@@ -13,7 +13,7 @@ annulus(im, R, dR = 2, center = NULL)
 
 \item{dR}{annulus width in pixels (default is 2 px).}
 
-\item{center}{point of center c(x, y) (default is center of matrix).}
+\item{center}{point of center c(x, y) (default is center of matrix c(nrow / 2, ncol / 2)).}
 }
 \value{
 Vector with points of annulus.

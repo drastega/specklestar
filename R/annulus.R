@@ -5,17 +5,13 @@
 #' @param im matrix.
 #' @param R radius of annulus.
 #' @param dR annulus width in pixels (default is 2 px).
-#' @param center point of center c(x, y) (default is center of matrix).
+#' @param center point of center c(x, y) (default is center of matrix c(nrow(im) / 2, ncol(im) / 2)).
 #' @return Vector with points of annulus.
 #' @examples
 #' m <- matrix(1:512, nrow = 512, ncol = 512)
 #' annulus_points <- annulus(m, R = 57, dR = 1, center = c(100, 100))
 #' @export
-annulus <- function(im, R, dR = 2, center = NULL) {
-  if(is.null(center)) {
-    center <- nrow(im) / 2 # Check nrow and ncol
-    center <- c(center, ncol(im) / 2)
-  }
+annulus <- function(im, R, dR = 2, center = c(nrow(im) / 2, ncol(im) / 2)) {
 
   xy <- select(reshape2::melt(im), x = Var1, y = Var2)
   xy <- as.matrix(xy)
@@ -25,5 +21,5 @@ annulus <- function(im, R, dR = 2, center = NULL) {
   im_polar <- cbind(r, phi, z = reshape2::melt(im)$value) %>% as.tibble()
   annulus_pts <- im_polar %>% filter(r < R + dR & r > R)
 
-  return(annulus_pts)
+  return(annulus_pts$z)
 }
