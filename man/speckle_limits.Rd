@@ -2,21 +2,26 @@
 % Please edit documentation in R/speckle_limits.R
 \name{speckle_limits}
 \alias{speckle_limits}
-\title{Detection limits from power spectrum}
+\title{Detection limits from acf}
 \usage{
-speckle_limits(ps)
+speckle_limits(im, band, rho_lim = 1)
 }
 \arguments{
-\item{ps}{matrix with power spectrum.}
+\item{im}{matrix with acf.}
+
+\item{band}{a character string '550', '600' or '800'.}
+
+\item{rho_lim}{limit in arc seconds (default is 1'', maximum is 2'').}
 }
 \value{
-Vector with limits.
+List of x and y with limits (x is rho and y is dm).
 }
 \description{
-Calculate detection limits (dm for given rho) from empirical power spectrum
+Calculate detection limits (dm for given rho) from empirical autocorrelation function
 }
 \examples{
 obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
 pow_spec_diff <- speckle_ps_diff(obj_filename)
-profile <- speckle_limits(ps = pow_spec_diff)
+acf <- speckle_acf(pow_spec_diff)
+lim <- speckle_limits(acf, '550')
 }

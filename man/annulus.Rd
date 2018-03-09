@@ -4,7 +4,7 @@
 \alias{annulus}
 \title{Annulus}
 \usage{
-annulus(im, R, dR = 2, center = NULL)
+annulus(im, R, dR = 2, center = c(nrow(im)/2, ncol(im)/2))
 }
 \arguments{
 \item{im}{matrix.}
@@ -13,7 +13,7 @@ annulus(im, R, dR = 2, center = NULL)
 
 \item{dR}{annulus width in pixels (default is 2 px).}
 
-\item{center}{point of center c(x, y) (default is center of matrix c(nrow / 2, ncol / 2)).}
+\item{center}{point of center c(x, y) (default is center of matrix c(nrow(im) / 2, ncol(im) / 2)).}
 }
 \value{
 Vector with points of annulus.
