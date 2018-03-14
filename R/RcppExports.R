@@ -55,6 +55,22 @@ speckle_generator <- function(rho, theta, dm, seeing, speckle_sigma, wind) {
 
 #' Power spectrum calculation
 #'
+#' Power spectrum of the difference of neighboring frames
+#' in the series of speckle images
+#'
+#' @param filename a character string with the path name to a file.
+#' @param threshold an integer (default is 50000).
+#' @return The 513 x 1024 double matrix of power spectrum.
+#' @examples
+#' obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
+#' pow_spec_diff <- speckle_ps_diff(obj_filename)
+#' @export
+speckle_ps_diff <- function(filename, threshold = 50000L) {
+    .Call('_specklestar_speckle_ps_diff', PACKAGE = 'specklestar', filename, threshold)
+}
+
+#' Power spectrum calculation
+#'
 #' Power spectrum of the series of 512 x 512 speckle images
 #'
 #' @param filename a character string with the path name to a file.
@@ -70,22 +86,6 @@ speckle_generator <- function(rho, theta, dm, seeing, speckle_sigma, wind) {
 #' @export
 speckle_ps <- function(filename, dark, flat, threshold = 50000L) {
     .Call('_specklestar_speckle_ps', PACKAGE = 'specklestar', filename, dark, flat, threshold)
-}
-
-#' Power spectrum calculation
-#'
-#' Power spectrum of the difference of neighboring frames
-#' in the series of speckle images
-#'
-#' @param filename a character string with the path name to a file.
-#' @param threshold an integer (default is 50000).
-#' @return The 513 x 1024 double matrix of power spectrum.
-#' @examples
-#' obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")
-#' pow_spec_diff <- speckle_ps_diff(obj_filename)
-#' @export
-speckle_ps_diff <- function(filename, threshold = 50000L) {
-    .Call('_specklestar_speckle_ps_diff', PACKAGE = 'specklestar', filename, threshold)
 }
 
 #' Statistics of speckles
