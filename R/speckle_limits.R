@@ -1,6 +1,7 @@
 #' Detection limits from acf
 #'
 #' Calculate detection limits (dm for given rho) from empirical autocorrelation function
+#' using formalism described in 2010AJ....139..743T (Tokovinin, Mason & Hartkopf, 2010)
 #'
 #' @param im matrix with acf.
 #' @param band a character string '550', '600' or '800'.
