@@ -2,9 +2,9 @@
 #'
 #' Convert rho from pixels to arcseconds for given band
 #'
-#' @param rho_px rho in px
-#' @param rho_px_err error of rho in px
-#' @param band a character string with band ('550', 600', '676', '694', '800', '850')
+#' @param rho_px rho in px.
+#' @param rho_px_err error of rho in px.
+#' @param band a character string with band ('550', 600', '676', '694', '800', '850').
 #' @return List with rho and it's error in arcseconds.
 #' @examples
 #' speckle_rho(rho_px = 12.1685, rho_px_err = 0.0865, band = '800')

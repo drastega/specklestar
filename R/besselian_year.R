@@ -2,8 +2,8 @@
 #'
 #' Returns besselian year calculated from date and time
 #'
-#' @param date a character string (dd-Mon-year)
-#' @param time a character string (hh:mm:ss)
+#' @param date a character string (dd-Mon-year).
+#' @param time a character string (hh:mm:ss).
 #' @return Besselian year.
 #' @examples
 #' besselian_year('12-Dec-2009', '02:53:10')
