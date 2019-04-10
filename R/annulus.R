@@ -12,8 +12,9 @@
 #' annulus_points <- annulus(m, R = 57, dR = 1, center = c(100, 100))
 #' @export
 annulus <- function(im, R, dR = 2, center = c(nrow(im) / 2, ncol(im) / 2)) {
+  library(tidyverse)
 
-  xy <- select(reshape2::melt(im), x = Var1, y = Var2)
+  xy <- dplyr::select(reshape2::melt(im), x = Var1, y = Var2)
   xy <- as.matrix(xy)
   r <- sqrt((xy[ , 'x'] - center[1]) ^ 2 + (xy[ , 'y'] - center[2]) ^ 2)
   phi <- atan2((xy[ , 'y'] - center[2]), (xy[ , 'x'] - center[1]))

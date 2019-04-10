@@ -16,5 +16,7 @@ Tibble with observational journals.
 Returns data frame of BTA observational journals
 }
 \examples{
+\dontrun{
 db <- obs_database()
+}
 }

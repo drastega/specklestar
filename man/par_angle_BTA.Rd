@@ -21,5 +21,7 @@ Returns parallactic angle calculated from Alpha, Delta and Stime for BTA locatio
 }
 \examples{
 par_angle_BTA(Alpha = '00:33:32.7', Delta = '55:18:59.5', Stime = '06:53:00')
+\dontrun{
 par_angle_BTA()
+}
 }

@@ -5,7 +5,9 @@
 #' @param logs_dir a character string of path to folder with observational journals.
 #' @return Tibble with observational journals.
 #' @examples
+#' \dontrun{
 #' db <- obs_database()
+#' }
 #' @export
 obs_database <- function(logs_dir = NULL) {
   library(tidyverse)

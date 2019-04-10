@@ -8,6 +8,7 @@
 #' vizier_data <- vizier_query('J/other/AstBu/63.278/table1')
 #' @export
 vizier_query <- function(vizier_table = NULL) {
+  library(tidyverse)
 
   base_vizier_url <- 'http://vizier.u-strasbg.fr/viz-bin/asu-tsv'
 
@@ -15,7 +16,7 @@ vizier_query <- function(vizier_table = NULL) {
 
   if (vizier_response$status_code != 200) print('####### Bad request #######')
 
-  data_vizier_tbbl <- vizier_response %>% content(as = 'text') %>% str_split('\n') %>%
+  data_vizier_tbbl <- vizier_response %>% httr::content(as = 'text') %>% str_split('\n') %>%
     unlist %>% tibble(Data = .) %>% filter(grepl('^[^#]', Data)) %>% filter(Data != '')
 
   n_columns <- data_vizier_tbbl[4,] %>% str_split('\t') %>% unlist %>% length()

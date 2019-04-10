@@ -8,7 +8,9 @@
 #' @return Parallactic angle in degrees.
 #' @examples
 #' par_angle_BTA(Alpha = '00:33:32.7', Delta = '55:18:59.5', Stime = '06:53:00')
+#' \dontrun{
 #' par_angle_BTA()
+#' }
 #' @export
 par_angle_BTA <- function(Alpha = NULL, Delta = NULL, Stime = NULL) {
 
