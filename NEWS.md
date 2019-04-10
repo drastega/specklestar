@@ -1,9 +1,16 @@
-# specklestar v0.0.1.7 (2017-02-08)
+# Roadmap of specklestar package
 
-* First release of package on CRAN
-* You can obtain statistics of images, middle frame, ps and acf
+- Seeing calculation
+- Calculation of binary star orbit
+- Function to find position of secondary maximum on ACF
+- Function to calculate contrast
+- Calculation of precise rho, theta and dm
 
-# specklestar v0.0.1.8 (2017-03-06)
+# specklestar v0.0.1.9 (2019-04-10)
+
+* Added vizier_query() R function
+
+# specklestar v0.0.1.8 (2018-03-06)
 
 * Added par_angle_BTA() and par_angle_log() R functions for
   calculation of parallactic angles for BTA location
@@ -15,10 +22,7 @@
 * Added calculation of detection limits
 * Added besselian_year() R function
 
-# Roadmap of specklestar package
+# specklestar v0.0.1.7 (2018-02-08)
 
-- Seeing calculation
-- Calculation of binary star orbit
-- Function to find position of secondary maximum on ACF
-- Function to calculate contrast
-- Calculation of precise rho, theta and dm
+* First release of package on CRAN
+* You can obtain statistics of images, middle frame, ps and acf
