@@ -8,11 +8,10 @@
 #' vizier_data <- vizier_query('J/other/AstBu/63.278/table1')
 #' @export
 vizier_query <- function(vizier_table = NULL) {
-  library(httr)
 
   base_vizier_url <- 'http://vizier.u-strasbg.fr/viz-bin/asu-tsv'
 
-  vizier_response <- GET(base_vizier_url, query = list('-source' = vizier_table))
+  vizier_response <- httr::GET(base_vizier_url, query = list('-source' = vizier_table))
 
   if (vizier_response$status_code != 200) print('####### Bad request #######')
 
