@@ -7,7 +7,7 @@
 obs_database(logs_dir = NULL)
 }
 \arguments{
-\item{logs_dir}{a character string of path to folder with observational journals}
+\item{logs_dir}{a character string of path to folder with observational journals.}
 }
 \value{
 Tibble with observational journals.

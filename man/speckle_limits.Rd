@@ -18,6 +18,7 @@ List of x and y with limits (x is rho and y is dm).
 }
 \description{
 Calculate detection limits (dm for given rho) from empirical autocorrelation function
+using formalism described in 2010AJ....139..743T (Tokovinin, Mason & Hartkopf, 2010)
 }
 \examples{
 obj_filename <- system.file("extdata", "ads15182_550_2_frames.dat", package = "specklestar")

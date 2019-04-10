@@ -7,9 +7,9 @@
 besselian_year(date, time)
 }
 \arguments{
-\item{date}{a character string (dd-Mon-year)}
+\item{date}{a character string (dd-Mon-year).}
 
-\item{time}{a character string (hh:mm:ss)}
+\item{time}{a character string (hh:mm:ss).}
 }
 \value{
 Besselian year.

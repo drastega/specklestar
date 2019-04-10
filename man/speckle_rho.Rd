@@ -7,11 +7,11 @@
 speckle_rho(rho_px = NULL, rho_px_err = NULL, band = NULL)
 }
 \arguments{
-\item{rho_px}{rho in px}
+\item{rho_px}{rho in px.}
 
-\item{rho_px_err}{error of rho in px}
+\item{rho_px_err}{error of rho in px.}
 
-\item{band}{a character string with band ('550', 600', '676', '694', '800', '850')}
+\item{band}{a character string with band ('550', 600', '676', '694', '800', '850').}
 }
 \value{
 List with rho and it's error in arcseconds.

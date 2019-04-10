@@ -2,7 +2,7 @@
 #'
 #' Returns data frame of BTA observational journals
 #'
-#' @param logs_dir a character string of path to folder with observational journals
+#' @param logs_dir a character string of path to folder with observational journals.
 #' @return Tibble with observational journals.
 #' @examples
 #' db <- obs_database()
@@ -19,8 +19,10 @@ obs_database <- function(logs_dir = NULL) {
 
   print('Excluded files:')
   for (file in file_list) {
-    if (max(count.fields(file, sep = ' ')) != 22) print(c(file, max(count.fields(file, sep = ' '))))
-	  if (min(count.fields(file, sep = ' ')) != 22) print(c(file, min(count.fields(file, sep = ' '))))
+   # if (max(count.fields(file, sep = ' ')) != 22) print(c(file, max(count.fields(file, sep = ' '))))
+   # if (min(count.fields(file, sep = ' ')) != 22) print(c(file, min(count.fields(file, sep = ' '))))
+    if (max(count.fields(file, sep = ' ')) != 22) print(c(file, count.fields(file, sep = ' ')))
+ 	  if (min(count.fields(file, sep = ' ')) != 22) print(c(file, count.fields(file, sep = ' ')))
   }
 
   excluded_files <- c()
