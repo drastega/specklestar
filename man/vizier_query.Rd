@@ -4,10 +4,15 @@
 \alias{vizier_query}
 \title{VizieR query}
 \usage{
-vizier_query(vizier_table = NULL)
+vizier_query(vizier_table = NULL, objects = NULL,
+  radius_arcsec = NULL)
 }
 \arguments{
 \item{vizier_table}{a character string with name of VizieR table.}
+
+\item{objects}{a character vector with objects}
+
+\item{radius_arcsec}{raduis in arc seconds (number).}
 }
 \value{
 Tibble with data.
@@ -17,4 +22,5 @@ Returns tibble of selected table from VizieR
 }
 \examples{
 vizier_data <- vizier_query('J/other/AstBu/63.278/table1')
+vizier_wds <- vizier_query('B/wds/wds', c('HD 6757', 'HIP 11569'), 5)
 }
