@@ -10,7 +10,7 @@ vizier_query(vizier_table = NULL, objects = NULL,
 \arguments{
 \item{vizier_table}{a character string with name of VizieR table.}
 
-\item{objects}{a character vector with objects}
+\item{objects}{a character vector with objects.}
 
 \item{radius_arcsec}{raduis in arc seconds (number).}
 }

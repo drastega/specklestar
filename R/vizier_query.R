@@ -3,7 +3,7 @@
 #' Returns tibble of selected table from VizieR
 #'
 #' @param vizier_table a character string with name of VizieR table.
-#' @param objects a character vector with objects
+#' @param objects a character vector with objects.
 #' @param radius_arcsec raduis in arc seconds (number).
 #' @return Tibble with data.
 #' @examples
