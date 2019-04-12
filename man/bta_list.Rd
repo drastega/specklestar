@@ -8,7 +8,7 @@ with bta_list program}
 bta_list(objects = NULL)
 }
 \arguments{
-\item{objects}{a character vector with objects}
+\item{objects}{a character vector with objects.}
 }
 \value{
 Tibble with data formatted for bta_list.
