@@ -10,6 +10,7 @@
 
 * Added vizier_query() R function
 * Added bta_list() R function
+* Added simbad_query() R function
 
 # specklestar v0.0.1.8 (2018-03-06)
 
