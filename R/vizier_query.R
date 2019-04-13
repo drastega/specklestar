@@ -50,5 +50,7 @@ vizier_query <- function(vizier_table = NULL, objects = NULL, radius_arcsec = NU
   data_vizier_tbbl <- data_vizier_tbbl %>% select(-c(Simbad, `_RA`, `_DE`))
   }
 
+  data_vizier_tbbl <- data_vizier_tbbl %>% mutate_all(str_squish)
+
   return(data_vizier_tbbl)
 }
