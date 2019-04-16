@@ -4,13 +4,16 @@
 \alias{simbad_query}
 \title{Query from Simbad}
 \usage{
-simbad_query(objects = NULL, params = NULL)
+simbad_query(objects = NULL, params = NULL, col_names = NULL)
 }
 \arguments{
 \item{objects}{a character vector with objects.}
 
 \item{params}{a character vector with parameters
 (See http://simbad.u-strasbg.fr/simbad/sim-help?Page=sim-fscript#Formats).}
+
+\item{col_names}{a character vector with column names
+(the same lenght as params).}
 }
 \value{
 Tibble with data from Simbad.
@@ -19,5 +22,5 @@ Tibble with data from Simbad.
 Returns tibble with data from Simbad
 }
 \examples{
-simbad_data <- simbad_query(c('HD 6757', 'HIP 11569'), c('\%COO(A)', '\%COO(D)', '\%FLUXLIST(V;F)'))
+simbad_data <- simbad_query(c('HD 6757', 'HIP 11569'), c('\%COO(A)', '\%COO(D)', '\%FLUXLIST(V;F)'), c('RA', 'DEC', 'V'))
 }
