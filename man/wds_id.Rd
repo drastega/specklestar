@@ -16,7 +16,7 @@ wds_id(ra, dec, delim = " ", name = "")
 \item{name}{a character string with extra name.}
 }
 \value{
-A number.
+A character with WDS index.
 }
 \description{
 Return WDS index based on right ascension and declination

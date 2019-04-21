@@ -20,6 +20,11 @@ Tibble with data.
 \description{
 Returns tibble of selected table from VizieR
 }
+\details{
+http://vizier.u-strasbg.fr/vizier/doc/asu-summary.htx
+
+https://vizier.u-strasbg.fr/vizier/vizHelp/args.htx
+}
 \examples{
 vizier_data <- vizier_query('J/other/AstBu/63.278/table1')
 vizier_wds <- vizier_query('B/wds/wds', c('HD 6757', 'HIP 11569'), 5)

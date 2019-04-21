@@ -6,7 +6,7 @@
 #' @param dec a character string with declination.
 #' @param delim a character string with delimiter used in both ra and dec.
 #' @param name a character string with extra name.
-#' @return A number.
+#' @return A character with WDS index.
 #' @examples
 #' wds_indx1 <- wds_id('00 00 43.63', '+45 15 12.0')
 #' wds_indx2 <- wds_id('16:37:44.07', '+19:56:55.1', ':', 'wds')

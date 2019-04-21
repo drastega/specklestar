@@ -6,6 +6,9 @@
 #' @param objects a character vector with objects.
 #' @param radius_arcsec raduis in arc seconds (number).
 #' @return Tibble with data.
+#' @details http://vizier.u-strasbg.fr/vizier/doc/asu-summary.htx
+#'
+#' https://vizier.u-strasbg.fr/vizier/vizHelp/args.htx
 #' @examples
 #' vizier_data <- vizier_query('J/other/AstBu/63.278/table1')
 #' vizier_wds <- vizier_query('B/wds/wds', c('HD 6757', 'HIP 11569'), 5)
@@ -38,7 +41,7 @@ vizier_query <- function(vizier_table = NULL, objects = NULL, radius_arcsec = NU
 
   colnames(data_vizier_tbbl) <- data_vizier_tbbl[1,]
 
-  data_vizier_tbbl <- data_vizier_tbbl %>% slice(-1:-3)
+  data_vizier_tbbl <- data_vizier_tbbl %>% slice(-1 : -3)
 
   if (!is.null(objects)) {
     data_vizier_tbbl <- data_vizier_tbbl %>%
