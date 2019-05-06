@@ -20,8 +20,8 @@ vizier_query_param <- function(vizier_table = NULL, par = NULL, constrain = NULL
 
   if (length(constrain) > 1) constrain <- constrain %>% paste0(collapse = ';') %>% paste0('<<;', .)
 
-  character.vector <- c('-source', par)
-  values.vector <- c(vizier_table, constrain)
+  character.vector <- c('-source', par, '-out')
+  values.vector <- c(vizier_table, constrain, '**')
 
   query_list <- as.list(setNames(values.vector, character.vector))
 

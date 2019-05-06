@@ -26,7 +26,8 @@ vizier_query <- function(vizier_table = NULL, objects = NULL, radius_arcsec = NU
                                                              '-c' = objects,
                                                              '-c.rs' = radius_arcsec,
                                                              '-out.add' = out.add_r,
-                                                             '-out.add' = out.add_1))
+                                                             '-out.add' = out.add_1,
+                                                             '-out' = '**'))
 
   if (vizier_response$status_code != 200) print('####### Bad request #######')
 
