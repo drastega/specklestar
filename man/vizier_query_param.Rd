@@ -9,9 +9,9 @@ vizier_query_param(vizier_table = NULL, par = NULL, constrain = NULL)
 \arguments{
 \item{vizier_table}{a character string with name of VizieR table.}
 
-\item{constrain}{a character string with constrain.}
+\item{par}{a character string with parameter.}
 
-\item{param}{a character string with parameter.}
+\item{constrain}{a character string with constrain.}
 }
 \value{
 Tibble with data.

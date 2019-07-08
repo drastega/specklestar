@@ -3,7 +3,7 @@
 #' Returns tibble of selected table from VizieR
 #'
 #' @param vizier_table a character string with name of VizieR table.
-#' @param param a character string with parameter.
+#' @param par a character string with parameter.
 #' @param constrain a character string with constrain.
 #' @return Tibble with data.
 #' @details http://vizier.u-strasbg.fr/vizier/doc/asu-summary.htx
