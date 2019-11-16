@@ -12,11 +12,11 @@ par_angle_log(log_file = NULL, log_date = NULL)
 \item{log_date}{a character string with date of observations (YYYY-MM-DD).}
 }
 \value{
-Tibble with names, parallactic angles (in degrees) and mean date
+data.frame with names, parallactic angles (in degrees) and mean date
 and UTC time of observations calculated from BTA log file.
 }
 \description{
-Returns tibble with parallactic angles calculated from BTA log file
+Returns data.frame with parallactic angles calculated from BTA log file
 }
 \examples{
 log_filename <- system.file("extdata", "2010-02-27.tel", package = "specklestar")

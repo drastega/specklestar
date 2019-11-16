@@ -1,11 +1,11 @@
 #' VizieR query by constrain on parameter
 #'
-#' Returns tibble of selected table from VizieR
+#' Returns data.frame of selected table from VizieR
 #'
 #' @param vizier_table a character string with name of VizieR table.
 #' @param par a character string with parameter.
 #' @param constrain a character string with constrain.
-#' @return Tibble with data.
+#' @return data.frame with data.
 #' @details http://vizier.u-strasbg.fr/vizier/doc/asu-summary.htx
 #'
 #' https://vizier.u-strasbg.fr/vizier/vizHelp/args.htx
@@ -29,7 +29,7 @@ vizier_query_param <- function(vizier_table = NULL, par = NULL, constrain = NULL
   if (vizier_response$status_code != 200) print('####### Bad request #######')
 
   data_vizier_tbbl <- vizier_response %>% httr::content(as = 'text') %>% str_split('\n') %>%
-    unlist %>% tibble(Data = .) %>% filter(grepl('^[^#]', Data)) %>% filter(Data != '') %>%
+    unlist %>% data.frame(Data = .) %>% filter(grepl('^[^#]', Data)) %>% filter(Data != '') %>%
     distinct()
 
   n_columns <- data_vizier_tbbl[4, ] %>% str_split('\t') %>% unlist %>% length()

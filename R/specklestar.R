@@ -8,9 +8,10 @@
 #'
 #' @useDynLib specklestar
 #' @importFrom Rcpp sourceCpp
+#' @importFrom stats na.omit setNames
+#' @importFrom utils count.fields read.table
 #' @importFrom magrittr "%>%"
 #' @import dplyr
-#' @import tibble
 #' @import stringr
 #' @import tidyr
 NULL

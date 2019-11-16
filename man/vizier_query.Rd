@@ -14,10 +14,10 @@ vizier_query(vizier_table = NULL, objects = NULL, radius_arcsec = NULL)
 \item{radius_arcsec}{raduis in arc seconds (number).}
 }
 \value{
-Tibble with data.
+data.frame with data.
 }
 \description{
-Returns tibble of selected table from VizieR
+Returns data.frame of selected table from VizieR
 }
 \details{
 http://vizier.u-strasbg.fr/vizier/doc/asu-summary.htx

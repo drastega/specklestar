@@ -5,16 +5,18 @@
 \title{Prepare data for observations on BTA
 with bta_list program}
 \usage{
-bta_list(objects = NULL)
+bta_list(objects = NULL, epoch = "01-Jan-2000")
 }
 \arguments{
 \item{objects}{a character vector with objects.}
+
+\item{epoch}{a character with epoch (default is '01-Jan-2000').}
 }
 \value{
-Tibble with data formatted for bta_list.
+data.frame with data formatted for bta_list.
 }
 \description{
-Returns tibble with objects formatted for bta_list
+Returns data.frame with objects formatted for bta_list
 }
 \examples{
 bta_list_data <- bta_list(c('HD 6757', 'HIP 11569'))

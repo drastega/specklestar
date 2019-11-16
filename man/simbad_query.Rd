@@ -16,10 +16,10 @@ simbad_query(objects = NULL, params = NULL, col_names = NULL)
 (the same lenght as params).}
 }
 \value{
-Tibble with data from Simbad.
+data.frame with data from Simbad.
 }
 \description{
-Returns tibble with data from Simbad
+Returns data.frame with data from Simbad
 }
 \examples{
 simbad_data <- simbad_query(c('HD 6757', 'HIP 11569'),

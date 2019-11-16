@@ -28,7 +28,9 @@ obs_database <- function(logs_dir = NULL) {
 
   excluded_files <- c()
   for (file in file_list) {
-    if (!all(count.fields(file, sep = ' ') == 22)) excluded_files <- c(excluded_files, file)
+    if (!all(count.fields(file, sep = ' ') == 22)) {
+      excluded_files <- c(excluded_files, file)
+      }
   }
 
   included_files <- file_list[!file_list %in% excluded_files]
@@ -79,15 +81,7 @@ obs_database <- function(logs_dir = NULL) {
     mutate(Focus = str_replace(Focus, 'Focus=', '')) %>%
     mutate(Date = lubridate::dmy(Date)) %>%
 
-    select(c(Name, Alpha, Delta, Mtime, Stime, Date, Z, Focus, Alpha_deg, Delta_deg, Mdate_time)) %>%
-
-#    group_by(Name) %>%
-#    mutate(n = n()) %>%
-#    filter(!str_detect(Name, "dark*")) %>%
-#    filter(!str_detect(Name, "flat*")) %>%
-#    arrange(desc(n)) %>%
-
-    as.tibble()
+    select(c(Name, Alpha, Delta, Mtime, Stime, Date, Z, Focus, Alpha_deg, Delta_deg, Mdate_time))
 
   return(database)
 }

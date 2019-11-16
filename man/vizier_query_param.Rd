@@ -14,10 +14,10 @@ vizier_query_param(vizier_table = NULL, par = NULL, constrain = NULL)
 \item{constrain}{a character string with constrain.}
 }
 \value{
-Tibble with data.
+data.frame with data.
 }
 \description{
-Returns tibble of selected table from VizieR
+Returns data.frame of selected table from VizieR
 }
 \details{
 http://vizier.u-strasbg.fr/vizier/doc/asu-summary.htx

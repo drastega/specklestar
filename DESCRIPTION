@@ -9,7 +9,6 @@ BugReports: https://github.com/drastega/specklestar/issues
 Depends: R (>= 3.0.0)
 Imports:
     dplyr,
-    tibble,
     magrittr,
     stringr,
     reshape2,

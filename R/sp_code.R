@@ -10,11 +10,13 @@
 #' @export
 sp_code <- function(spectr) {
 
-  tibble_for_manipulation <- tibble(SP_code = spectr) %>%
+  df_for_manipulation <- data.frame(SP_code = spectr)
+
+  df_for_manipulation <- df_for_manipulation %>%
     mutate(SP_code = str_sub(SP_code, 1, 2)) %>%
     mutate(SP_code = str_replace_all(SP_code, c('O' = '0', 'B' = '1', 'A' = '2', 'F' = '3', 'G' = '4',
                                                 'K' = '5', 'M' = '6', 'L' = '7', 'T' = '8', 'Y' = '9'))) %>%
     mutate(SP_code = as.numeric(SP_code))
 
-  return(tibble_for_manipulation$SP_code)
+  return(df_for_manipulation$SP_code)
 }
