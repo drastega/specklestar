@@ -12,15 +12,20 @@
 #' annulus_points <- annulus(m, R = 57, dR = 1, center = c(100, 100))
 #' @export
 annulus <- function(im, R, dR = 2, center = c(nrow(im) / 2, ncol(im) / 2)) {
-  library(tidyverse)
 
-  xy <- dplyr::select(reshape2::melt(im), x = Var1, y = Var2)
-  xy <- as.matrix(xy)
-  r <- sqrt((xy[ , 'x'] - center[1]) ^ 2 + (xy[ , 'y'] - center[2]) ^ 2)
-  phi <- atan2((xy[ , 'y'] - center[2]), (xy[ , 'x'] - center[1]))
+  melted_image <- reshape2::melt(im)
+  x <- melted_image[['Var1']]
+  y <- melted_image[['Var2']]
+  z = melted_image[['value']]
 
-  im_polar <- cbind(r, phi, z = reshape2::melt(im)$value) %>% as.tibble()
-  annulus_pts <- im_polar %>% filter(r < R + dR & r > R)
+  x_0 <- x - center[1]
+  y_0 <- y - center[2]
 
-  return(annulus_pts$z)
+  r <- sqrt(x_0 ^ 2 + y_0 ^ 2)
+  phi <- atan2(y_0, x_0)
+
+  im_polar <- cbind(r, phi, z)
+  annulus_pts <- im_polar[(im_polar[, 'r'] < R + dR & im_polar[, 'r'] > R), ][, 'z']
+
+  return(annulus_pts)
 }
