@@ -9,10 +9,11 @@
 #' (the same lenght as params).
 #' @return Tibble with data from Simbad.
 #' @examples
-#' simbad_data <- simbad_query(c('HD 6757', 'HIP 11569'), c('%COO(A)', '%COO(D)', '%FLUXLIST(V;F)'), c('RA', 'DEC', 'V'))
+#' simbad_data <- simbad_query(c('HD 6757', 'HIP 11569'),
+#'                             c('%COO(A)', '%COO(D)', '%FLUXLIST(V;F)'),
+#'                             c('RA', 'DEC', 'V'))
 #' @export
 simbad_query <- function(objects = NULL, params = NULL, col_names = NULL) {
-  library(tidyverse)
 
   base_sim_script_url <- 'http://simbad.u-strasbg.fr/simbad/sim-script'
 
@@ -20,8 +21,8 @@ simbad_query <- function(objects = NULL, params = NULL, col_names = NULL) {
   params <- params %>% paste0(collapse = ';')
 
   get_data <- httr::GET(base_sim_script_url,
-                  query = list(script = paste0('format object \"', params, '\"\n',
-                                               "output console=off script=off\n", objects)))
+                        query = list(script = paste0('format object \"', params, '\"\n',
+                                                     "output console=off script=off\n", objects)))
 
   simbad_data <- get_data %>% httr::content() %>% str_split('\n') %>% unlist() %>% tibble(Data = .) %>%
     slice(-1:-6) %>% filter(Data != '') %>% mutate(Data = str_squish(Data)) %>%

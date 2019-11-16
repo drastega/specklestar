@@ -14,7 +14,6 @@
 #' vizier_wds <- vizier_query('B/wds/wds', c('HD 6757', 'HIP 11569'), 5)
 #' @export
 vizier_query <- function(vizier_table = NULL, objects = NULL, radius_arcsec = NULL) {
-  library(tidyverse)
 
   base_vizier_url <- 'http://vizier.u-strasbg.fr/viz-bin/asu-tsv'
 

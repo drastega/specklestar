@@ -22,5 +22,7 @@ Tibble with data from Simbad.
 Returns tibble with data from Simbad
 }
 \examples{
-simbad_data <- simbad_query(c('HD 6757', 'HIP 11569'), c('\%COO(A)', '\%COO(D)', '\%FLUXLIST(V;F)'), c('RA', 'DEC', 'V'))
+simbad_data <- simbad_query(c('HD 6757', 'HIP 11569'),
+                            c('\%COO(A)', '\%COO(D)', '\%FLUXLIST(V;F)'),
+                            c('RA', 'DEC', 'V'))
 }

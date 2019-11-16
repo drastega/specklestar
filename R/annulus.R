@@ -14,6 +14,7 @@
 annulus <- function(im, R, dR = 2, center = c(nrow(im) / 2, ncol(im) / 2)) {
 
   melted_image <- reshape2::melt(im)
+
   x <- melted_image[['Var1']]
   y <- melted_image[['Var2']]
   z = melted_image[['value']]

@@ -4,8 +4,14 @@
 \alias{speckle_frame}
 \title{Selected frame from binary file}
 \usage{
-speckle_frame(data_file = NULL, frame = 1, x_pix = 512,
-  y_pix = 512, type = "int", byte = 2)
+speckle_frame(
+  data_file = NULL,
+  frame = 1,
+  x_pix = 512,
+  y_pix = 512,
+  type = "int",
+  byte = 2
+)
 }
 \arguments{
 \item{data_file}{a character string with the path name to a file.}

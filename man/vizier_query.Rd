@@ -4,8 +4,7 @@
 \alias{vizier_query}
 \title{VizieR query}
 \usage{
-vizier_query(vizier_table = NULL, objects = NULL,
-  radius_arcsec = NULL)
+vizier_query(vizier_table = NULL, objects = NULL, radius_arcsec = NULL)
 }
 \arguments{
 \item{vizier_table}{a character string with name of VizieR table.}

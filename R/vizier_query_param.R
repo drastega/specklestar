@@ -14,7 +14,6 @@
 #' vizier_wds <- vizier_query_param('J/other/AstBu/63.278/table1', 'Name', c('G76-21', 'G63-46'))
 #' @export
 vizier_query_param <- function(vizier_table = NULL, par = NULL, constrain = NULL) {
-  library(tidyverse)
 
   base_vizier_url <- 'http://vizier.u-strasbg.fr/viz-bin/asu-tsv'
 

@@ -11,7 +11,6 @@
 #' par_angle_log(log_filename, '2010-02-27')
 #' @export
 par_angle_log <- function(log_file = NULL, log_date = NULL) {
-  library(tidyverse)
 
   if (is.null(log_file)) {
     log_file <- file.choose()

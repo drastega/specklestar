@@ -8,4 +8,9 @@
 #'
 #' @useDynLib specklestar
 #' @importFrom Rcpp sourceCpp
+#' @importFrom magrittr "%>%"
+#' @import dplyr
+#' @import tibble
+#' @import stringr
+#' @import tidyr
 NULL

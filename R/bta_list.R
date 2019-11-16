@@ -9,7 +9,6 @@
 #' bta_list_data <- bta_list(c('HD 6757', 'HIP 11569'))
 #' @export
 bta_list <- function(objects = NULL) {
-  library(tidyverse)
 
   base_sim_script_url <- 'http://simbad.u-strasbg.fr/simbad/sim-script'
 

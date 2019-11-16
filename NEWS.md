@@ -6,6 +6,9 @@
 - Function to calculate contrast
 - Calculation of precise rho, theta and dm
 
+# specklestar v0.0.2.1 (2019-11-16)
+* Split tidyverse by packages
+
 # specklestar v0.0.1.11 (2019-04-21)
 * Added vizier_query_param() R function
 

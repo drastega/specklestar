@@ -8,9 +8,8 @@
 #' @examples
 #' spectr_code <- sp_code('B9IVpSi')
 #' @export
-sp_code <- function(spectr)
-{
-  library(tidyverse)
+sp_code <- function(spectr) {
+
   tibble_for_manipulation <- tibble(SP_code = spectr) %>%
     mutate(SP_code = str_sub(SP_code, 1, 2)) %>%
     mutate(SP_code = str_replace_all(SP_code, c('O' = '0', 'B' = '1', 'A' = '2', 'F' = '3', 'G' = '4',

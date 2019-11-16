@@ -3,7 +3,6 @@
 \docType{package}
 \name{specklestar}
 \alias{specklestar}
-\alias{specklestar-package}
 \title{specklestar: A package for reduction of speckle data.}
 \description{
 The specklestar package provides functions for obtaining

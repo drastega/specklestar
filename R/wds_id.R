@@ -13,14 +13,14 @@
 #' @export
 wds_id <- function (ra, dec, delim = ' ', name = '')
 {
-  temphms <- stringr::str_split_fixed(ra, delim, 3)
+  temphms <- str_split_fixed(ra, delim, 3)
   ra_h <- temphms[, 1]
   ra_m <- as.numeric(temphms[, 2])
   ra_s <- round(as.numeric(temphms[, 3]) / 6)
   ra_m <- ifelse(ra_s == 10, ra_m + 1, ra_m)
   ra_s <- ifelse(ra_s == 10, 0, ra_s)
 
-  tempdms = stringr::str_split_fixed(dec, delim, 3)
+  tempdms <- str_split_fixed(dec, delim, 3)
   dec_d <- tempdms[, 1]
   dec_m <- as.numeric(tempdms[, 2])
   dec_s <- round(as.numeric(tempdms[, 3]) / 6)
@@ -31,6 +31,6 @@ wds_id <- function (ra, dec, delim = ' ', name = '')
   dec_d <- formatC(dec_d, width = 2, format = 'd', flag = '0')
   dec_m <- formatC(dec_m, width = 2, format = 'd', flag = '0')
 
-  WDSname = paste0(name, ra_h, ra_m, ra_s, dec_d, dec_m)
+  WDSname <- paste0(name, ra_h, ra_m, ra_s, dec_d, dec_m)
   return(WDSname)
 }

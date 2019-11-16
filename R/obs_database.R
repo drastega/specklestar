@@ -10,7 +10,6 @@
 #' }
 #' @export
 obs_database <- function(logs_dir = NULL) {
-  library(tidyverse)
 
   if (is.null(logs_dir)) {
     logs_dir <- '/Volumes/E/Data/new_telescope_EDIT'
