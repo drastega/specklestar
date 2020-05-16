@@ -17,7 +17,9 @@ vizier_query_param <- function(vizier_table = NULL, par = NULL, constrain = NULL
 
   base_vizier_url <- 'http://vizier.u-strasbg.fr/viz-bin/asu-tsv'
 
-  if (length(constrain) > 1) constrain <- constrain %>% paste0(collapse = ';') %>% paste0('<<;', .)
+  if (length(constrain) > 1) {
+    constrain <- constrain %>% paste0(collapse = ';') %>% paste0('<<;', .)
+  }
 
   character.vector <- c('-source', par, '-out')
   values.vector <- c(vizier_table, constrain, '**')
@@ -28,21 +30,32 @@ vizier_query_param <- function(vizier_table = NULL, par = NULL, constrain = NULL
 
   if (vizier_response$status_code != 200) print('####### Bad request #######')
 
-  data_vizier_tbbl <- vizier_response %>% httr::content(as = 'text') %>% str_split('\n') %>%
+  data_vizier_df <- vizier_response %>% httr::content(as = 'text') %>% str_split('\n') %>%
     unlist %>% data.frame(Data = .) %>% filter(grepl('^[^#]', Data)) %>% filter(Data != '') %>%
     distinct()
 
-  n_columns <- data_vizier_tbbl[4, ] %>% str_split('\t') %>% unlist %>% length()
 
-  data_vizier_tbbl <- data_vizier_tbbl %>%
+###
+  # data_vizier_df <- httr::content(vizier_response, as = 'text')
+  # data_vizier_df <- str_split(data_vizier_df, '\n')
+  # data_vizier_df <- unlist(data_vizier_df)
+  # data_vizier_df <- as.data.frame(data_vizier_df)
+  # data_vizier_df <- data_vizier_df[]
+
+###
+
+
+
+  n_columns <- data_vizier_df[4, ] %>% str_split('\t') %>% unlist %>% length()
+
+  data_vizier_df <- data_vizier_df %>%
     separate(Data, as.character(1 : n_columns), sep = '\t')
 
-  colnames(data_vizier_tbbl) <- data_vizier_tbbl[1, ]
+  colnames(data_vizier_df) <- data_vizier_df[1, ]
 
-  data_vizier_tbbl <- data_vizier_tbbl %>% slice(-1 : -3)
+  data_vizier_df <- data_vizier_df %>% slice(-1 : -3)
 
-  data_vizier_tbbl <- data_vizier_tbbl %>% mutate_all(str_squish)
+  data_vizier_df <- data_vizier_df %>% mutate_all(str_squish)
 
-  return(data_vizier_tbbl)
-#  return(vizier_response)
+  return(data_vizier_df)
 }

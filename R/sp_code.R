@@ -7,16 +7,11 @@
 #' @return A number.
 #' @examples
 #' spectr_code <- sp_code('B9IVpSi')
+#' @importFrom stringr str_replace_all
 #' @export
 sp_code <- function(spectr) {
 
-  df_for_manipulation <- data.frame(SP_code = spectr)
-
-  df_for_manipulation <- df_for_manipulation %>%
-    mutate(SP_code = str_sub(SP_code, 1, 2)) %>%
-    mutate(SP_code = str_replace_all(SP_code, c('O' = '0', 'B' = '1', 'A' = '2', 'F' = '3', 'G' = '4',
-                                                'K' = '5', 'M' = '6', 'L' = '7', 'T' = '8', 'Y' = '9'))) %>%
-    mutate(SP_code = as.numeric(SP_code))
-
-  return(df_for_manipulation$SP_code)
+  code <- str_replace_all(substr(spectr, 1, 2), c('O' = '0', 'B' = '1', 'A' = '2', 'F' = '3', 'G' = '4',
+                                                  'K' = '5', 'M' = '6', 'L' = '7', 'T' = '8', 'Y' = '9'))
+  return(code)
 }
