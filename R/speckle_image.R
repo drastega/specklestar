@@ -12,11 +12,10 @@
 #' }
 #' @export
 speckle_image <- function(speckle_matrix) {
-  colnames(speckle_matrix) <- 1:512
+  colnames(speckle_matrix) <- 1:ncol(speckle_matrix)
   speckle_df <- as.data.frame(speckle_matrix)
-  speckle_df$x <- 1:512
-  speckle_df <- tidyr::pivot_longer(speckle_df, cols = -x, names_to = 'y')
-  speckle_df <- dplyr::mutate(speckle_df, y = as.integer(y))
+  speckle_df$x <- 1:nrow(speckle_matrix)
+  speckle_df <- tidyr::pivot_longer(speckle_df, cols = -x, names_to = 'y', names_ptypes = list(y = integer()))
 
   gg_speckle <- ggplot2::ggplot(speckle_df, aes(x, y, fill = value)) +
     geom_raster()

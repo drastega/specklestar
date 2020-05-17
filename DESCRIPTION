@@ -14,7 +14,8 @@ Imports:
     reshape2,
     tidyr,
     lubridate,
-    Rcpp
+    Rcpp,
+    httr
 Suggests:
     imager,
     celestial,
@@ -22,8 +23,7 @@ Suggests:
     mrbsizeR,
     rgl,
     knitr,
-    rmarkdown,
-    httr
+    rmarkdown
 License: GPL-2
 NeedsCompilation: yes
 SystemRequirements: fftw3 (>= 3.1.2)
